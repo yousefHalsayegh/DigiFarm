@@ -1,14 +1,14 @@
 from kivy.app import App
 from kivy.uix.widget import Widget 
 
-class PongGame(Widget):
+class DigiFarm(Widget):
     pass
 
 
-class PongApp(App):
+class DigiApp(App):
     def build(self):
-        return PongGame()
+        return DigiFarm()
 
 
 if __name__ == '__main__':
-    PongApp().run()
+    DigiApp().run()
