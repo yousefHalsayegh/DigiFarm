@@ -1,17 +1,16 @@
-from kivy.app import App
-from kivy.uix.widget import Widget
+import pygame
 
-class MainMenu(Widget):
-    pass
+pygame.init()
 
-class Farm(Widget):
-    pass
+screen = pygame.display.set_mode((1000,800))
+clock = pygame.time.Clock()
+running = True
 
-class DigiApp(App):
-    def build(self):
-        self.title = 'DigiFarm'
-        return MainMenu()
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+    
+    clock.tick(60)
 
-
-if __name__ == '__main__':
-    DigiApp().run()
+pygame.quit()
