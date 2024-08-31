@@ -1,26 +1,15 @@
 import pygame as pg
+import pygame_gui as pg_gui
 from new_game import new_game as ng
 import sys
 
 
-def create_button(background, text_font, label, x, y, w=300, h=50):
-
-    #button rectangle "skeleton"
-    button = pg.Rect(x,y,w,h)
-
-    #button UI
-    pg.draw.rect(background, (164,164,164),button )
-    text = text_font.render(label, True, (10,10,10))
-    textpos = text.get_rect(centerx=background.get_width()/2, y= y+5)
-
-    background.blit(text, textpos)
-
-    return button
 
 def main():
-    #Getting the screen ready
-    pg.init()
-    screen = pg.display.set_mode((1000,800), pg.SCALED)
+    #Getting the screen read
+    WIDTH = 1000
+    HEIGHT = 800
+    screen = pg.display.set_mode((WIDTH,HEIGHT), pg.SCALED)
     pg.display.set_caption("Digifarm")
     
     #intilazing the background
@@ -28,8 +17,10 @@ def main():
     background = background.convert()
     background.fill((248, 243, 241))
 
+    #UI manager
+    manager = pg_gui.UIManager((WIDTH, HEIGHT))
     clock = pg.time.Clock()
-    running = True
+
 
     #To check if the font module is added correctly then do the thing
     if pg.font:
@@ -43,42 +34,51 @@ def main():
         background.blit(text, textpos)
 
         #Buttons hitbox
-        start_button = create_button(background, text_font, "New Game", (background.get_width()/2 - 150), 270)
-        load_button = create_button(background, text_font, "Continue", (background.get_width()/2 - 150), 340)
-        setting_button = create_button(background, text_font, "Settings", (background.get_width()/2 - 150), 410)
-        exit_button = create_button(background, text_font, "Exit", (background.get_width()/2 - 150), 480)
-        
+        start_button = pg_gui.elements.UIButton(pg.Rect((background.get_width()/2 - 150), 270, 300, 50), text='New Game', manager=manager)
+        load_button = pg_gui.elements.UIButton(pg.Rect((background.get_width()/2 - 150), 340, 300, 50), text='Continue', manager=manager)
+        setting_button = pg_gui.elements.UIButton(pg.Rect((background.get_width()/2 - 150), 410, 300, 50), text='Settings', manager=manager)
+        exit_button = pg_gui.elements.UIButton(pg.Rect((background.get_width()/2 - 150), 480, 300, 50), text='Exit', manager=manager)
+
     
         
 
 
     #The run
     while True:
+        time_delta = clock.tick(60)/1000
+
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
 
-            if event.type == pg.MOUSEBUTTONDOWN:
-                if start_button.collidepoint(event.pos):
-                    ng(screen, background, title_font)
+            if event.type == pg_gui.UI_BUTTON_PRESSED:
+                if event.ui_element == start_button:
+                    ng(screen, background, title_font, text_font)
                     
-                elif load_button.collidepoint(event.pos):
+                elif event.ui_element == load_button:
                     print("Load game")
-                elif setting_button.collidepoint(event.pos):
+                elif event.ui_element == setting_button:
                     print("Settings")
-                elif exit_button.collidepoint(event.pos):
+                elif event.ui_element == exit_button:
                     pg.quit()
                     sys.exit()
+
+
+            manager.process_events(event)
+            
     
-    
+        manager.update(time_delta)
         clock.tick(60)
 
         #rendering the screen
         screen.blit(background, (0,0))
+        manager.draw_ui(background)
+
         pg.display.flip()
     
 
 
 if __name__ == '__main__' :
+    pg.init()
     main()
