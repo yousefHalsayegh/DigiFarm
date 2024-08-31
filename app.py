@@ -1,16 +1,12 @@
 import pygame as pg
 from new_game import new_game as ng
+import sys
 
-def check_hitbox(pos, hitbox):
-    return pos[0] < hitbox[0] and pos[0] > hitbox[2] and  pos[1] < hitbox[1] and  pos[1] > hitbox[3]
 
 def create_button(background, text_font, label, x, y, w=300, h=50):
 
     #button rectangle "skeleton"
     button = pg.Rect(x,y,w,h)
-
-    #(x1, y1, x2, y2) to track the hitbox 
-    hitbox = button.bottomright + button.topleft
 
     #button UI
     pg.draw.rect(background, (164,164,164),button )
@@ -19,7 +15,7 @@ def create_button(background, text_font, label, x, y, w=300, h=50):
 
     background.blit(text, textpos)
 
-    return hitbox
+    return button
 
 def main():
     #Getting the screen ready
@@ -47,32 +43,33 @@ def main():
         background.blit(text, textpos)
 
         #Buttons hitbox
-        start_button_hitbox = create_button(background, text_font, "New Game", (background.get_width()/2 - 150), 270)
-        load_button_hitbox = create_button(background, text_font, "Continue", (background.get_width()/2 - 150), 340)
-        setting_button_hitbox = create_button(background, text_font, "Settings", (background.get_width()/2 - 150), 410)
-        exit_button_hitbox = create_button(background, text_font, "Exit", (background.get_width()/2 - 150), 480)
+        start_button = create_button(background, text_font, "New Game", (background.get_width()/2 - 150), 270)
+        load_button = create_button(background, text_font, "Continue", (background.get_width()/2 - 150), 340)
+        setting_button = create_button(background, text_font, "Settings", (background.get_width()/2 - 150), 410)
+        exit_button = create_button(background, text_font, "Exit", (background.get_width()/2 - 150), 480)
         
     
         
 
 
     #The run
-    while running:
+    while True:
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                running = False
+                pg.quit()
+                sys.exit()
 
             if event.type == pg.MOUSEBUTTONDOWN:
-                pos = pg.mouse.get_pos()
-                if check_hitbox(pos, start_button_hitbox):
-                    ng(screen, background)
+                if start_button.collidepoint(event.pos):
+                    ng(screen, background, title_font)
                     
-                elif check_hitbox(pos, load_button_hitbox):
+                elif load_button.collidepoint(event.pos):
                     print("Load game")
-                elif check_hitbox(pos, setting_button_hitbox):
+                elif setting_button.collidepoint(event.pos):
                     print("Settings")
-                elif check_hitbox(pos, exit_button_hitbox):
-                    running = False
+                elif exit_button.collidepoint(event.pos):
+                    pg.quit()
+                    sys.exit()
     
     
         clock.tick(60)
@@ -80,7 +77,7 @@ def main():
         #rendering the screen
         screen.blit(background, (0,0))
         pg.display.flip()
-    pg.quit()
+    
 
 
 if __name__ == '__main__' :
