@@ -18,7 +18,7 @@ def main():
     background.fill((248, 243, 241))
 
     #UI manager
-    manager = pg_gui.UIManager((WIDTH, HEIGHT))
+    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='theme.json')
     clock = pg.time.Clock()
 
 
@@ -54,7 +54,7 @@ def main():
 
             if event.type == pg_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == start_button:
-                    ng(screen, background, title_font, text_font)
+                    ng(screen, title_font, text_font)
                     
                 elif event.ui_element == load_button:
                     print("Load game")
