@@ -3,7 +3,7 @@ import sys
 import pygame_gui as pg_gui
 
 class new_game:
-    def __init__(self, s, tf, f):
+    def __init__(self, s, f):
         #starting variables
         self.screen = s
 
@@ -15,17 +15,25 @@ class new_game:
 
         self.clock = pg.time.Clock()
         self.farm_name = ''
-        self.font = f
+        self.farm_type = ''
+        
+        self.ui_start()
+        #getting into it
+        self.run()
+
+    def ui_start(self):
+        font = pg.font.Font(size=30)
 
         #Restarting the screen
         self.background.fill((248, 243, 241))
-        text = tf.render("What is your digimon farm name?", True, (10,10,10))
+        text = font.render("What is your digimon farm name?", True, (10,10,10))
         textpos = text.get_rect(centerx=self.background.get_width()/2, y= 200)
         self.background.blit(text, textpos)
         
-        self.input_field = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 270, 300, 50), manager=self.manager)
-        #getting into it
-        self.run()
+        self.input_field = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 220, 300, 50), manager=self.manager)
+        self.drop_down = pg_gui.elements.UIDropDownMenu(['Virus', 'Vaccine', 'Data'],'Virus', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
+
+
 
     def run(self):
         active = False
@@ -40,15 +48,17 @@ class new_game:
                 if event.type == pg_gui.UI_TEXT_ENTRY_FINISHED:
                     self.farm_name = event.text
                     print(self.farm_name)
+                if event.type == pg_gui.UI_DROP_DOWN_MENU_CHANGED:
+                    self.farm_type = event.text
+                    print(self.farm_type)
 
                 self.manager.process_events(event)
                 
         
             self.manager.update(time_delta)
-            self.clock.tick(60)
 
             #rendering the screen
             self.screen.blit(self.background, (0,0))
-            self.manager.draw_ui(self.background)
+            self.manager.draw_ui(self.screen)
 
             pg.display.flip()

@@ -54,7 +54,7 @@ def main():
 
             if event.type == pg_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == start_button:
-                    ng(screen, title_font, text_font)
+                    ng(screen, text_font)
                     
                 elif event.ui_element == load_button:
                     print("Load game")
@@ -73,7 +73,7 @@ def main():
 
         #rendering the screen
         screen.blit(background, (0,0))
-        manager.draw_ui(background)
+        manager.draw_ui(screen)
 
         pg.display.flip()
     
