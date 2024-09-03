@@ -1,11 +1,15 @@
 import pygame as pg
 import pygame_gui as pg_gui
-from new_game import new_game as ng
+from new_game import NewGame as ng
+from save_manager import SaveSystem 
 import sys
 
 
 
 def main():
+
+    save_manager = SaveSystem(".mon", "save_data")
+
     #Getting the screen read
     WIDTH = 1000
     HEIGHT = 800
@@ -57,7 +61,7 @@ def main():
                     ng(screen, text_font)
                     
                 elif event.ui_element == load_button:
-                    print("Load game")
+                    print(save_manager.load_data("digifarm"))
                 elif event.ui_element == setting_button:
                     print("Settings")
                 elif event.ui_element == exit_button:
