@@ -1,7 +1,7 @@
 import pygame as pg
 import sys
 import pygame_gui as pg_gui
-from save_manager import SaveSystem 
+from Systems.save_manager import SaveSystem 
 
 class NewGame:
     def __init__(self, s, f):
@@ -14,7 +14,7 @@ class NewGame:
         self.background = self.background.convert()
         self.background.fill((248, 243, 241))
 
-        self.manager = pg_gui.UIManager((1000, 800), theme_path='theme.json')
+        self.manager = pg_gui.UIManager((1000, 800), theme_path='Assests/theme.json')
 
         self.clock = pg.time.Clock()
         self.farm_name = ''
@@ -63,7 +63,7 @@ class NewGame:
                     if event.ui_element == self.retun_button: 
                         return
                     if event.ui_element == self.start: 
-                        self.save_manager.save_data({"Name": self.farm_name, "Type": self.farm_type}, "digifarm")
+                        self.save_manager.save_data({"Name": self.farm_name, "Type": self.farm_type}, self.farm_name)
 
 
                 self.manager.process_events(event)

@@ -1,7 +1,7 @@
 import pygame as pg
 import pygame_gui as pg_gui
-from new_game import NewGame as ng
-from save_manager import SaveSystem 
+from Screens.new_game import NewGame as ng
+from Systems.save_manager import SaveSystem 
 import sys
 
 
@@ -22,7 +22,7 @@ def main():
     background.fill((248, 243, 241))
 
     #UI manager
-    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='theme.json')
+    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='Assests/theme.json')
     clock = pg.time.Clock()
 
 
