@@ -1,10 +1,17 @@
+#Other Modules
 import pygame as pg
 import sys
 import pygame_gui as pg_gui
-from Systems.save_manager import SaveSystem 
+
+#Same File
+from farm import Farm
+
+#Other Files
+sys.path.insert(1, "../Systems")
+from save_manager import SaveSystem 
 
 class NewGame:
-    def __init__(self, s, f):
+    def __init__(self, s):
         #starting variables
         self.screen = s
 
@@ -14,7 +21,7 @@ class NewGame:
         self.background = self.background.convert()
         self.background.fill((248, 243, 241))
 
-        self.manager = pg_gui.UIManager((1000, 800), theme_path='Assests/theme.json')
+        self.manager = pg_gui.UIManager((1000, 800), theme_path='../Assests/theme.json')
 
         self.clock = pg.time.Clock()
         self.farm_name = ''
@@ -53,7 +60,6 @@ class NewGame:
 
 
     def run(self):
-        active = False
         while True:
             time_delta = self.clock.tick(60)/1000
 
@@ -79,6 +85,7 @@ class NewGame:
                         return
                     if event.ui_element == self.start: 
                         self.save_manager.save_data({"Name": self.farm_name, "Type": self.farm_type, "Digimon" : self.digimon}, self.farm_name)
+                        Farm(self.screen, {"Name": self.farm_name, "Type": self.farm_type, "Digimon" : self.digimon})
 
 
                 self.manager.process_events(event)

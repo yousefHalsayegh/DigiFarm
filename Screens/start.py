@@ -1,10 +1,15 @@
+#Other Modules
 import pygame as pg
 import pygame_gui as pg_gui
-from Screens.new_game import NewGame as ng
-from Systems.save_manager import SaveSystem 
 import sys
 import os
 
+#Same File
+from new_game import NewGame as ng
+
+#Other Files
+sys.path.insert(1, "../Systems")
+from save_manager import SaveSystem 
 
 def main():
 
@@ -22,7 +27,7 @@ def main():
     background.fill((248, 243, 241))
 
     #UI manager
-    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='Assests/theme.json')
+    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='../Assests/theme.json')
     clock = pg.time.Clock()
 
 
@@ -58,10 +63,10 @@ def main():
 
             if event.type == pg_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == start_button:
-                    ng(screen, text_font)
+                    ng(screen)
                     
                 elif event.ui_element == load_button:
-                    for f in os.listdir("save_data"):
+                    for f in os.listdir("../save_data"):
                         print(save_manager.load_data(f))
                 elif event.ui_element == setting_button:
                     print("Settings")
