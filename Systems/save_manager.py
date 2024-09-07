@@ -12,7 +12,7 @@ class SaveSystem:
         pickle.dump(data, data_file)
 
     def load_data(self, name):
-        data_file = open(self.save_folder+"/"+name+self.file_extention, "rb")
+        data_file = open(self.save_folder+"/"+name, "rb")
         data = pickle.load(data_file)
         return data
 

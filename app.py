@@ -3,7 +3,7 @@ import pygame_gui as pg_gui
 from Screens.new_game import NewGame as ng
 from Systems.save_manager import SaveSystem 
 import sys
-
+import os
 
 
 def main():
@@ -61,7 +61,8 @@ def main():
                     ng(screen, text_font)
                     
                 elif event.ui_element == load_button:
-                    print(save_manager.load_data("digifarm"))
+                    for f in os.listdir("save_data"):
+                        print(save_manager.load_data(f))
                 elif event.ui_element == setting_button:
                     print("Settings")
                 elif event.ui_element == exit_button:

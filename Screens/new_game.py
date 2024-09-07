@@ -19,6 +19,7 @@ class NewGame:
         self.clock = pg.time.Clock()
         self.farm_name = ''
         self.farm_type = ''
+        self.digimon = {}
         
         self.ui_start()
         #getting into it
@@ -35,11 +36,19 @@ class NewGame:
         text = font.render("Choose a farm type", True, (10,10,10))
         textpos = text.get_rect(centerx=self.background.get_width()/2, y= 280)
         self.background.blit(text, textpos)
+        text = font.render("Choose a digiegg type", True, (10,10,10))
+        textpos = text.get_rect(centerx=self.background.get_width()/2, y= 360)
+        self.background.blit(text, textpos)
+        text = font.render("What would you call your digitama?", True, (10,10,10))
+        textpos = text.get_rect(centerx=self.background.get_width()/2, y= 440)
+        self.background.blit(text, textpos)
         
-        self.input_field = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 220, 300, 50), manager=self.manager)
-        self.starting_farm = pg_gui.elements.UIDropDownMenu(['Virus', 'Vaccine', 'Data'],'Virus', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
         self.retun_button = pg_gui.elements.UIButton(pg.Rect(10, 10, 50, 40), text='Back', manager=self.manager)
-        self.start = pg_gui.elements.UIButton(pg.Rect((self.background.get_width()/2 - 150), 360, 300, 50), text='Start', manager=self.manager)
+        self.farm_input = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 220, 300, 50), manager=self.manager)
+        self.starting_farm = pg_gui.elements.UIDropDownMenu(['Dragon', 'Beast', 'Bird'],'Dragon', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
+        self.starting_egg = pg_gui.elements.UIDropDownMenu(['Virus', 'Vaccine', 'Data'],'Virus', pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
+        self.name_input = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 460, 300, 50), manager=self.manager)
+        self.start = pg_gui.elements.UIButton(pg.Rect((self.background.get_width()/2 - 150), 540, 300, 50), text='Start', manager=self.manager)
 
 
 
@@ -54,16 +63,22 @@ class NewGame:
                     sys.exit()
 
                 if event.type == pg_gui.UI_TEXT_ENTRY_FINISHED:
-                    self.farm_name = event.text
-                    print(self.farm_name)
+                    if event.ui_element == self.farm_input:
+                        self.farm_name = event.text
+                    if event.ui_element == self.name_input:
+                        self.digimon["Name"]= event.text
+
                 if event.type == pg_gui.UI_DROP_DOWN_MENU_CHANGED:
-                    self.farm_type = event.text
-                    print(self.farm_type)
+                    if event.ui_element == self.starting_farm:
+                        self.farm_type = event.text
+                    if event.ui_element == self.starting_egg:
+                        self.digimon["Type"] = event.text
+
                 if event.type == pg_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.retun_button: 
                         return
                     if event.ui_element == self.start: 
-                        self.save_manager.save_data({"Name": self.farm_name, "Type": self.farm_type}, self.farm_name)
+                        self.save_manager.save_data({"Name": self.farm_name, "Type": self.farm_type, "Digimon" : self.digimon}, self.farm_name)
 
 
                 self.manager.process_events(event)
