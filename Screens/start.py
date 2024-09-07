@@ -27,7 +27,7 @@ def main():
     background.fill((248, 243, 241))
 
     #UI manager
-    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='../Assests/theme.json')
+    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='../Assests/style/theme.json')
     clock = pg.time.Clock()
 
 

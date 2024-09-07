@@ -18,7 +18,7 @@ class Farm:
         self.background = self.background.convert()
         self.background.fill((248, 243, 241))
 
-        self.manager = pg_gui.UIManager((1000, 800), theme_path='../Assests/theme.json')
+        self.manager = pg_gui.UIManager((1000, 800), theme_path='../Assests/style/theme.json')
 
         self.clock = pg.time.Clock()
         
