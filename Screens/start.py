@@ -6,14 +6,15 @@ import os
 
 #Same File
 from new_game import NewGame as ng
+from farm import Farm
 
 #Other Files
-sys.path.insert(1, "../Systems")
+sys.path.insert(1, "../systems")
 from save_manager import SaveSystem 
 
 def main():
 
-    save_manager = SaveSystem(".mon", "save_data")
+    save_manager = SaveSystem()
 
     #Getting the screen read
     WIDTH = 1000
@@ -27,7 +28,7 @@ def main():
     background.fill((248, 243, 241))
 
     #UI manager
-    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='../Assests/style/theme.json')
+    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='../assests/style/theme.json')
     clock = pg.time.Clock()
 
 
@@ -66,8 +67,7 @@ def main():
                     ng(screen)
                     
                 elif event.ui_element == load_button:
-                    for f in os.listdir("../save_data"):
-                        print(save_manager.load_data(f))
+                    Farm(screen, save_manager.load_data("test.json"))
                 elif event.ui_element == setting_button:
                     print("Settings")
                 elif event.ui_element == exit_button:

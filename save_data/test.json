@@ -1,0 +1,11 @@
+{
+   "Name": "test",
+   "Digimon": [
+      {
+         "Core": "Agumon",
+         "Family": "Bird",
+         "Type": "Vaccine",
+         "Name": "test"
+      }
+   ]
+}
