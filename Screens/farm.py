@@ -33,9 +33,12 @@ class Farm:
 
         #Restarting the screen
         self.background.fill((248, 243, 241))
+        self.screen.blit(self.background, (0,0))
         self.load()
 
     def run(self):
+        last_update = pg.time.get_ticks()
+        frame = 0
         while True:
             time_delta = self.clock.tick(60)/1000
 
@@ -50,16 +53,22 @@ class Farm:
             self.manager.update(time_delta)
 
             #rendering the screen
-            self.screen.blit(self.background, (0,0))
+            
             self.manager.draw_ui(self.screen)
 
-            for digi in self.digimons:
-                digi.move(self.background)
-                
+            current_time = pg.time.get_ticks()
+            if current_time - last_update >= 600:
+                frame += 1
+                if frame >= len(self.digimons[0].sprites):
+                    frame = 0
+                last_update = current_time
+
+            self.screen.blit(self.digimons[0].sprites[frame], (10,10))
+            
             pg.display.flip()
             
     def load(self):
         for digi in self.data["Digimon"]:
             digimon = Digimon(digi)
-            pg.draw.rect(self.background, digimon.colour, digimon.rect)
+            self.screen.blit(digimon.sprites[0], (10,10))
             self.digimons.append(digimon)

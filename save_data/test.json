@@ -2,10 +2,10 @@
    "Name": "test",
    "Digimon": [
       {
-         "Core": "Agumon",
-         "Family": "Bird",
-         "Type": "Vaccine",
-         "Name": "test"
+         "Name": "Kuramon",
+         "Attribute": "Beast",
+         "Type": "Virus",
+         "Level": "baby_I"
       }
    ]
 }

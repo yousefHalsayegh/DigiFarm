@@ -45,22 +45,18 @@ class NewGame:
         text = font.render("Choose a Digimon atrribute", True, (10,10,10))
         textpos = text.get_rect(centerx=self.background.get_width()/2, y= 360)
         self.background.blit(text, textpos)
-        text = font.render("What would you call your Digitama?", True, (10,10,10))
-        textpos = text.get_rect(centerx=self.background.get_width()/2, y= 440)
-        self.background.blit(text, textpos)
         
         self.retun_button = pg_gui.elements.UIButton(pg.Rect(10, 10, 50, 40), text='Back', manager=self.manager)
         self.farm_input = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 220, 300, 50), manager=self.manager)
-        self.starting_family = pg_gui.elements.UIDropDownMenu(['Dragon', 'Beast', 'Bird'],'Dragon', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
-        self.starting_egg = pg_gui.elements.UIDropDownMenu(['Virus', 'Vaccine', 'Data'],'Virus', pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
-        self.name_input = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 460, 300, 50), manager=self.manager)
+        self.starting_attribute = pg_gui.elements.UIDropDownMenu(['Dragon', 'Beast', 'Bird'],'Dragon', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
+        self.starting_type = pg_gui.elements.UIDropDownMenu(['Virus', 'Vaccine', 'Data'],'Virus', pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
         self.start = pg_gui.elements.UIButton(pg.Rect((self.background.get_width()/2 - 150), 540, 300, 50), text='Start', manager=self.manager)
 
 
 
     def run(self):
-        self.digimon["Core"] = "Agumon"
-        
+        self.digimon["Name"]= "Kuramon"
+        self.digimon["Level"]= "baby_I"
         while True:
             time_delta = self.clock.tick(60)/1000
 
@@ -72,13 +68,12 @@ class NewGame:
                 if event.type == pg_gui.UI_TEXT_ENTRY_FINISHED:
                     if event.ui_element == self.farm_input:
                         self.farm_name = event.text
-                    if event.ui_element == self.name_input:
-                        self.digimon["Name"]= event.text
+                        
 
                 if event.type == pg_gui.UI_DROP_DOWN_MENU_CHANGED:
-                    if event.ui_element == self.starting_family:
-                        self.digimon["Family"] = event.text
-                    if event.ui_element == self.starting_egg:
+                    if event.ui_element == self.starting_attribute:
+                        self.digimon["Attribute"] = event.text
+                    if event.ui_element == self.starting_type:
                         self.digimon["Type"] = event.text
 
                 if event.type == pg_gui.UI_BUTTON_PRESSED:
