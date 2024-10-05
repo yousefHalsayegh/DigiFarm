@@ -20,8 +20,10 @@ class SpriteSheet:
                 image = pg.Surface((16,16)).convert()
                 image.blit(self.sheet, (0,0), ((j * 16),(i * 16), 16, 16))
 
-                #change the size
+                #REMOVE LATER
                 image = pg.transform.scale(image, (48, 48))
+
+
                 images.append(image)
 
         return images
