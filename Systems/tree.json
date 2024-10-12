@@ -1,5 +1,13 @@
 {
     "Kuramon":[{
+        "Name": "Tsumemon",
+        "Attribute": "Beast",
+         "Type": "Unknown",
+         "Level": "baby_II"
+    }
+
+    ],
+    "Tsumemon":[{
         "Name": "Keramon",
         "Attribute": "Beast",
          "Type": "Unknown",

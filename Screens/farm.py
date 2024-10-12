@@ -55,7 +55,7 @@ class Farm:
             self.manager.draw_ui(self.screen)
            
             for digimon in self.digimons:
-             digimon.move(self.screen,self.background)
+             digimon.update(self.screen,self.background)
             
             
             pg.display.update()

@@ -19,20 +19,23 @@ class Digimon:
         self.exp = 0
         self.next_level = 5
     
-    
-    def move(self,s,b):
-        x = 0 
-        y = 0
-
+    def update(self, s, b):
         if self.reached():
             self.new_target()
             self.exp += 1
             print(self.exp)
             return
+         
         if self.exp >= self.next_level:
            self.digivolve()
            self.exp = 0
+           
+        self.move(s,b)
 
+
+    def move(self,s,b):
+        x = 0 
+        y = 0
         s.blit(b, self.hit)
         pg.draw.rect(s, (10,10,10), self.target)
         if self.target[0] > self.hit.left:
@@ -71,7 +74,6 @@ class Digimon:
                 self.level = digi["Level"]
                 self.sprite_sheet = SpriteSheet("../Assests/digimons/"+self.level+"/"+self.name+".png")
                 self.sprites = self.sprite_sheet.sprites()
-                self.next_level *= 10
 
     
         
