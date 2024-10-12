@@ -1,6 +1,7 @@
 import pygame as pg
 import random 
 from sprite_sheet import SpriteSheet
+import json
 
 class Digimon:
     def __init__(self, data):
@@ -9,12 +10,14 @@ class Digimon:
         self.type = data["Type"]
         self.attribute = data["Attribute"]
         self.level = data["Level"]
-        self.speed = 3
+        self.speed = 10
         self.sprite_sheet = SpriteSheet("../Assests/digimons/"+self.level+"/"+self.name+".png")
         self.sprites = self.sprite_sheet.sprites()
         self.hit = pg.Rect(100,100,random.randint(16, 900),random.randint(16, 750))
         self.frame = 0
         self.target = pg.Rect(10,10,20,20)
+        self.exp = 0
+        self.next_level = 5
     
     
     def move(self,s,b):
@@ -23,10 +26,13 @@ class Digimon:
 
         if self.reached():
             self.new_target()
-            print("(", self.target.left, ",", self.target.top, ")")
-            print("(", self.hit.left, ",", self.hit.top, ")")
+            self.exp += 1
+            print(self.exp)
             return
-        
+        if self.exp >= self.next_level:
+           self.digivolve()
+           self.exp = 0
+
         s.blit(b, self.hit)
         pg.draw.rect(s, (10,10,10), self.target)
         if self.target[0] > self.hit.left:
@@ -55,7 +61,17 @@ class Digimon:
         self.target.left = random.randint(16, 950)
         self.target.top = random.randint(16, 750)
 
-        
+    def digivolve(self):
+         with open('../Systems/tree.json', 'r') as file:
+                tree = json.load(file)
+                digi = tree[self.name][0]
+                self.name = digi["Name"]
+                self.attribute = digi["Attribute"]
+                self.type = digi["Type"]
+                self.level = digi["Level"]
+                self.sprite_sheet = SpriteSheet("../Assests/digimons/"+self.level+"/"+self.name+".png")
+                self.sprites = self.sprite_sheet.sprites()
+                self.next_level *= 10
 
     
         
