@@ -12,15 +12,33 @@ class Digimon:
         self.speed = 3
         self.sprite_sheet = SpriteSheet("../Assests/digimons/"+self.level+"/"+self.name+".png")
         self.sprites = self.sprite_sheet.sprites()
-        self.hit = pg.Rect(100,100,16,16)
+        self.hit = pg.Rect(100,100,random.randint(16, 900),random.randint(16, 750))
         self.frame = 0
-        
+        self.target = pg.Rect(10,10,20,20)
     
     
     def move(self,s,b):
+        x = 0 
+        y = 0
+
+        if self.reached():
+            self.new_target()
+            print("(", self.target.left, ",", self.target.top, ")")
+            print("(", self.hit.left, ",", self.hit.top, ")")
+            return
+        
         s.blit(b, self.hit)
-        x = random.randint(-1, 1) * self.speed 
-        y = random.randint(-1,1)* self.speed 
+        pg.draw.rect(s, (10,10,10), self.target)
+        if self.target[0] > self.hit.left:
+            x = 1 * self.speed 
+        else: 
+            x = -1 * self.speed 
+
+        if self.target[1] > self.hit.top:
+            y = 1 * self.speed 
+        else: 
+            y = -1 * self.speed 
+        
 
         if self.hit.left + x <= 0 or self.hit.left + x + 16 >= 1000 : 
             x *= -1
@@ -29,5 +47,16 @@ class Digimon:
         self.frame  = 0 if self.frame == 1 else 1
         self.hit = self.hit.move(x,y)
         s.blit(self.sprites[self.frame], self.hit)
+
+    def reached(self):
+        return self.hit.colliderect(self.target)
+    
+    def new_target(self):
+        self.target.left = random.randint(16, 950)
+        self.target.top = random.randint(16, 750)
+
+        
+
+    
         
         
