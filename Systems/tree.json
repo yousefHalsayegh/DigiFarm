@@ -14,7 +14,7 @@
         "Attribute": "Dragon",
          "Type": "Virus",
          "Level": "baby_II",
-         "Speed": 10
+         "Speed": 5
     }
 
     ],
@@ -23,7 +23,7 @@
         "Attribute": "Dragon",
          "Type": "Virsu",
          "Level": "child",
-         "Speed": 10
+         "Speed": 5
     }
 
     ],
@@ -32,7 +32,7 @@
         "Attribute": "Dragon",
          "Type": "Virsu",
          "Level": "adult",
-         "Speed": 10
+         "Speed": 5
     }
 
     ],
@@ -41,7 +41,7 @@
         "Attribute": "Dragon",
          "Type": "Virsu",
          "Level": "perfect",
-         "Speed": 10
+         "Speed": 5
     }
 
     ],
@@ -50,7 +50,7 @@
         "Attribute": "Dragon",
          "Type": "Virsu",
          "Level": "ultimate",
-         "Speed": 10
+         "Speed": 5
     }
 
     ],

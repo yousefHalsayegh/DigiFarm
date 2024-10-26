@@ -29,7 +29,6 @@ class Farm:
         self.run()
 
     def ui_start(self):
-        font = pg.font.Font(size=30)
 
         #Restarting the screen
         self.background.fill((248, 243, 241))
@@ -65,3 +64,4 @@ class Farm:
             digimon = Digimon(digi)
             self.screen.blit(digimon.sprites[0], digimon.hit)
             self.digimons.append(digimon)
+            
