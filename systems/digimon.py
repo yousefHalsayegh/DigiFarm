@@ -10,16 +10,23 @@ class Digimon:
         self.type = data["Type"]
         self.attribute = data["Attribute"]
         self.level = data["Level"]
-        self.speed = 10
+        self.speed = 0
         self.sprite_sheet = SpriteSheet("../Assests/digimons/"+self.level+"/"+self.name+".png")
         self.sprites = self.sprite_sheet.sprites()
         self.hit = pg.Rect(100,100,random.randint(16, 900),random.randint(16, 750))
         self.frame = 0
         self.target = pg.Rect(10,10,20,20)
         self.exp = 0
-        self.next_level = 5
+        self.next_level = 10
     
     def update(self, s, b):
+        
+        if self.level == "digitama":
+            if self.exp >= self.next_level :
+                s.blit(self.sprites[2], self.hit)
+            else:
+                self.exp +=1
+                print(self.exp)
         if self.reached():
             self.new_target()
             self.exp += 1
@@ -55,7 +62,11 @@ class Digimon:
             y *= -1
         self.frame  = 0 if self.frame == 1 else 1
         self.hit = self.hit.move(x,y)
-        s.blit(self.sprites[self.frame], self.hit)
+        if x < 0 :
+            s.blit(self.sprites[self.frame], self.hit)
+        else:
+            s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
+        
 
     def reached(self):
         return self.hit.colliderect(self.target)
@@ -72,8 +83,10 @@ class Digimon:
                 self.attribute = digi["Attribute"]
                 self.type = digi["Type"]
                 self.level = digi["Level"]
+                self.speed = digi["Speed"]
                 self.sprite_sheet = SpriteSheet("../Assests/digimons/"+self.level+"/"+self.name+".png")
                 self.sprites = self.sprite_sheet.sprites()
+                self.next_level +=5
 
     
         

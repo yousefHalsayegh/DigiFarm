@@ -1,17 +1,65 @@
 {
-    "Kuramon":[{
-        "Name": "Tsumemon",
-        "Attribute": "Beast",
-         "Type": "Unknown",
-         "Level": "baby_II"
+    "Guil_Digitama":[
+    {
+        "Name": "Jyarimon",
+        "Attribute": "Dragon",
+         "Type": "Virsu",
+         "Level": "baby_I",
+         "Speed": 5
     }
 
     ],
-    "Tsumemon":[{
-        "Name": "Keramon",
-        "Attribute": "Beast",
-         "Type": "Unknown",
-         "Level": "child"
+    "Jyarimon":[{
+        "Name": "Gigimon",
+        "Attribute": "Dragon",
+         "Type": "Virus",
+         "Level": "baby_II",
+         "Speed": 10
+    }
+
+    ],
+    "Gigimon":[{
+        "Name": "Guilmon",
+        "Attribute": "Dragon",
+         "Type": "Virsu",
+         "Level": "child",
+         "Speed": 10
+    }
+
+    ],
+    "Guilmon":[{
+        "Name": "Growmon",
+        "Attribute": "Dragon",
+         "Type": "Virsu",
+         "Level": "adult",
+         "Speed": 10
+    }
+
+    ],
+    "Growmon":[{
+        "Name": "MegaloGrowmon",
+        "Attribute": "Dragon",
+         "Type": "Virsu",
+         "Level": "perfect",
+         "Speed": 10
+    }
+
+    ],
+    "MegaloGrowmon":[{
+        "Name": "Dukemon",
+        "Attribute": "Dragon",
+         "Type": "Virsu",
+         "Level": "ultimate",
+         "Speed": 10
+    }
+
+    ],
+    "Dukemon":[{
+        "Name": "Guil_Digitama",
+        "Attribute": "Dragon",
+         "Type": "Virsu",
+         "Level": "digitama",
+         "Speed": 0
     }
 
     ]

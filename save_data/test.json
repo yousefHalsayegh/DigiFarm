@@ -2,10 +2,10 @@
    "Name": "test",
    "Digimon": [
       {
-         "Name": "Kuramon",
-         "Attribute": "Beast",
-         "Type": "Unknown",
-         "Level": "baby_I"
+         "Name": "Guil_Digitama",
+         "Attribute": "Dragon",
+         "Type": "Virus",
+         "Level": "digitama"
       }
    ]
 }
