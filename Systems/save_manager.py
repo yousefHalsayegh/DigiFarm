@@ -13,7 +13,7 @@ class SaveSystem:
             json.dump(data, f, indent=3)
 
     def load_data(self, name):
-        data_file = open("../"+self.save_folder+"/"+name, "rb")
+        data_file = open(self.save_folder+"/"+name, "rb")
         data = json.load(data_file)
         return data
 

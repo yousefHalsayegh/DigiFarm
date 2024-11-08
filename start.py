@@ -1,16 +1,10 @@
 #Other Modules
 import pygame as pg
 import pygame_gui as pg_gui
-import sys
-import os
 
-#Same File
-from new_game import NewGame as ng
-from farm import Farm
-
-#Other Files
-sys.path.insert(1, "../systems")
-from save_manager import SaveSystem 
+from Screens.new_game import NewGame as ng
+from Screens.farm import Farm
+from Systems.save_manager import SaveSystem 
 
 def main():
 
@@ -28,7 +22,7 @@ def main():
     background.fill((248, 243, 241))
 
     #UI manager
-    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='../assests/style/theme.json')
+    manager = pg_gui.UIManager((WIDTH, HEIGHT), theme_path='assests/style/theme.json')
     clock = pg.time.Clock()
 
 

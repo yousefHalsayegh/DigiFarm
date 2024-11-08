@@ -2,28 +2,10 @@
    "Name": "test",
    "Digimon": [
       {
-         "Name": "Guil_Digitama",
-         "Attribute": "Dragon",
-         "Type": "Virus",
-         "Level": "digitama"
-      },
-      {
-         "Name": "Guil_Digitama",
-         "Attribute": "Dragon",
-         "Type": "Virus",
-         "Level": "digitama"
-      },
-      {
-         "Name": "Guil_Digitama",
-         "Attribute": "Dragon",
-         "Type": "Virus",
-         "Level": "digitama"
-      },
-      {
-         "Name": "Guil_Digitama",
-         "Attribute": "Dragon",
-         "Type": "Virus",
-         "Level": "digitama"
+         "Level": "digitama",
+         "Attribute": "Virus",
+         "Field": "Dragon's Roar",
+         "Name": "Guil_Digitama"
       }
    ]
 }

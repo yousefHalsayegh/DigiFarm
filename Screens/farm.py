@@ -1,13 +1,8 @@
-#Other Modules
-import pygame as pg
-import sys
+from Systems.save_manager import SaveSystem 
+from Systems.digimon import Digimon
+
 import pygame_gui as pg_gui
-
-#Other Files
-sys.path.insert(1, "../systems")
-from save_manager import SaveSystem 
-from digimon import Digimon
-
+import pygame as pg
 class Farm:
     def __init__(self,s, data):
         self.data = data
@@ -19,9 +14,11 @@ class Farm:
         self.background = self.background.convert()
         self.background.fill((248, 243, 241))
 
-        self.manager = pg_gui.UIManager((1000, 800), theme_path='../assests/style/theme.json')
+        self.manager = pg_gui.UIManager((1000, 800), theme_path='assests/style/theme.json')
 
         self.clock = pg.time.Clock()
+
+        self.feeding = pg.Rect(500, 400, 100, 100)
         self.digimons = []
         
         self.ui_start()
@@ -60,8 +57,9 @@ class Farm:
             pg.display.update()
             
     def load(self):
+        pg.draw.rect(self.screen, (0,255,0), self.feeding)
         for digi in self.data["Digimon"]:
-            digimon = Digimon(digi)
+            digimon = Digimon(digi, self.feeding)
             self.screen.blit(digimon.sprites[0], digimon.hit)
             self.digimons.append(digimon)
             
