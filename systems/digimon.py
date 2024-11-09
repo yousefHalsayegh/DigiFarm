@@ -4,26 +4,26 @@ from Systems.sprite_sheet import SpriteSheet
 import json
 
 class Digimon:
-    def __init__(self, data, feeding):
+    def __init__(self, name = "Guil_Digitama", field = "", attribute = "", level = "digitama"):
 
-        self.name = data["Name"]
-        self.field = data["Field"]
-        self.attribute = data["Attribute"]
-        self.level = data["Level"]
+        self.name = name
+        self.field = field
+        self.attribute = attribute 
+        self.level = level
         self.speed = 0
-        self.sprite_sheet = SpriteSheet("Assests/digimons/"+self.level+"/"+self.name+".png")
-        self.sprites = self.sprite_sheet.sprites()
-        self.hit = pg.Rect(random.randint(16, 900),random.randint(116, 750),16,16)
+        self.sprites = None
         self.frame = 0
-        self.target = pg.Rect(random.randint(20, 900),random.randint(120, 750),20,20)
         self.feeding_time = 10
         self.exp = 0
         self.next_level = 10
         self.hunger = 0
         self.starving = False
-        self.feeding_area = feeding
-        self.f = pg.font.Font(size=15)
+        self.feeding_area = (500, 400, 100, 100)
+        self.hit = (random.randint(16, 900),random.randint(116, 750),16,16)
+        self.target = (random.randint(20, 900),random.randint(120, 750),20,20)
         
+    
+
     
     def update(self, s, b):
         self.debugging(s)
@@ -119,45 +119,65 @@ class Digimon:
                 self.field = digi["Type"]
                 self.level = digi["Level"]
                 self.speed = digi["Speed"]
-                self.sprite_sheet = SpriteSheet("Assests/digimons/"+self.level+"/"+self.name+".png")
-                self.sprites = self.sprite_sheet.sprites()
+                self.render()
                 self.hunger = 0 
                 self.starving = False
-                
+
+
+    def upload(self):
+        return self.__dict__
+    
+    def download(self, data):
+        for key in data :
+            setattr(self, key, data[key])
+
+        self.target = pg.Rect(self.target)
+        self.feeding_area = pg.Rect(self.feeding_area)
+        self.hit = pg.Rect(self.hit)
+        self.render()
+        
+
+
+    def render(self):
+        self.sprites = SpriteSheet("Assests/digimons/"+self.level+"/"+self.name+".png").sprites()
+
+    
+
     def debugging(self, s):
+        f = pg.font.Font(size=15)
         
         pg.draw.rect(s, (248, 243, 241), rect=pg.Rect(0,0, 250,90))
-        text = self.f.render(f'The digimon is currently at ({self.hit.left}, {self.hit.top}, {self.hit.left+16}, {self.hit.top+16})'
+        text = f.render(f'The digimon is currently at ({self.hit.left}, {self.hit.top}, {self.hit.left+16}, {self.hit.top+16})'
                              , True, (10,10,10))
         textpos = text.get_rect(x=5, y= 10)
         s.blit(text, textpos)
 
-        text = self.f.render(f'The target is currently at ({self.target.left}, {self.target.top}, {self.target.left+20}, {self.target.top+20})'
+        text = f.render(f'The target is currently at ({self.target.left}, {self.target.top}, {self.target.left+20}, {self.target.top+20})'
                              , True, (10,10,10))
         textpos = text.get_rect(x=5, y= 20)
         s.blit(text, textpos)
 
-        text = self.f.render(f'The current exp is {self.exp}', True, (10,10,10))
+        text = f.render(f'The current exp is {self.exp}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 30)
         s.blit(text, textpos)
 
-        text = self.f.render(f'The target exp is {self.next_level}', True, (10,10,10))
+        text = f.render(f'The target exp is {self.next_level}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 40)
         s.blit(text, textpos)
 
-        text = self.f.render(f'starving {self.starving}', True, (10,10,10))
+        text = f.render(f'starving {self.starving}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 50)
         s.blit(text, textpos)
 
-        text = self.f.render(f'The hunger bar {self.hunger}', True, (10,10,10))
+        text = f.render(f'The hunger bar {self.hunger}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 60)
         s.blit(text, textpos)
 
-        text = self.f.render(f'Feeding timer {self.feeding_time}', True, (10,10,10))
+        text = f.render(f'Feeding timer {self.feeding_time}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 70)
         s.blit(text, textpos)
 
-        text = self.f.render(f'Am I at the target? {self.reached()}', True, (10,10,10))
+        text = f.render(f'Am I at the target? {self.reached()}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 80)
         s.blit(text, textpos)
             

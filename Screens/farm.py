@@ -1,8 +1,11 @@
 from Systems.save_manager import SaveSystem 
-from Systems.digimon import Digimon
+from Systems.digimon import Digimon 
+
 
 import pygame_gui as pg_gui
 import pygame as pg
+import sys
+
 class Farm:
     def __init__(self,s, data):
         self.data = data
@@ -17,10 +20,9 @@ class Farm:
         self.manager = pg_gui.UIManager((1000, 800), theme_path='assests/style/theme.json')
 
         self.clock = pg.time.Clock()
-
-        self.feeding = pg.Rect(500, 400, 100, 100)
-        self.digimons = []
         
+        self.digimons = []
+
         self.ui_start()
         #getting into it
         self.run()
@@ -57,9 +59,10 @@ class Farm:
             pg.display.update()
             
     def load(self):
-        pg.draw.rect(self.screen, (0,255,0), self.feeding)
-        for digi in self.data["Digimon"]:
-            digimon = Digimon(digi, self.feeding)
-            self.screen.blit(digimon.sprites[0], digimon.hit)
-            self.digimons.append(digimon)
+        for digimon in self.data["Digimon"]:
+            digi = Digimon()
+            digi.download(digimon)
+            print(digi.upload())
+            self.screen.blit(digi.sprites[0], digi.hit)
+            self.digimons.append(digi)
             

@@ -7,6 +7,7 @@ import pygame_gui as pg_gui
 import json
 from Screens.farm import Farm
 from Systems.save_manager import SaveSystem 
+from Systems.digimon import Digimon
 
 class NewGame:
     def __init__(self, s):
@@ -23,7 +24,7 @@ class NewGame:
 
         self.clock = pg.time.Clock()
         self.farm_name = ''
-        self.digimon = {}
+        
         
         self.ui_start()
         #getting into it
@@ -55,12 +56,10 @@ class NewGame:
             ,'Dragon\'s Roar', pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
         self.start = pg_gui.elements.UIButton(pg.Rect((self.background.get_width()/2 - 150), 540, 300, 50), text='Start', manager=self.manager)
 
-        #default data
-        self.digimon["Level"]= "digitama"
-        self.digimon["Attribute"] = "Virus"
-        self.digimon["Field"] = 'Dragon\'s Roar'
+        
 
     def run(self):
+        digimon = Digimon(field="Dragon\'s Roar", attribute="Virus", level="digitama")
 
         while True:
             time_delta = self.clock.tick(60)/1000
@@ -77,9 +76,9 @@ class NewGame:
 
                 if event.type == pg_gui.UI_DROP_DOWN_MENU_CHANGED:
                     if event.ui_element == self.starting_attribute:
-                        self.digimon["Attribute"] = event.text
+                        digimon.attribute = event.text
                     if event.ui_element == self.starting_field:
-                        self.digimon["Field"] = event.text
+                        digimon.field = event.text
 
                 if event.type == pg_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.retun_button: 
@@ -88,11 +87,10 @@ class NewGame:
 
                         with open('Systems/starting_eggs.json', 'r') as file:
                             eggs = json.load(file)
-                            print(eggs)
-                            self.digimon["Name"] = eggs[self.digimon["Field"]][self.digimon["Attribute"]][0]
+                            digimon.name = eggs[digimon.field][digimon.attribute][0]
 
-                        self.save_manager.save_data({"Name": self.farm_name,"Digimon" : [self.digimon]}, self.farm_name)
-                        Farm(self.screen, {"Name": self.farm_name, "Digimon" : [self.digimon]})
+                        self.save_manager.save_data({"Name": self.farm_name,"Digimon" : [digimon.upload()]}, self.farm_name)
+                        Farm(self.screen, {"Name": self.farm_name, "Digimon" : [digimon.upload()]})
 
 
                 self.manager.process_events(event)

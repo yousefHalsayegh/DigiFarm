@@ -2,10 +2,36 @@
    "Name": "test",
    "Digimon": [
       {
-         "Level": "digitama",
-         "Attribute": "Virus",
-         "Field": "Dragon's Roar",
-         "Name": "Guil_Digitama"
+         "name": "Guil_Digitama",
+         "field": "Dragon's Roar",
+         "attribute": "Virus",
+         "level": "digitama",
+         "speed": 0,
+         "sprites": null,
+         "frame": 0,
+         "feeding_time": 10,
+         "exp": 0,
+         "next_level": 10,
+         "hunger": 0,
+         "starving": false,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "hit": [
+            363,
+            630,
+            16,
+            16
+         ],
+         "target": [
+            215,
+            259,
+            20,
+            20
+         ]
       }
    ]
 }

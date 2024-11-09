@@ -1,6 +1,7 @@
 #Other Modules
 import pygame as pg
 import pygame_gui as pg_gui
+import sys
 
 from Screens.new_game import NewGame as ng
 from Screens.farm import Farm
