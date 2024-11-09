@@ -125,6 +125,12 @@ class Digimon:
 
 
     def upload(self):
+        self.sprites = None
+        print(type(self.hit))
+        if type(self.hit) is not tuple:
+            self.feeding_area = (500, 400, 100, 100)
+            self.hit = (self.hit.left, self.hit.top, 16, 16) 
+            self.target = (self.target.left, self.target.top, 20, 20) 
         return self.__dict__
     
     def download(self, data):

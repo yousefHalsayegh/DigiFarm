@@ -89,8 +89,8 @@ class NewGame:
                             eggs = json.load(file)
                             digimon.name = eggs[digimon.field][digimon.attribute][0]
 
-                        self.save_manager.save_data({"Name": self.farm_name,"Digimon" : [digimon.upload()]}, self.farm_name)
-                        Farm(self.screen, {"Name": self.farm_name, "Digimon" : [digimon.upload()]})
+                        self.save_manager.save_data({"Name" : self.farm_name, "Digimon" : [digimon.upload()]}, self.farm_name)
+                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()]})
 
 
                 self.manager.process_events(event)

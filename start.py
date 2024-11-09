@@ -62,7 +62,8 @@ def main():
                     ng(screen)
                     
                 elif event.ui_element == load_button:
-                    Farm(screen, save_manager.load_data("test.json"))
+                    data = save_manager.load_data("test.json")
+                    Farm(screen, data)
                 elif event.ui_element == setting_button:
                     print("Settings")
                 elif event.ui_element == exit_button:

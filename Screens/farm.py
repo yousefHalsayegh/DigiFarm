@@ -10,7 +10,7 @@ class Farm:
     def __init__(self,s, data):
         self.data = data
         self.screen = s
-
+        self.name = data["Name"]
         self.save_manager = SaveSystem()
 
         self.background = pg.Surface(s.get_size())
@@ -39,7 +39,13 @@ class Farm:
             time_delta = self.clock.tick(6)
 
             for event in pg.event.get():
+                
                 if event.type == pg.QUIT:
+                    digi = []
+                    for digimon in self.digimons:
+                        digi.append(digimon.upload())
+                    self.data["Digimon"] = digi
+                    self.save_manager.save_data(self.data, self.name)
                     pg.quit()
                     sys.exit()
 
@@ -62,7 +68,6 @@ class Farm:
         for digimon in self.data["Digimon"]:
             digi = Digimon()
             digi.download(digimon)
-            print(digi.upload())
             self.screen.blit(digi.sprites[0], digi.hit)
             self.digimons.append(digi)
             
