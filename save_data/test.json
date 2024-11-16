@@ -2,18 +2,18 @@
    "Name": "test",
    "Digimon": [
       {
-         "name": "Jyarimon",
-         "field": "Virsu",
-         "attribute": "Dragon",
-         "level": "baby_I",
-         "speed": 5,
+         "name": "Guil_Digitama",
+         "field": "Dragon's Roar",
+         "attribute": "Virus",
+         "level": "digitama",
+         "speed": 0,
          "sprites": null,
-         "frame": 2,
+         "frame": 0,
          "feeding_time": 10,
-         "exp": 5,
+         "exp": 0,
          "next_level": 10,
-         "hunger": 50,
-         "starving": true,
+         "hunger": 100,
+         "state": "Walking",
          "feeding_area": [
             500,
             400,
@@ -21,17 +21,19 @@
             100
          ],
          "hit": [
-            503,
-            388,
+            874,
+            501,
             16,
             16
          ],
          "target": [
-            500,
-            400,
+            208,
+            398,
             20,
             20
-         ]
+         ],
+         "energy": 100,
+         "facing": 1
       }
    ]
 }

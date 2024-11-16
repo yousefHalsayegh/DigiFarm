@@ -16,59 +16,83 @@ class Digimon:
         self.feeding_time = 10
         self.exp = 0
         self.next_level = 10
-        self.hunger = 0
-        self.starving = False
+        self.hunger = 100
+        self.state = "Walking"
         self.feeding_area = (500, 400, 100, 100)
         self.hit = (random.randint(16, 900),random.randint(116, 750),16,16)
         self.target = (random.randint(20, 900),random.randint(120, 750),20,20)
+        self.energy = 100
+        self.facing = 1
         
     
 
     
     def update(self, s, b):
         self.debugging(s)
+        
+
+        #egg state
         if self.level == "digitama":
             if self.exp >= self.next_level :
                 s.blit(self.sprites[2], self.hit)
             else:
                 self.exp +=1
 
-        if self.hunger >= 100 and not self.starving:
-            self.new_target(s,'h')
-            self.starving = True
-        elif self.hunger <= 0 and self.starving:
-            self.starving = False
-            self.hunger = 0
-            self.target = pg.Rect(random.randint(20, 900),random.randint(120, 750),20,20)
-        elif not self.starving:
-            self.hunger += 1 
-
-        if self.reached(): 
-            if self.starving:
+        #behaviour
+        if self.state == "Sleepy":
+            if self.energy > 100: 
+                self.state = "Walking"
+                return
+            else:
+                self.energy += 1
+                self.frame  = 4 if self.frame == 5 else 5
+                if self.facing < 0:
+                    s.blit(self.sprites[self.frame], self.hit)
+                else: 
+                    s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
+                return
+            
+        elif self.state == "Starving":
+            if self.hunger > 100:
+                self.state = "Walking"
+                self.target = pg.Rect(random.randint(20, 900),random.randint(120, 750),20,20)
+            elif self.reached():
                 if self.feeding_time < 0 :
                     self.feeding_time = 10
-                    self.hunger -= 10
+                    self.hunger += 10
                     self.exp += 1
                     return
                 else:
                     self.feeding_time -= 1
-                    self.frame  = 1 if self.frame == 2 else 2
-                    s.blit(self.sprites[self.frame], self.hit)
+                    self.frame  = 2 if self.frame == 3 else 3
+                    if self.facing < 0 :
+                        s.blit(self.sprites[self.frame], self.hit)
+                    else :
+                        s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
                     return
             else:
+                self.move(s,b)
+                
+        elif self.state == "Walking":
+            if self.energy < 0 :
+                self.state = "Sleepy"
+                return
+            elif self.hunger < 0:
+                self.new_target(s,'h')
+                self.state = "Starving"
+            elif self.reached():
                 self.new_target(s)
 
+            self.energy -= 1
+            self.hunger -= 1
+            self.move(s,b)
 
+
+        #digivolve
         if self.exp >= self.next_level:
            self.digivolve()
-           self.exp = 0
+           
         
-        
-        self.move(s,b)
-        
-
-        
-
 
     def move(self,s,b):
         x = 0 
@@ -95,8 +119,10 @@ class Digimon:
         self.hit = self.hit.move(x,y)
         if x < 0 :
             s.blit(self.sprites[self.frame], self.hit)
+            self.facing = -1
         else:
             s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
+            self.facing = 1
         
 
     def reached(self):
@@ -120,8 +146,11 @@ class Digimon:
                 self.level = digi["Level"]
                 self.speed = digi["Speed"]
                 self.render()
-                self.hunger = 0 
-                self.starving = False
+                self.hunger = 100
+                self.energy = 100
+                self.state = "Walking"
+                self.exp = 0
+                self.next_level = 1000
 
 
     def upload(self):
@@ -152,7 +181,7 @@ class Digimon:
     def debugging(self, s):
         f = pg.font.Font(size=15)
         
-        pg.draw.rect(s, (248, 243, 241), rect=pg.Rect(0,0, 250,90))
+        pg.draw.rect(s, (248, 243, 241), rect=pg.Rect(0,0, 250,100))
         text = f.render(f'The digimon is currently at ({self.hit.left}, {self.hit.top}, {self.hit.left+16}, {self.hit.top+16})'
                              , True, (10,10,10))
         textpos = text.get_rect(x=5, y= 10)
@@ -171,7 +200,7 @@ class Digimon:
         textpos = text.get_rect(x=5, y= 40)
         s.blit(text, textpos)
 
-        text = f.render(f'starving {self.starving}', True, (10,10,10))
+        text = f.render(f'starving {self.state}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 50)
         s.blit(text, textpos)
 
@@ -183,9 +212,15 @@ class Digimon:
         textpos = text.get_rect(x=5, y= 70)
         s.blit(text, textpos)
 
-        text = f.render(f'Am I at the target? {self.reached()}', True, (10,10,10))
+        text = f.render(f'My energy is at? {self.energy}', True, (10,10,10))
         textpos = text.get_rect(x=5, y= 80)
         s.blit(text, textpos)
+
+        text = f.render(f'Am I at the target? {self.reached()}', True, (10,10,10))
+        textpos = text.get_rect(x=5, y= 90)
+        s.blit(text, textpos)
+
+        
             
             
             
