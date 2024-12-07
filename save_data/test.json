@@ -8,12 +8,12 @@
          "level": "baby_I",
          "speed": 5,
          "sprites": null,
-         "frame": 4,
+         "frame": 1,
          "feeding_time": 10,
-         "exp": 88,
+         "exp": 0,
          "next_level": 1000,
-         "hunger": 63,
-         "state": "Sleepy",
+         "hunger": 3,
+         "state": "Idle",
          "feeding_area": [
             500,
             400,
@@ -21,20 +21,21 @@
             100
          ],
          "hit": [
-            279,
-            291,
+            567,
+            129,
             16,
             16
          ],
          "target": [
-            172,
-            319,
+            579,
+            128,
             20,
             20
          ],
-         "energy": 45,
-         "facing": -1,
-         "debug": false
+         "energy": 3,
+         "facing": 1,
+         "debug": false,
+         "counter": 11
       }
    ]
 }

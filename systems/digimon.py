@@ -24,6 +24,7 @@ class Digimon:
         self.energy = 100
         self.facing = 1
         self.debug = False
+        self.counter = 0 
         
     
 
@@ -58,6 +59,7 @@ class Digimon:
             if self.hunger > 100:
                 self.state = "Walking"
                 self.target = pg.Rect(random.randint(20, 900),random.randint(120, 750),20,20)
+                self.speed *= 2
             elif self.reached():
                 if self.feeding_time < 0 :
                     self.feeding_time = 10
@@ -74,19 +76,33 @@ class Digimon:
                     return
             else:
                 self.move(s,b)
-                
-        elif self.state == "Walking":
+        elif self.state == "Idle":
+            if self.counter > 0 :
+                self.frame  = 7 if self.frame == 3 else 3
+                if self.facing < 0 :
+                    s.blit(self.sprites[self.frame], self.hit)
+                else :
+                    s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
+                self.counter -= 3
+            else:
+                self.state = "Walking"
+
+        elif self.state == "Walking":       
             if self.energy < 0 :
                 self.state = "Sleepy"
                 return
             elif self.hunger < 0:
                 self.new_target(s,'h')
                 self.state = "Starving"
+                self.speed /= 2
             elif self.reached():
                 self.new_target(s)
+            elif self.counter >= 10:
+                self.state = "Idle"
 
             self.energy -= 1
             self.hunger -= 1
+            self.counter += 1
             self.move(s,b)
 
 
@@ -100,7 +116,6 @@ class Digimon:
         x = 0 
         y = 0
         s.blit(b, self.hit)
-        pg.draw.rect(s, (10,10,10), self.target)
         
         if self.target.left > self.hit.left and self.target.right > self.hit.right:
             x = 1 * self.speed 
@@ -117,7 +132,10 @@ class Digimon:
             x *= -1
         if self.hit.top + y <= 0 or self.hit.top + y + 16 >= 800:
             y *= -1
-        self.frame  = 0 if self.frame == 1 else 1
+        if self.state == "Starving":
+            self.frame  = 9 if self.frame == 10 else 10
+        else:
+            self.frame  = 0 if self.frame == 1 else 1
         self.hit = self.hit.move(x,y)
         if x < 0 :
             s.blit(self.sprites[self.frame], self.hit)
@@ -135,8 +153,8 @@ class Digimon:
             self.target = self.feeding_area
         else:
             pg.draw.rect(s, (248, 243, 241), self.target)
-            self.target.left = random.randint(16, 950)
-            self.target.top = random.randint(16, 750)
+            self.target.left = self.hit.left + random.randint(-50, 50)
+            self.target.top = self.hit.top + random.randint(-50, 50)
 
     def digivolve(self):
          with open('Systems/tree.json', 'r') as file:

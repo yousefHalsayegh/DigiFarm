@@ -33,6 +33,8 @@ class Farm:
         #Restarting the screen
         self.background.fill((248, 243, 241))
         self.screen.blit(self.background, (0,0))
+
+        self.input = pg_gui.elements.UITextEntryLine(pg.Rect(10,750,900,30), manager=self.manager)
         self.load()
 
 
@@ -54,10 +56,12 @@ class Farm:
                 if event.type ==  pg.KEYDOWN:
                     if event.key == pg.K_F1:
                         self.debug = not self.debug
+                    if event.key == pg.K_ESCAPE:
+                        print("he")
+                        self.input.enable()
                 if event.type == pg.MOUSEBUTTONDOWN and event.button == 1 and self.debug:  
                     for digimon in self.digimons:
                         if digimon.hit.collidepoint(pg.mouse.get_pos()):
-                            print("test")
                             digimon.debug = not digimon.debug
                             if not digimon.debug:
                                 pg.draw.rect(self.screen, (248, 243, 241), rect=pg.Rect(0,0, 250,100)) 
@@ -77,7 +81,7 @@ class Farm:
             self.manager.draw_ui(self.screen)
            
             for digimon in self.digimons:
-             digimon.update(self.screen,self.background)
+                digimon.update(self.screen,self.background)
             
             
             pg.display.update()
