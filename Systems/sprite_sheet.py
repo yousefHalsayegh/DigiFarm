@@ -21,7 +21,7 @@ class SpriteSheet:
                 image.blit(self.sheet, (0,0), ((j * 16),(i * 16), 16, 16))
 
                 #REMOVE LATER
-                image = pg.transform.scale(image, (48, 48))
+                #image = pg.transform.scale(image, (48, 48))
 
 
                 images.append(image)

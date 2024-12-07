@@ -23,12 +23,14 @@ class Digimon:
         self.target = (random.randint(20, 900),random.randint(120, 750),20,20)
         self.energy = 100
         self.facing = 1
+        self.debug = False
         
     
 
     
     def update(self, s, b):
-        self.debugging(s)
+        if self.debug:
+            self.debugging(s)
         
 
         #egg state

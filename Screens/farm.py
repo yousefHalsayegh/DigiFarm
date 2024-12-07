@@ -22,6 +22,7 @@ class Farm:
         self.clock = pg.time.Clock()
         
         self.digimons = []
+        self.debug = False
 
         self.ui_start()
         #getting into it
@@ -33,6 +34,7 @@ class Farm:
         self.background.fill((248, 243, 241))
         self.screen.blit(self.background, (0,0))
         self.load()
+
 
     def run(self):
         while True:
@@ -48,6 +50,22 @@ class Farm:
                     self.save_manager.save_data(self.data, self.name)
                     pg.quit()
                     sys.exit()
+                    
+                if event.type ==  pg.KEYDOWN:
+                    if event.key == pg.K_F1:
+                        self.debug = not self.debug
+                if event.type == pg.MOUSEBUTTONDOWN and event.button == 1 and self.debug:  
+                    for digimon in self.digimons:
+                        if digimon.hit.collidepoint(pg.mouse.get_pos()):
+                            print("test")
+                            digimon.debug = not digimon.debug
+                            if not digimon.debug:
+                                pg.draw.rect(self.screen, (248, 243, 241), rect=pg.Rect(0,0, 250,100)) 
+                    
+                if not self.debug:
+                    for digimon in self.digimons:
+                        digimon.debug = False
+                    pg.draw.rect(self.screen, (248, 243, 241), rect=pg.Rect(0,0, 250,100)) 
 
                 self.manager.process_events(event)
             
