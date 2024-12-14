@@ -18,18 +18,18 @@ class Digimon:
         self.next_level = 10
         self.hunger = 100
         self.state = "Walking"
-        self.feeding_area = (500, 400, 100, 100)
         self.hit = (random.randint(16, 900),random.randint(116, 750),16,16)
         self.target = (random.randint(20, 900),random.randint(120, 750),20,20)
         self.energy = 100
         self.facing = 1
         self.debug = False
         self.counter = 0 
+        self.feeding_area = (500, 400, 100, 100)
         
     
 
     
-    def update(self, s, b):
+    def update(self, s, b, food):
         if self.debug:
             self.debugging(s)
         
@@ -56,16 +56,21 @@ class Digimon:
                 return
             
         elif self.state == "Starving":
+            if food > 0 and not (self.target == self.feeding_area):
+                self.new_target(s, 'h')
             if self.hunger > 100:
                 self.state = "Walking"
                 self.target = pg.Rect(random.randint(20, 900),random.randint(120, 750),20,20)
                 self.speed *= 2
             elif self.reached():
+                if food < 0 :
+                    self.new_target(s)
                 if self.feeding_time < 0 :
                     self.feeding_time = 10
                     self.hunger += 10
                     self.exp += 1
-                    return
+                    food -= 1
+                    return food
                 else:
                     self.feeding_time -= 1
                     self.frame  = 2 if self.frame == 3 else 3
@@ -92,7 +97,10 @@ class Digimon:
                 self.state = "Sleepy"
                 return
             elif self.hunger < 0:
-                self.new_target(s,'h')
+                if food > 0 :
+                    self.new_target(s,'h')
+                else:
+                    self.new_target(s)
                 self.state = "Starving"
                 self.speed /= 2
             elif self.reached():
@@ -115,7 +123,7 @@ class Digimon:
     def move(self,s,b):
         x = 0 
         y = 0
-        s.blit(b, self.hit)
+        s.blit(b,self.hit, area=self.hit)
         
         if self.target.left > self.hit.left and self.target.right > self.hit.right:
             x = 1 * self.speed 
@@ -137,6 +145,7 @@ class Digimon:
         else:
             self.frame  = 0 if self.frame == 1 else 1
         self.hit = self.hit.move(x,y)
+
         if x < 0 :
             s.blit(self.sprites[self.frame], self.hit)
             self.facing = -1
@@ -150,7 +159,7 @@ class Digimon:
     
     def new_target(self, s, flag='r'):
         if flag == 'h':
-            self.target = self.feeding_area
+            self.target = pg.Rect(self.feeding_area)
         else:
             pg.draw.rect(s, (248, 243, 241), self.target)
             self.target.left = self.hit.left + random.randint(-50, 50)
@@ -175,9 +184,7 @@ class Digimon:
 
     def upload(self):
         self.sprites = None
-        print(type(self.hit))
         if type(self.hit) is not tuple:
-            self.feeding_area = (500, 400, 100, 100)
             self.hit = (self.hit.left, self.hit.top, 16, 16) 
             self.target = (self.target.left, self.target.top, 20, 20) 
         return self.__dict__
@@ -187,7 +194,6 @@ class Digimon:
             setattr(self, key, data[key])
 
         self.target = pg.Rect(self.target)
-        self.feeding_area = pg.Rect(self.feeding_area)
         self.hit = pg.Rect(self.hit)
         self.render()
         

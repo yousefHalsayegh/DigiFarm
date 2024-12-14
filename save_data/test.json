@@ -6,36 +6,37 @@
          "field": "Virsu",
          "attribute": "Dragon",
          "level": "baby_I",
-         "speed": 5,
+         "speed": 5.0,
          "sprites": null,
-         "frame": 1,
+         "frame": 0,
          "feeding_time": 10,
-         "exp": 0,
+         "exp": 66,
          "next_level": 1000,
-         "hunger": 3,
-         "state": "Idle",
+         "hunger": 86,
+         "state": "Walking",
+         "hit": [
+            484,
+            572,
+            16,
+            16
+         ],
+         "target": [
+            488,
+            597,
+            20,
+            20
+         ],
+         "energy": 38,
+         "facing": 1,
+         "debug": false,
+         "counter": 9,
          "feeding_area": [
             500,
             400,
             100,
             100
-         ],
-         "hit": [
-            567,
-            129,
-            16,
-            16
-         ],
-         "target": [
-            579,
-            128,
-            20,
-            20
-         ],
-         "energy": 3,
-         "facing": 1,
-         "debug": false,
-         "counter": 11
+         ]
       }
-   ]
+   ],
+   "Food": 15
 }
