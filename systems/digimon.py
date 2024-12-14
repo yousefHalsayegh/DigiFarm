@@ -18,8 +18,8 @@ class Digimon:
         self.next_level = 10
         self.hunger = 100
         self.state = "Walking"
-        self.hit = (random.randint(16, 900),random.randint(116, 750),16,16)
-        self.target = (random.randint(20, 900),random.randint(120, 750),20,20)
+        self.hit = (random.randint(16, 900),random.randint(116, 600),16,16)
+        self.target = (random.randint(20, 900),random.randint(120, 600),20,20)
         self.energy = 100
         self.facing = 1
         self.debug = False
@@ -40,6 +40,9 @@ class Digimon:
                 s.blit(self.sprites[2], self.hit)
             else:
                 self.exp +=1
+         #digivolve
+        if self.exp >= self.next_level:
+           self.digivolve()
 
         #behaviour
         if self.state == "Sleepy":
@@ -114,9 +117,7 @@ class Digimon:
             self.move(s,b)
 
 
-        #digivolve
-        if self.exp >= self.next_level:
-           self.digivolve()
+       
            
         
 
@@ -168,18 +169,14 @@ class Digimon:
     def digivolve(self):
          with open('Systems/tree.json', 'r') as file:
                 tree = json.load(file)
-                digi = tree[self.name][0]
-                self.name = digi["Name"]
-                self.attribute = digi["Attribute"]
-                self.field = digi["Type"]
-                self.level = digi["Level"]
-                self.speed = digi["Speed"]
+                digi = tree[self.level][self.name][0]
+                for key in digi :
+                    setattr(self, key, digi[key])
                 self.render()
                 self.hunger = 100
                 self.energy = 100
                 self.state = "Walking"
                 self.exp = 0
-                self.next_level = 1000
 
 
     def upload(self):
@@ -193,6 +190,11 @@ class Digimon:
         for key in data :
             setattr(self, key, data[key])
 
+        self.target = pg.Rect(self.target)
+        self.hit = pg.Rect(self.hit)
+        self.render()
+
+    def fast_download(self):
         self.target = pg.Rect(self.target)
         self.hit = pg.Rect(self.hit)
         self.render()

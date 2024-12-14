@@ -1,67 +1,157 @@
 {
-    "Guil_Digitama":[
-    {
-        "Name": "Jyarimon",
-        "Attribute": "Dragon",
-        "Type": "Virsu",
-        "Level": "baby_I",
-        "Speed": 5
-    }
-
-    ],
+    "digitama":{
+         "Guil_Digitama":[
+            {
+                "name": "Jyarimon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "baby_I",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Imp_Digitama":[
+            {
+                "name": "Kiimon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "baby_I",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ]
+    },
+    "baby_I":{
     "Jyarimon":[{
-        "Name": "Gigimon",
-        "Attribute": "Dragon",
-         "Type": "Virus",
-         "Level": "baby_II",
-         "Speed": 5
-    }
+            "name": "Gigimon",
+            "field": "Dragon's Roar",
+            "attribute": "Virus",
+            "level": "baby_II",
+            "speed": 5,
+            "next_level" : 10
+            }
 
-    ],
-    "Gigimon":[{
-        "Name": "Guilmon",
-        "Attribute": "Dragon",
-         "Type": "Virsu",
-         "Level": "child",
-         "Speed": 5
+        ],
+    "Kiimon":[
+            {
+                "name": "Yaamon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "baby_II",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ]
+    },
+    "baby_II":{
+        "Gigimon":[{
+            "name": "Guilmon",
+            "field": "Dragon's Roar",
+             "attribute": "Virus",
+             "level": "child",
+             "speed": 5,
+             "next_level" : 10
+            }
+    
+        ],
+        "Yaamon":[
+            {
+                "name": "Impmon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ]
+    },
+    "child":
+    {
+        "Guilmon":[{
+            "name": "Growmon",
+            "field": "Dragon's Roar",
+             "attribute": "Virus",
+             "level": "adult",
+             "speed": 5,
+             "next_level" : 10
+            } 
+        ],
+        "Impmon":[
+            {
+                "name": "Wizarmon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ]
+    },
+    "adult":
+    {
+        "Growmon":[{
+            "name": "MegaloGrowmon",
+            "field": "Dragon's Roar",
+             "attribute": "Virus",
+             "level": "perfect",
+             "speed": 5,
+             "next_level" : 10
+            }
+        ],
+        "Wizarmon":[
+            {
+                "name": "Baalmon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ]
+    },
+    "perfect":
+    {
+        "MegaloGrowmon":[{
+            "name": "Dukemon",
+            "field": "Dragon's Roar",
+             "attribute": "Virus",
+             "level": "ultimate",
+             "speed": 5,
+             "next_level" : 10
+            }
+        ],
+        "Baalmon":[
+            {
+                "name": "Beelzebumon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ]
+    },
+    "ultimate":
+    {
+        "Dukemon":[{
+            "name": "Guil_Digitama",
+            "field": "Dragon's Roar",
+             "attribute": "Virus",
+             "level": "digitama",
+             "speed": 0,
+             "next_level" : 10
+            }
+        ],
+        "Beelzebumon":[
+            {
+                "name": "Imp_Digitama",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ]
     }
-
-    ],
-    "Guilmon":[{
-        "Name": "Growmon",
-        "Attribute": "Dragon",
-         "Type": "Virsu",
-         "Level": "adult",
-         "Speed": 5
-    }
-
-    ],
-    "Growmon":[{
-        "Name": "MegaloGrowmon",
-        "Attribute": "Dragon",
-         "Type": "Virsu",
-         "Level": "perfect",
-         "Speed": 5
-    }
-
-    ],
-    "MegaloGrowmon":[{
-        "Name": "Dukemon",
-        "Attribute": "Dragon",
-         "Type": "Virsu",
-         "Level": "ultimate",
-         "Speed": 5
-    }
-
-    ],
-    "Dukemon":[{
-        "Name": "Guil_Digitama",
-        "Attribute": "Dragon",
-         "Type": "Virsu",
-         "Level": "digitama",
-         "Speed": 0
-    }
-
-    ]
         
 }

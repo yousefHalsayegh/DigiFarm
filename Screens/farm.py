@@ -5,11 +5,18 @@ from Systems.digimon import Digimon
 import pygame_gui as pg_gui
 import pygame as pg
 import sys
+import json
+import random
 
 class Farm:
     
+  
 
     def __init__(self,s, data):
+
+        self.fields = ['Dragon\'s Roar', 'Nightmare Soldiers']
+        self.att = ['Virus']
+
         self.data = data
         self.screen = s
         self.name = data["Name"]
@@ -26,7 +33,6 @@ class Farm:
         self.digimons = []
         self.debug = False
         self.food = data['Food']
-
         self.ui_start()
         #getting into it
         self.run()
@@ -65,6 +71,18 @@ class Farm:
                         self.debug = not self.debug
                     if event.key == pg.K_ESCAPE:
                         self.input.enable()
+                    if event.key == pg.K_F2:
+                        if self.food > 20:
+                            name = ""
+                            f = random.choice(self.fields)
+                            att = random.choice(self.att)
+                            with open('Systems/starting_eggs.json', 'r') as file:
+                                eggs = json.load(file)
+                                name = eggs[f][att][0]
+                            new_digi = Digimon(name, f, att)
+                            new_digi.fast_download()
+                            self.digimons.append(new_digi)
+                            self.food -= 20
                 if event.type == pg.MOUSEBUTTONDOWN and event.button == 1 and self.debug:  
                     for digimon in self.digimons:
                         if digimon.hit.collidepoint(pg.mouse.get_pos()):
