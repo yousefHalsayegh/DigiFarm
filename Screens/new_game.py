@@ -10,6 +10,7 @@ from Systems.save_manager import SaveSystem
 from Systems.digimon import Digimon
 
 class NewGame:
+
     def __init__(self, s):
         #starting variables
         self.screen = s
@@ -60,7 +61,6 @@ class NewGame:
 
     def run(self):
         digimon = Digimon(field="Dragon\'s Roar", attribute="Virus", level="digitama")
-
         while True:
             time_delta = self.clock.tick(60)/1000
 
@@ -103,3 +103,4 @@ class NewGame:
             self.manager.draw_ui(self.screen)
 
             pg.display.flip()
+

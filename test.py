@@ -1,3 +1,2 @@
-import sys
-for x in sys.path:
-    print(x)
+import os
+print(os.listdir("save_data"))

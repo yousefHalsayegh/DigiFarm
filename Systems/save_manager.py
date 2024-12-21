@@ -5,7 +5,6 @@ import os
 
 class SaveSystem:
     def __init__(self):
-        self.file_extention = ".json"
         self.save_folder = "save_data"
 
 
@@ -17,7 +16,7 @@ class SaveSystem:
         data_file = open(self.save_folder+"/"+name, "rb")
         data = json.load(data_file)
         return data
-
-    def check_for_file(self, name):
-        return os.path.exists("../"+self.save_folder+"/"+name+self.file_extention)
-    
+    def files (self):
+        return os.listdir(self.save_folder)
+    def delete(self, name):
+        os.remove(self.save_folder+"/"+name)

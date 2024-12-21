@@ -3,9 +3,11 @@ import pygame as pg
 import pygame_gui as pg_gui
 import sys
 
+
 from Screens.new_game import NewGame as ng
 from Screens.farm import Farm
 from Systems.save_manager import SaveSystem 
+from Screens.continue_s import Continue 
 
 def main():
 
@@ -62,8 +64,7 @@ def main():
                     ng(screen)
                     
                 elif event.ui_element == load_button:
-                    data = save_manager.load_data("test.json")
-                    Farm(screen, data)
+                    Continue(screen)
                 elif event.ui_element == setting_button:
                     print("Settings")
                 elif event.ui_element == exit_button:
