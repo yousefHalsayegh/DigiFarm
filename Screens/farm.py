@@ -20,6 +20,7 @@ class Farm:
         self.data = data
         self.screen = s
         self.name = data["Name"]
+        self.hitboxes = []
         self.save_manager = SaveSystem()
 
         self.background = pg.Surface(s.get_size())
@@ -70,13 +71,11 @@ class Farm:
                     if event.key == pg.K_F1:
                         self.debug = not self.debug
                     if event.key == pg.K_ESCAPE:
-                        print("hellow")
                         if self.input.visible:
                             self.input.hide()
                             pg.draw.rect(self.screen, (248, 243, 241), (10,750,900,30))
                         else:
                             self.input.show()
-                        print(self.input.visible)
                     if event.key == pg.K_F2:
                         if self.food > 20:
                             name = ""
@@ -119,7 +118,7 @@ class Farm:
            
             for digimon in self.digimons:
                
-                if digimon.update(self.screen,self.background, self.food) is not None:
+                if digimon.update(self.screen,self.background, self.food, self.hitboxes) is not None:
                     self.food -= 1
             
             
@@ -131,7 +130,7 @@ class Farm:
             digi.download(digimon)
             self.screen.blit(digi.sprites[0], digi.hit)
             self.digimons.append(digi)
-
+            self.hitboxes.append(digi.hit)
     def update_food(self):
         pg.draw.rect(self.screen, (248, 243, 241), rect=pg.Rect(870,10, 150,10))
         text = pg.font.Font(size=15).render(f'food current is at:  {self.food}'

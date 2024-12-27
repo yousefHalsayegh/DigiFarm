@@ -25,11 +25,9 @@ class Digimon:
         self.debug = False
         self.counter = 0 
         self.feeding_area = (500, 400, 100, 100)
-        
-    
 
     
-    def update(self, s, b, food):
+    def update(self, s, b, food, hits):
         if self.debug:
             self.debugging(s)
         
@@ -83,7 +81,7 @@ class Digimon:
                         s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
                     return
             else:
-                self.move(s,b)
+                self.move(s,b, hits)
         elif self.state == "Idle":
             if self.counter > 0 :
                 self.frame  = 7 if self.frame == 3 else 3
@@ -114,18 +112,17 @@ class Digimon:
             self.energy -= 1
             self.hunger -= 1
             self.counter += 1
-            self.move(s,b)
+            self.move(s,b, hits)
 
 
        
            
         
 
-    def move(self,s,b):
+    def move(self,s,b, hits):
         x = 0 
         y = 0
         s.blit(b,self.hit, area=self.hit)
-        
         if self.target.left > self.hit.left and self.target.right > self.hit.right:
             x = 1 * self.speed 
         elif self.target.left < self.hit.left and self.target.right < self.hit.right: 
@@ -145,14 +142,21 @@ class Digimon:
             self.frame  = 9 if self.frame == 10 else 10
         else:
             self.frame  = 0 if self.frame == 1 else 1
-        self.hit = self.hit.move(x,y)
+       
+        if self.hit.collidelist(hits) >= 0:
+           print(hits)
+           print(self.hit)
+           print("collide")
 
+        self.hit = self.hit.move(x,y)
+        
         if x < 0 :
             s.blit(self.sprites[self.frame], self.hit)
             self.facing = -1
         else:
             s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
             self.facing = 1
+        
         
 
     def reached(self):
@@ -189,15 +193,14 @@ class Digimon:
     def download(self, data):
         for key in data :
             setattr(self, key, data[key])
-
-        self.target = pg.Rect(self.target)
-        self.hit = pg.Rect(self.hit)
-        self.render()
+        self.fast_download()
+        
 
     def fast_download(self):
         self.target = pg.Rect(self.target)
         self.hit = pg.Rect(self.hit)
         self.render()
+        
         
 
 
