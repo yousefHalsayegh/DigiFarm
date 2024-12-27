@@ -116,13 +116,23 @@ class Farm:
             #rendering the screen
             
             self.manager.draw_ui(self.screen)
-           
+            dead = []
             for i in range(len(self.digimons)):
-               
-                if self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes) is not None:
-                    self.food -= 1
+                n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes)
+                if n is not None:
+                    if n > 0 :
+                        if self.digimons[n].dead(self.digimons[i].attack, self.screen, self.background):
+                            dead.append(n)
+                    else:
+                        if self.food < 0 :
+                            self.food = 0
+                        else:
+                            self.food -= 1
                 self.hitboxes[i] = self.digimons[i].hit
-            
+             
+            for i in dead:
+                self.digimons.pop(i)
+                self.hitboxes.pop(i)
             
             pg.display.update()
             

@@ -25,6 +25,9 @@ class Digimon:
         self.debug = False
         self.counter = 0 
         self.feeding_area = (500, 400, 100, 100)
+        self.health = 1
+        self.attack = 1
+        self.coll = 0
 
     
     def update(self, s, b, food, hits):
@@ -71,7 +74,7 @@ class Digimon:
                     self.hunger += 10
                     self.exp += 1
                     food -= 1
-                    return food
+                    return -1
                 else:
                     self.feeding_time -= 1
                     self.frame  = 2 if self.frame == 3 else 3
@@ -93,15 +96,17 @@ class Digimon:
             else:
                 self.state = "Walking"
         elif self.state == "Attack":
-            if self.counter > 0 :
-                self.frame  = 8 if self.frame == 11 else 11
-                if self.facing < 0 :
-                    s.blit(self.sprites[self.frame], self.hit)
-                else :
-                    s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
-                self.counter -= 3
-            else:
-                self.state = "Walking"
+            self.coll = self.hit.collidelist(hits)
+            if self.coll >= 0 :
+                if not(self.hit == hits[self.coll]):
+                    self.frame  = 8 if self.frame == 11 else 11
+                    if self.facing < 0 :
+                        s.blit(self.sprites[self.frame], self.hit)
+                    else :
+                        s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
+                    return self.coll
+                else:
+                    self.state = "Walking"
         elif self.state == "Walking":       
             if self.energy < 0 :
                 self.state = "Sleepy"
@@ -126,7 +131,12 @@ class Digimon:
 
        
            
-        
+    def dead (self, a, s, b):
+        print(self.health)
+        self.health -= a 
+        if self.health <= 0:
+            s.blit(b,self.hit, area=self.hit)
+            return True
 
     def move(self,s,b, hits):
         x = 0 
@@ -152,10 +162,9 @@ class Digimon:
         else:
             self.frame  = 0 if self.frame == 1 else 1
         
-        i = self.hit.collidelist(hits)
-        if i >= 0 :
-           if not(self.hit == hits[i]):
-              self.counter = 10
+        self.coll = self.hit.collidelist(hits)
+        if self.coll >= 0 :
+           if not(self.hit == hits[self.coll]):
               self.state = "Attack"
               return 
         

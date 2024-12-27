@@ -2,140 +2,32 @@
    "Name": "jhbv",
    "Digimon": [
       {
-         "name": "Guilmon",
+         "name": "Growmon",
          "field": "Dragon's Roar",
          "attribute": "Virus",
-         "level": "child",
+         "level": "adult",
          "speed": 2.5,
          "sprites": null,
          "frame": 10,
-         "feeding_time": 6,
-         "exp": 2,
+         "feeding_time": 10,
+         "exp": 0,
          "next_level": 10,
-         "hunger": 18,
+         "hunger": -2,
          "state": "Starving",
          "hit": [
-            852,
-            781,
+            980,
+            780,
             16,
             16
          ],
          "target": [
-            851,
-            813,
+            1008,
+            816,
             20,
             20
          ],
          "energy": 100,
-         "facing": 1,
-         "debug": false,
-         "counter": 6,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Gigimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 2.5,
-         "sprites": null,
-         "frame": 9,
-         "feeding_time": 5,
-         "exp": 5,
-         "next_level": 10,
-         "hunger": 48,
-         "state": "Starving",
-         "hit": [
-            450,
-            783,
-            16,
-            16
-         ],
-         "target": [
-            447,
-            809,
-            20,
-            20
-         ],
-         "energy": 100,
-         "facing": 1,
-         "debug": false,
-         "counter": 6,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Gigimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 2.5,
-         "sprites": null,
-         "frame": 9,
-         "feeding_time": 4,
-         "exp": 5,
-         "next_level": 10,
-         "hunger": 48,
-         "state": "Starving",
-         "hit": [
-            881,
-            783,
-            16,
-            16
-         ],
-         "target": [
-            878,
-            810,
-            20,
-            20
-         ],
-         "energy": 100,
-         "facing": 1,
-         "debug": false,
-         "counter": 6,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Guilmon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "child",
-         "speed": 2.5,
-         "sprites": null,
-         "frame": 10,
-         "feeding_time": 8,
-         "exp": 2,
-         "next_level": 10,
-         "hunger": 18,
-         "state": "Starving",
-         "hit": [
-            785,
-            417,
-            16,
-            16
-         ],
-         "target": [
-            782,
-            391,
-            20,
-            20
-         ],
-         "energy": 100,
-         "facing": 1,
+         "facing": -1,
          "debug": false,
          "counter": 9,
          "feeding_area": [
@@ -143,34 +35,37 @@
             400,
             100,
             100
-         ]
+         ],
+         "health": 1,
+         "attack": 1,
+         "coll": 0
       },
       {
-         "name": "Impmon",
-         "field": "Nightmare Soldiers",
+         "name": "Gigimon",
+         "field": "Dragon's Roar",
          "attribute": "Virus",
-         "level": "child",
-         "speed": 2.5,
+         "level": "baby_II",
+         "speed": 1.4210854715202004e-13,
          "sprites": null,
          "frame": 10,
          "feeding_time": -1,
-         "exp": 0,
+         "exp": 6,
          "next_level": 10,
-         "hunger": -2,
+         "hunger": -45,
          "state": "Starving",
          "hit": [
-            779,
-            780,
+            463,
+            768,
             16,
             16
          ],
          "target": [
-            776,
-            802,
+            500,
+            400,
             20,
             20
          ],
-         "energy": 100,
+         "energy": 99,
          "facing": 1,
          "debug": false,
          "counter": 0,
@@ -179,79 +74,10 @@
             400,
             100,
             100
-         ]
-      },
-      {
-         "name": "Gigimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 5.684341886080801e-13,
-         "sprites": null,
-         "frame": 4,
-         "feeding_time": -1,
-         "exp": 6,
-         "next_level": 10,
-         "hunger": -43,
-         "state": "Sleepy",
-         "hit": [
-            463,
-            768,
-            16,
-            16
          ],
-         "target": [
-            448,
-            764,
-            20,
-            20
-         ],
-         "energy": 5,
-         "facing": -1,
-         "debug": false,
-         "counter": -2,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Gigimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 2.5,
-         "sprites": null,
-         "frame": 10,
-         "feeding_time": 6,
-         "exp": 3,
-         "next_level": 10,
-         "hunger": 28,
-         "state": "Starving",
-         "hit": [
-            823,
-            520,
-            16,
-            16
-         ],
-         "target": [
-            819,
-            539,
-            20,
-            20
-         ],
-         "energy": 100,
-         "facing": 1,
-         "debug": false,
-         "counter": 9,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
+         "health": 1,
+         "attack": 1,
+         "coll": 1
       },
       {
          "name": "Yaamon",
@@ -260,7 +86,7 @@
          "level": "baby_II",
          "speed": 0.15625,
          "sprites": null,
-         "frame": 10,
+         "frame": 9,
          "feeding_time": 3,
          "exp": 2,
          "next_level": 10,
@@ -273,8 +99,8 @@
             16
          ],
          "target": [
-            734,
-            466,
+            500,
+            400,
             20,
             20
          ],
@@ -287,30 +113,72 @@
             400,
             100,
             100
-         ]
+         ],
+         "health": 1,
+         "attack": 1,
+         "coll": 2
       },
       {
-         "name": "Gigimon",
-         "field": "Dragon's Roar",
+         "name": "Impmon",
+         "field": "Nightmare Soldiers",
          "attribute": "Virus",
-         "level": "baby_II",
+         "level": "child",
          "speed": 2.5,
          "sprites": null,
-         "frame": 10,
-         "feeding_time": 7,
-         "exp": 2,
+         "frame": 8,
+         "feeding_time": 10,
+         "exp": 3,
          "next_level": 10,
-         "hunger": 18,
-         "state": "Starving",
+         "hunger": 27,
+         "state": "Attack",
          "hit": [
-            212,
-            318,
+            982,
+            774,
             16,
             16
          ],
          "target": [
-            236,
-            304,
+            1018,
+            774,
+            20,
+            20
+         ],
+         "energy": 99,
+         "facing": 1,
+         "debug": false,
+         "counter": 7,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 1,
+         "attack": 1,
+         "coll": 0
+      },
+      {
+         "name": "Guilmon",
+         "field": "Dragon's Roar",
+         "attribute": "Virus",
+         "level": "child",
+         "speed": 2.5,
+         "sprites": null,
+         "frame": 10,
+         "feeding_time": 9,
+         "exp": 0,
+         "next_level": 10,
+         "hunger": -2,
+         "state": "Starving",
+         "hit": [
+            757,
+            781,
+            16,
+            16
+         ],
+         "target": [
+            753,
+            809,
             20,
             20
          ],
@@ -323,115 +191,127 @@
             400,
             100,
             100
-         ]
+         ],
+         "health": 1,
+         "attack": 1,
+         "coll": 4
       },
       {
          "name": "Yaamon",
          "field": "Nightmare Soldiers",
          "attribute": "Virus",
          "level": "baby_II",
-         "speed": 2.5,
-         "sprites": null,
-         "frame": 9,
-         "feeding_time": 0,
-         "exp": 3,
-         "next_level": 10,
-         "hunger": 28,
-         "state": "Starving",
-         "hit": [
-            736,
-            189,
-            16,
-            16
-         ],
-         "target": [
-            704,
-            169,
-            20,
-            20
-         ],
-         "energy": 100,
-         "facing": -1,
-         "debug": false,
-         "counter": 3,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Jyarimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_I",
-         "speed": 2.5,
+         "speed": 2.980232238769531e-07,
          "sprites": null,
          "frame": 10,
-         "feeding_time": 2,
-         "exp": 5,
+         "feeding_time": 10,
+         "exp": 0,
          "next_level": 10,
-         "hunger": 48,
+         "hunger": -25,
          "state": "Starving",
          "hit": [
-            2,
-            4,
+            677,
+            150,
             16,
             16
          ],
          "target": [
-            -260,
-            -269,
+            500,
+            400,
             20,
             20
          ],
-         "energy": 100,
+         "energy": 77,
          "facing": -1,
          "debug": false,
-         "counter": 0,
+         "counter": 2,
          "feeding_area": [
             500,
             400,
             100,
             100
-         ]
+         ],
+         "health": 1,
+         "attack": 1,
+         "coll": 5
       },
       {
          "name": "Gigimon",
          "field": "Dragon's Roar",
          "attribute": "Virus",
          "level": "baby_II",
-         "speed": 2.5,
+         "speed": 0.001220703125,
          "sprites": null,
-         "frame": 9,
-         "feeding_time": 7,
-         "exp": 3,
+         "frame": 10,
+         "feeding_time": 3,
+         "exp": 0,
          "next_level": 10,
-         "hunger": 28,
+         "hunger": -13,
          "state": "Starving",
          "hit": [
-            368,
-            500,
+            653,
+            397,
             16,
             16
          ],
          "target": [
-            389,
-            483,
+            500,
+            400,
             20,
             20
          ],
-         "energy": 100,
-         "facing": 1,
+         "energy": 89,
+         "facing": -1,
          "debug": false,
-         "counter": 6,
+         "counter": 2,
          "feeding_area": [
             500,
             400,
             100,
             100
-         ]
+         ],
+         "health": 1,
+         "attack": 1,
+         "coll": 6
+      },
+      {
+         "name": "Kiimon",
+         "field": "Nightmare Soldiers",
+         "attribute": "Virus",
+         "level": "baby_I",
+         "speed": 0.625,
+         "sprites": null,
+         "frame": 9,
+         "feeding_time": 5,
+         "exp": 7,
+         "next_level": 10,
+         "hunger": -3,
+         "state": "Starving",
+         "hit": [
+            732,
+            576,
+            16,
+            16
+         ],
+         "target": [
+            775,
+            607,
+            20,
+            20
+         ],
+         "energy": 29,
+         "facing": 1,
+         "debug": false,
+         "counter": 2,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 1,
+         "attack": 1,
+         "coll": 7
       },
       {
          "name": "Gigimon",
@@ -444,175 +324,34 @@
          "feeding_time": 10,
          "exp": 0,
          "next_level": 10,
-         "hunger": 25,
+         "hunger": 18,
          "state": "Walking",
          "hit": [
-            512,
-            616,
+            492,
+            579,
             16,
             16
          ],
          "target": [
-            517,
-            640,
+            463,
+            577,
             20,
             20
          ],
-         "energy": 25,
-         "facing": 1,
-         "debug": false,
-         "counter": 6,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Yaamon",
-         "field": "Nightmare Soldiers",
-         "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 5.960464477539062e-07,
-         "sprites": null,
-         "frame": 10,
-         "feeding_time": 10,
-         "exp": 0,
-         "next_level": 10,
-         "hunger": -24,
-         "state": "Starving",
-         "hit": [
-            677,
-            150,
-            16,
-            16
-         ],
-         "target": [
-            634,
-            154,
-            20,
-            20
-         ],
-         "energy": 78,
+         "energy": 18,
          "facing": -1,
          "debug": false,
-         "counter": 1,
+         "counter": 7,
          "feeding_area": [
             500,
             400,
             100,
             100
-         ]
-      },
-      {
-         "name": "Gigimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 0.009765625,
-         "sprites": null,
-         "frame": 10,
-         "feeding_time": 4,
-         "exp": 0,
-         "next_level": 10,
-         "hunger": -10,
-         "state": "Starving",
-         "hit": [
-            653,
-            397,
-            16,
-            16
          ],
-         "target": [
-            691,
-            369,
-            20,
-            20
-         ],
-         "energy": 92,
-         "facing": 1,
-         "debug": false,
-         "counter": -1,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Kiimon",
-         "field": "Nightmare Soldiers",
-         "attribute": "Virus",
-         "level": "baby_I",
-         "speed": 2.5,
-         "sprites": null,
-         "frame": 9,
-         "feeding_time": 9,
-         "exp": 7,
-         "next_level": 10,
-         "hunger": 68,
-         "state": "Starving",
-         "hit": [
-            982,
-            448,
-            16,
-            16
-         ],
-         "target": [
-            1000,
-            444,
-            20,
-            20
-         ],
-         "energy": 100,
-         "facing": 1,
-         "debug": false,
-         "counter": 3,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
-      },
-      {
-         "name": "Jyarimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_I",
-         "speed": 2.5,
-         "sprites": null,
-         "frame": 8,
-         "feeding_time": 3,
-         "exp": 9,
-         "next_level": 10,
-         "hunger": 33,
-         "state": "Attack",
-         "hit": [
-            17,
-            3,
-            16,
-            16
-         ],
-         "target": [
-            -903,
-            -691,
-            20,
-            20
-         ],
-         "energy": 45,
-         "facing": -1,
-         "debug": false,
-         "counter": -2,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ]
+         "health": 1,
+         "attack": 1,
+         "coll": 8
       }
    ],
-   "Food": -174
+   "Food": -1
 }
