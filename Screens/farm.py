@@ -87,6 +87,7 @@ class Farm:
                             new_digi = Digimon(name, f, att)
                             new_digi.fast_download()
                             self.digimons.append(new_digi)
+                            self.hitboxes.append(new_digi.hit)
                             self.food -= 20
                 if event.type == pg.MOUSEBUTTONDOWN and event.button == 1 and self.debug:  
                     for digimon in self.digimons:
@@ -116,10 +117,11 @@ class Farm:
             
             self.manager.draw_ui(self.screen)
            
-            for digimon in self.digimons:
+            for i in range(len(self.digimons)):
                
-                if digimon.update(self.screen,self.background, self.food, self.hitboxes) is not None:
+                if self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes) is not None:
                     self.food -= 1
+                self.hitboxes[i] = self.digimons[i].hit
             
             
             pg.display.update()

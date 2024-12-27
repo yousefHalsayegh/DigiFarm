@@ -61,7 +61,7 @@ class Digimon:
                 self.new_target(s, 'h')
             if self.hunger > 100:
                 self.state = "Walking"
-                self.target = pg.Rect(random.randint(20, 900),random.randint(120, 750),20,20)
+                self.target = self.new_target(s)
                 self.speed *= 2
             elif self.reached():
                 if food < 0 :
@@ -92,7 +92,16 @@ class Digimon:
                 self.counter -= 3
             else:
                 self.state = "Walking"
-
+        elif self.state == "Attack":
+            if self.counter > 0 :
+                self.frame  = 8 if self.frame == 11 else 11
+                if self.facing < 0 :
+                    s.blit(self.sprites[self.frame], self.hit)
+                else :
+                    s.blit(pg.transform.flip(self.sprites[self.frame], True, False), self.hit)
+                self.counter -= 3
+            else:
+                self.state = "Walking"
         elif self.state == "Walking":       
             if self.energy < 0 :
                 self.state = "Sleepy"
@@ -142,14 +151,15 @@ class Digimon:
             self.frame  = 9 if self.frame == 10 else 10
         else:
             self.frame  = 0 if self.frame == 1 else 1
-       
-        if self.hit.collidelist(hits) >= 0:
-           print(hits)
-           print(self.hit)
-           print("collide")
-
-        self.hit = self.hit.move(x,y)
         
+        i = self.hit.collidelist(hits)
+        if i >= 0 :
+           if not(self.hit == hits[i]):
+              self.counter = 10
+              self.state = "Attack"
+              return 
+        
+        self.hit = self.hit.move(x,y)
         if x < 0 :
             s.blit(self.sprites[self.frame], self.hit)
             self.facing = -1
@@ -158,7 +168,6 @@ class Digimon:
             self.facing = 1
         
         
-
     def reached(self):
         return self.hit.colliderect(self.target)
     
