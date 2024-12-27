@@ -70,7 +70,13 @@ class Farm:
                     if event.key == pg.K_F1:
                         self.debug = not self.debug
                     if event.key == pg.K_ESCAPE:
-                        self.input.enable()
+                        print("hellow")
+                        if self.input.visible:
+                            self.input.hide()
+                            pg.draw.rect(self.screen, (248, 243, 241), (10,750,900,30))
+                        else:
+                            self.input.show()
+                        print(self.input.visible)
                     if event.key == pg.K_F2:
                         if self.food > 20:
                             name = ""
@@ -93,7 +99,7 @@ class Farm:
                     if event.ui_element == self.input:
                         self.food += len(event.text)  
                         self.input.clear()
-                     
+                        self.input.rebuild()
 
                         
                 if not self.debug:

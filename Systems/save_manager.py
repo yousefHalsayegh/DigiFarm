@@ -9,7 +9,7 @@ class SaveSystem:
 
 
     def save_data(self, data, name):
-        with open(self.save_folder+"/"+name+self.file_extention, "w") as f:
+        with open(self.save_folder+"/"+name+".json", "w") as f:
             json.dump(data, f, indent=3)
 
     def load_data(self, name):
