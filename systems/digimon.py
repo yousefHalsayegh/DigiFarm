@@ -25,7 +25,7 @@ class Digimon:
         self.debug = False
         self.counter = 0 
         self.feeding_area = (500, 400, 100, 100)
-        self.health = 1
+        self.health = 3
         self.attack = 1
         self.coll = 0
 
@@ -132,7 +132,7 @@ class Digimon:
        
            
     def dead (self, a, s, b):
-        print(self.health)
+
         self.health -= a 
         if self.health <= 0:
             s.blit(b,self.hit, area=self.hit)
@@ -203,6 +203,7 @@ class Digimon:
 
     def upload(self):
         self.sprites = None
+        self.coll= 0
         if type(self.hit) is not tuple:
             self.hit = (self.hit.left, self.hit.top, 16, 16) 
             self.target = (self.target.left, self.target.top, 20, 20) 
