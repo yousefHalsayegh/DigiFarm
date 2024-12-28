@@ -162,6 +162,7 @@ class Digimon:
             y *= -1
         if self.state == "Starving":
             self.frame  = 9 if self.frame == 10 else 10
+        else:
             self.frame  = 0 if self.frame == 1 else 1
         
         self.coll = self.hit.collidelist(hits)
@@ -170,6 +171,7 @@ class Digimon:
               self.state = "Attack"
               return 
            
+
         self.hit = self.hit.move(x,y)
         if x < 0 :
             s.blit(self.sprites[self.frame], self.hit)

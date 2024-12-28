@@ -70,6 +70,13 @@ class Farm:
                     pg.quit()
                     sys.exit()
                 
+             
+
+                if event.type == pg_gui.UI_TEXT_ENTRY_FINISHED:
+                    if event.ui_element == self.input:
+                        self.cmd_command(event.text)  
+                        self.input.clear()
+                        self.input.rebuild()
                 if event.type ==  pg.KEYDOWN:
                     if event.key == pg.K_BACKQUOTE:
                         self.debug = not self.debug
@@ -80,13 +87,6 @@ class Farm:
                             self.cmd_text.set_text("")
                         else:
                             self.cmd.show()
-
-                if event.type == pg_gui.UI_TEXT_ENTRY_FINISHED:
-                    if event.ui_element == self.input:
-                        self.cmd_command(event.text)  
-                        self.input.clear()
-                        self.input.rebuild()
-
 
                 self.manager.process_events(event)
 
