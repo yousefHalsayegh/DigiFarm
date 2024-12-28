@@ -6,29 +6,29 @@
          "field": "Nightmare Soldiers",
          "attribute": "Virus",
          "level": "baby_I",
-         "speed": 5,
+         "speed": 2.5,
          "sprites": null,
-         "frame": 4,
-         "feeding_time": 10,
-         "exp": 0,
+         "frame": 2,
+         "feeding_time": 3,
+         "exp": 5,
          "next_level": 10,
-         "hunger": -1,
-         "state": "Sleepy",
+         "hunger": 48,
+         "state": "Starving",
          "hit": [
-            659,
-            549,
+            599,
+            489,
             16,
             16
          ],
          "target": [
-            647,
-            549,
+            500,
+            400,
             20,
             20
          ],
-         "energy": 99,
+         "energy": 100,
          "facing": -1,
-         "counter": 86,
+         "counter": 87,
          "feeding_area": [
             500,
             400,
@@ -47,27 +47,27 @@
          "level": "baby_I",
          "speed": 5,
          "sprites": null,
-         "frame": 7,
+         "frame": 4,
          "feeding_time": 10,
          "exp": 0,
          "next_level": 10,
-         "hunger": 16,
-         "state": "Walking",
+         "hunger": -1,
+         "state": "Sleepy",
          "hit": [
-            583,
+            613,
             250,
             16,
             16
          ],
          "target": [
-            581,
-            250,
+            613,
+            245,
             20,
             20
          ],
-         "energy": 16,
+         "energy": 81,
          "facing": 1,
-         "counter": 33,
+         "counter": 50,
          "feeding_area": [
             500,
             400,
@@ -85,25 +85,139 @@
          "level": "baby_I",
          "speed": 5,
          "sprites": null,
-         "frame": 7,
+         "frame": 5,
          "feeding_time": 10,
          "exp": 0,
          "next_level": 10,
-         "hunger": 11,
-         "state": "Walking",
+         "hunger": -1,
+         "state": "Sleepy",
          "hit": [
-            271,
-            207,
+            256,
+            227,
             16,
             16
          ],
          "target": [
-            260,
-            216,
+            254,
+            242,
             20,
             20
          ],
-         "energy": 11,
+         "energy": 86,
+         "facing": -1,
+         "counter": 62,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 3,
+         "attack": 1,
+         "coll": 0
+      },
+      {
+         "name": "Jyarimon",
+         "field": "Dragon's Roar",
+         "attribute": "Virus",
+         "level": "baby_I",
+         "speed": 5,
+         "sprites": null,
+         "frame": 5,
+         "feeding_time": 10,
+         "exp": 0,
+         "next_level": 10,
+         "hunger": -1,
+         "state": "Sleepy",
+         "hit": [
+            466,
+            194,
+            16,
+            16
+         ],
+         "target": [
+            468,
+            209,
+            20,
+            20
+         ],
+         "energy": 76,
+         "facing": 1,
+         "counter": 38,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 2,
+         "attack": 1,
+         "coll": 0
+      },
+      {
+         "name": "Kiimon",
+         "field": "Nightmare Soldiers",
+         "attribute": "Virus",
+         "level": "baby_I",
+         "speed": 2.5,
+         "sprites": null,
+         "frame": 3,
+         "feeding_time": 1,
+         "exp": 4,
+         "next_level": 10,
+         "hunger": 38,
+         "state": "Starving",
+         "hit": [
+            520,
+            499,
+            16,
+            16
+         ],
+         "target": [
+            500,
+            400,
+            20,
+            20
+         ],
+         "energy": -1,
+         "facing": 1,
+         "counter": 99,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 3,
+         "attack": 1,
+         "coll": 0
+      },
+      {
+         "name": "Kiimon",
+         "field": "Nightmare Soldiers",
+         "attribute": "Virus",
+         "level": "baby_I",
+         "speed": 5,
+         "sprites": null,
+         "frame": 4,
+         "feeding_time": 10,
+         "exp": 0,
+         "next_level": 10,
+         "hunger": -1,
+         "state": "Sleepy",
+         "hit": [
+            578,
+            457,
+            16,
+            16
+         ],
+         "target": [
+            566,
+            468,
+            20,
+            20
+         ],
+         "energy": 81,
          "facing": -1,
          "counter": 50,
          "feeding_area": [
@@ -115,159 +229,7 @@
          "health": 3,
          "attack": 1,
          "coll": 0
-      },
-      {
-         "name": "Jyarimon",
-         "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_I",
-         "speed": 5,
-         "sprites": null,
-         "frame": 7,
-         "feeding_time": 10,
-         "exp": 0,
-         "next_level": 10,
-         "hunger": 21,
-         "state": "Walking",
-         "hit": [
-            466,
-            214,
-            16,
-            16
-         ],
-         "target": [
-            478,
-            229,
-            20,
-            20
-         ],
-         "energy": 21,
-         "facing": 1,
-         "counter": 16,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ],
-         "health": 2,
-         "attack": 1,
-         "coll": 0
-      },
-      {
-         "name": "Kiimon",
-         "field": "Nightmare Soldiers",
-         "attribute": "Virus",
-         "level": "baby_I",
-         "speed": 5,
-         "sprites": null,
-         "frame": 7,
-         "feeding_time": 10,
-         "exp": 0,
-         "next_level": 10,
-         "hunger": 11,
-         "state": "Walking",
-         "hit": [
-            519,
-            556,
-            16,
-            16
-         ],
-         "target": [
-            516,
-            555,
-            20,
-            20
-         ],
-         "energy": 11,
-         "facing": 1,
-         "counter": 50,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ],
-         "health": 2,
-         "attack": 1,
-         "coll": 0
-      },
-      {
-         "name": "Kiimon",
-         "field": "Nightmare Soldiers",
-         "attribute": "Virus",
-         "level": "baby_I",
-         "speed": 5,
-         "sprites": null,
-         "frame": 7,
-         "feeding_time": 10,
-         "exp": 0,
-         "next_level": 10,
-         "hunger": 0,
-         "state": "Walking",
-         "hit": [
-            525,
-            578,
-            16,
-            16
-         ],
-         "target": [
-            533,
-            577,
-            20,
-            20
-         ],
-         "energy": 0,
-         "facing": 1,
-         "counter": 97,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ],
-         "health": 3,
-         "attack": 1,
-         "coll": 0
-      },
-      {
-         "name": "Kiimon",
-         "field": "Nightmare Soldiers",
-         "attribute": "Virus",
-         "level": "baby_I",
-         "speed": 5,
-         "sprites": null,
-         "frame": 7,
-         "feeding_time": 10,
-         "exp": 0,
-         "next_level": 10,
-         "hunger": 16,
-         "state": "Walking",
-         "hit": [
-            573,
-            427,
-            16,
-            16
-         ],
-         "target": [
-            569,
-            425,
-            20,
-            20
-         ],
-         "energy": 16,
-         "facing": 1,
-         "counter": 33,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ],
-         "health": 3,
-         "attack": 1,
-         "coll": 0
       }
    ],
-   "Food": 112
+   "Food": 103
 }

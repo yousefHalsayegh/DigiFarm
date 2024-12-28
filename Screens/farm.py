@@ -71,7 +71,7 @@ class Farm:
                     sys.exit()
                 
                 if event.type ==  pg.KEYDOWN:
-                    if event.key == pg.K_ESCAPE:
+                    if event.key == pg.K_BACKQUOTE:
                         self.debug = not self.debug
                         if self.cmd.visible:
                             self.cmd.hide()
