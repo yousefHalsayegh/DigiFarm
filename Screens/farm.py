@@ -30,6 +30,7 @@ class Farm:
         self.manager = pg_gui.UIManager((1000, 800), theme_path='assests/style/theme.json')
 
         self.clock = pg.time.Clock()
+       
         
         self.digimons = []
         self.debug = False
@@ -44,9 +45,11 @@ class Farm:
         self.background.fill((248, 243, 241))
         self.screen.blit(self.background, (0,0))
 
-        self.input = pg_gui.elements.UITextEntryLine(pg.Rect(10,750,900,30), manager=self.manager)
-
-        self.update_food()
+        self.cmd = pg_gui.elements.UIScrollingContainer(pg. Rect(0,0, 1000, 800), manager=self.manager)
+        self.cmd_text = pg_gui.elements.UITextBox("write '-h' in case you want to know all the comands", pg.Rect(10,10, 950, 740), manager=self.manager, container=self.cmd)
+        self.input = pg_gui.elements.UITextEntryLine(pg.Rect(10,750,950,30), manager=self.manager, container=self.cmd)
+        self.cmd.hide()
+    
 
         self.load()
 
@@ -66,56 +69,37 @@ class Farm:
                     self.save_manager.save_data(self.data, self.name)
                     pg.quit()
                     sys.exit()
-                    
+                
                 if event.type ==  pg.KEYDOWN:
-                    if event.key == pg.K_F1:
-                        self.debug = not self.debug
                     if event.key == pg.K_ESCAPE:
-                        if self.input.visible:
-                            self.input.hide()
-                            pg.draw.rect(self.screen, (248, 243, 241), (10,750,900,30))
+                        self.debug = not self.debug
+                        if self.cmd.visible:
+                            self.cmd.hide()
+                            self.background.fill((248, 243, 241))
+                            self.screen.blit(self.background, (0,0))
+                            self.cmd_text.set_text("")
                         else:
-                            self.input.show()
-                    if event.key == pg.K_F2:
-                        if self.food > 20:
-                            name = ""
-                            f = random.choice(self.fields)
-                            att = random.choice(self.att)
-                            with open('Systems/starting_eggs.json', 'r') as file:
-                                eggs = json.load(file)
-                                name = eggs[f][att][0]
-                            new_digi = Digimon(name, f, att)
-                            new_digi.fast_download()
-                            self.digimons.append(new_digi)
-                            self.hitboxes.append(new_digi.hit)
-                            self.food -= 20
-                if event.type == pg.MOUSEBUTTONDOWN and event.button == 1 and self.debug:  
-                    for digimon in self.digimons:
-                        if digimon.hit.collidepoint(pg.mouse.get_pos()):
-                            digimon.debug = not digimon.debug
-                            if not digimon.debug:
-                                pg.draw.rect(self.screen, (248, 243, 241), rect=pg.Rect(0,0, 250,100)) 
+                            self.cmd.show()
+
                 if event.type == pg_gui.UI_TEXT_ENTRY_FINISHED:
                     if event.ui_element == self.input:
-                        self.food += len(event.text)  
+                        self.cmd_command(event.text)  
                         self.input.clear()
                         self.input.rebuild()
 
-                        
-                if not self.debug:
-                    for digimon in self.digimons:
-                        digimon.debug = False
-                    pg.draw.rect(self.screen, (248, 243, 241), rect=pg.Rect(0,0, 250,100)) 
 
                 self.manager.process_events(event)
-            
-            self.update_food()
+
                        
             self.manager.update(time_delta)
+            self.manager.draw_ui(self.screen)
 
             #rendering the screen
+            if self.debug:
+                pg.display.update()
+                continue
             
-            self.manager.draw_ui(self.screen)
+            
             dead = []
             for i in range(len(self.digimons)):
                 n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes)
@@ -129,7 +113,7 @@ class Farm:
                         else:
                             self.food -= 1
                 self.hitboxes[i] = self.digimons[i].hit
-             
+
             for i in dead:
                 self.digimons.pop(i)
                 self.hitboxes.pop(i)
@@ -143,9 +127,52 @@ class Farm:
             self.screen.blit(digi.sprites[0], digi.hit)
             self.digimons.append(digi)
             self.hitboxes.append(digi.hit)
-    def update_food(self):
-        pg.draw.rect(self.screen, (248, 243, 241), rect=pg.Rect(870,10, 150,10))
-        text = pg.font.Font(size=15).render(f'food current is at:  {self.food}'
-                            , True, (10,10,10))
-        textpos = text.get_rect(x=870, y= 10)
-        self.screen.blit(text, textpos)
+
+
+
+
+    def cmd_command (self, text):
+        command = text[:2]
+        if command == "-h":
+           self.cmd_text.set_text(self.cmd_text.html_text + 
+                                """
+-h: help; showcase all the avaliable commands
+-f: feed; gives the ability to add to the data pile
+-l: list; gives a list of all the avaliable digimons
+-b: breed; this will allow to hatch a new egg using the data you have
+-d: data; showcase how much data you have
+-s: show; show the data of a specific digimon using the index of the digimon
+-k: kill; this kills a specific digimon using the index of the digimon""")  
+        elif command == "-f":
+            self.cmd_text.set_text(self.cmd_text.html_text + "\nthe following data has been added to the farm: '"+ text[3:] +"' giving an extra " +  str(len(text[3:])) + " bytes of data")
+            self.food += len(text[3:])
+        elif command == "-l":
+            self.cmd_text.set_text(self.cmd_text.html_text + "\ndigimon list:\n")
+            for i in range(len(self.digimons)):
+                self.cmd_text.set_text(self.cmd_text.html_text + str(i+1) +"."+self.digimons[i].name + "\n")
+        elif command == '-d':
+            self.cmd_text.set_text(self.cmd_text.html_text + "\nthe current amount of data we have is: " + str(self.food))
+        elif command == "-s":
+             self.cmd_text.set_text(self.cmd_text.html_text + "\n" + self.digimons[int(text[3:])-1].debugging())
+        elif command == "-k":
+            self.cmd_text.set_text(self.cmd_text.html_text + "\ngoodbye " + self.digimons[int(text[3:])-1].name)
+            self.digimons.pop(int(text[3:])-1)
+            self.hitboxes.pop(int(text[3:])-1)
+        elif command == "-b":
+            if self.food > 20:
+                name = ""
+                f = random.choice(self.fields)
+                att = random.choice(self.att)
+                with open('Systems/starting_eggs.json', 'r') as file:
+                    eggs = json.load(file)
+                    name = eggs[f][att][0]
+                new_digi = Digimon(name, f, att)
+                new_digi.fast_download()
+                self.digimons.append(new_digi)
+                self.hitboxes.append(new_digi.hit)
+                self.food -= 20
+                self.cmd_text.set_text(self.cmd_text.html_text + f'\nthe following digimon has been added to the farm: {new_digi.name}')
+            else:
+                self.cmd_text.set_text(self.cmd_text.html_text + "\nnot enough data")
+        else:
+            self.cmd_text.set_text(self.cmd_text.html_text + "\n"+ text +" is not a known command has been added, please try again")
