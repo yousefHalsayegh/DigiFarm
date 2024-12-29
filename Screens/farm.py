@@ -46,7 +46,7 @@ class Farm:
         self.screen.blit(self.background, (0,0))
 
         self.cmd = pg_gui.elements.UIScrollingContainer(pg. Rect(0,0, 1000, 800), manager=self.manager)
-        self.cmd_text = pg_gui.elements.UITextBox("write '-h' in case you want to know all the comands", pg.Rect(10,10, 950, 740), manager=self.manager, container=self.cmd)
+        self.cmd_text = pg_gui.elements.UITextBox("write 'help' in case you want to know all the comands", pg.Rect(10,10, 950, 740), manager=self.manager, container=self.cmd)
         self.input = pg_gui.elements.UITextEntryLine(pg.Rect(10,750,950,30), manager=self.manager, container=self.cmd)
         self.cmd.hide()
     
@@ -132,33 +132,35 @@ class Farm:
 
 
     def cmd_command (self, text):
-        command = text[:2]
-        if command == "-h":
+        t = text.split(" ")
+        text = " ".join(t[1:])
+        command = t[0].lower()
+        if command == "help":
            self.cmd_text.set_text(self.cmd_text.html_text + 
                                 """
--h: help; showcase all the avaliable commands
--f: feed; gives the ability to add to the data pile
--l: list; gives a list of all the avaliable digimons
--b: breed; this will allow to hatch a new egg using the data you have
--d: data; showcase how much data you have
--s: show; show the data of a specific digimon using the index of the digimon
--k: kill; this kills a specific digimon using the index of the digimon""")  
-        elif command == "-f":
-            self.cmd_text.set_text(self.cmd_text.html_text + "\nthe following data has been added to the farm: '"+ text[3:] +"' giving an extra " +  str(len(text[3:])) + " bytes of data")
-            self.food += len(text[3:])
-        elif command == "-l":
+help; showcase all the avaliable commands
+feed; gives the ability to add to the data pile
+list; gives a list of all the avaliable digimons
+breed; this will allow to hatch a new egg using the data you have
+data; showcase how much data you have
+show; show the data of a specific digimon using the index of the digimon
+kill; this kills a specific digimon using the index of the digimon""")  
+        elif command == "feed":
+            self.cmd_text.set_text(self.cmd_text.html_text + "\nthe following data has been added to the farm: '"+ text +"' giving an extra " +  str(len(t[1:])) + " bytes of data")
+            self.food += len(t[1:])
+        elif command == "list":
             self.cmd_text.set_text(self.cmd_text.html_text + "\ndigimon list:\n")
             for i in range(len(self.digimons)):
                 self.cmd_text.set_text(self.cmd_text.html_text + str(i+1) +"."+self.digimons[i].name + "\n")
-        elif command == '-d':
+        elif command == 'data':
             self.cmd_text.set_text(self.cmd_text.html_text + "\nthe current amount of data we have is: " + str(self.food))
-        elif command == "-s":
-             self.cmd_text.set_text(self.cmd_text.html_text + "\n" + self.digimons[int(text[3:])-1].debugging())
-        elif command == "-k":
-            self.cmd_text.set_text(self.cmd_text.html_text + "\ngoodbye " + self.digimons[int(text[3:])-1].name)
-            self.digimons.pop(int(text[3:])-1)
-            self.hitboxes.pop(int(text[3:])-1)
-        elif command == "-b":
+        elif command == "show":
+             self.cmd_text.set_text(self.cmd_text.html_text + "\n" + self.digimons[int(t[1:])-1].debugging())
+        elif command == "kill":
+            self.cmd_text.set_text(self.cmd_text.html_text + "\ngoodbye " + self.digimons[int(t[1:])-1].name)
+            self.digimons.pop(int(t[1:])-1)
+            self.hitboxes.pop(int(t[1:])-1)
+        elif command == "breed":
             if self.food > 20:
                 name = ""
                 f = random.choice(self.fields)
@@ -175,4 +177,4 @@ class Farm:
             else:
                 self.cmd_text.set_text(self.cmd_text.html_text + "\nnot enough data")
         else:
-            self.cmd_text.set_text(self.cmd_text.html_text + "\n"+ text +" is not a known command has been added, please try again")
+            self.cmd_text.set_text(self.cmd_text.html_text + "\n"+ command +" is not a known command has been added, please try again")

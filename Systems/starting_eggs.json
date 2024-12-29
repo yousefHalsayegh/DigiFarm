@@ -3,12 +3,40 @@
         "Virus":
         [
             "Guil_Digitama"
+        ],
+        "Vaccine":
+        [
+            "V_Digitama"
         ]
     },
     "Nightmare Soldiers":{
         "Virus":
         [
             "Imp_Digitama"
+        ],
+        "Data":
+        [
+            "Cand_Digitama"
+        ]
+    },
+    "Nature Spirits":{
+        "Data":
+        [
+            "Lop_Digitama"
+        ],
+        "Vaccine":
+        [
+            "Terrier_Digitama"
+        ]
+    },
+    "Wind Guardians":{
+        "Vaccine":
+        [
+            "Flora_Digitama"
+        ],
+        "Virus":
+        [
+            "Funbee_Digitama"
         ]
     }   
 }

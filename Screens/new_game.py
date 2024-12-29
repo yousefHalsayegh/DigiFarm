@@ -49,10 +49,10 @@ class NewGame:
         self.retun_button = pg_gui.elements.UIButton(pg.Rect(10, 10, 50, 40), text='Back', manager=self.manager)
         self.farm_input = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 220, 300, 50), manager=self.manager)
         self.starting_attribute = pg_gui.elements.UIDropDownMenu(
-            ['Virus', 'Data', 'Vaccine', 'Free', 'Unknown', 'Variable'],
+            ['Virus', 'Data', 'Vaccine', 'Free'],
             'Virus', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
         self.starting_field = pg_gui.elements.UIDropDownMenu(
-            ['Nature Spirits', 'Deep Saver', 'Nightmare Soldiers', 'Wind Guardians', 'Metal Empire', 'Unkonwn', 'Dark Area',
+            ['Nature Spirits', 'Deep Saver', 'Nightmare Soldiers', 'Wind Guardians', 'Metal Empire','Dark Area',
              'Virus Busters', 'Dragon\'s Roar', 'Jungle Troopers']
             ,'Dragon\'s Roar', pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
         self.start = pg_gui.elements.UIButton(pg.Rect((self.background.get_width()/2 - 150), 540, 300, 50), text='Start', manager=self.manager)
