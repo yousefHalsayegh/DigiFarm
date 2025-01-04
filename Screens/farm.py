@@ -1,6 +1,6 @@
 from Systems.save_manager import SaveSystem 
 from Systems.digimon import Digimon 
-
+from Systems.digest import Digest
 
 import pygame_gui as pg_gui
 import pygame as pg
@@ -35,6 +35,7 @@ class Farm:
         self.digimons = []
         self.debug = False
         self.food = data['Food']
+        self.digest = Digest()
         self.ui_start()
         #getting into it
         self.run()
@@ -147,7 +148,7 @@ show; show the data of a specific digimon using the index of the digimon
 kill; this kills a specific digimon using the index of the digimon""")  
         elif command == "feed":
             self.cmd_text.set_text(self.cmd_text.html_text + "\nthe following data has been added to the farm: '"+ text +"' giving an extra " +  str(len(t[1:])) + " bytes of data")
-            self.food += len(t[1:])
+            self.digest()
         elif command == "list":
             self.cmd_text.set_text(self.cmd_text.html_text + "\ndigimon list:\n")
             for i in range(len(self.digimons)):

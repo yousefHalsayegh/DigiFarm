@@ -1,2 +1,6 @@
-import os
-print(os.listdir("save_data"))
+from Systems.digest import Digest
+
+
+digest = Digest()
+
+print(digest.prepare(input("add data: ")))

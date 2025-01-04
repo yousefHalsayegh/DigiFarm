@@ -12,23 +12,23 @@
          "feeding_time": 10,
          "exp": 0,
          "next_level": 10,
-         "hunger": 98,
+         "hunger": 62,
          "state": "Walking",
          "hit": [
-            518,
-            419,
+            568,
+            379,
             16,
             16
          ],
          "target": [
-            501,
-            402,
+            567,
+            375,
             20,
             20
          ],
-         "energy": 98,
-         "facing": 1,
-         "counter": 89,
+         "energy": 62,
+         "facing": -1,
+         "counter": 125,
          "feeding_area": [
             500,
             400,
@@ -44,29 +44,29 @@
          "field": "Dragon's Roar",
          "attribute": "Virus",
          "level": "baby_I",
-         "speed": 2.5,
+         "speed": 1.25,
          "sprites": null,
-         "frame": 0,
-         "feeding_time": 4,
-         "exp": 4,
+         "frame": 3,
+         "feeding_time": 8,
+         "exp": 5,
          "next_level": 10,
-         "hunger": 16,
-         "state": "Attack",
+         "hunger": 8,
+         "state": "Starving",
          "hit": [
-            504,
+            522,
             426,
             16,
             16
          ],
          "target": [
-            510,
-            436,
+            500,
+            400,
             20,
             20
          ],
-         "energy": 78,
+         "energy": 60,
          "facing": 1,
-         "counter": 4,
+         "counter": 1,
          "feeding_area": [
             500,
             400,
@@ -84,15 +84,15 @@
          "level": "baby_I",
          "speed": 2.5,
          "sprites": null,
-         "frame": 9,
-         "feeding_time": 10,
+         "frame": 2,
+         "feeding_time": 8,
          "exp": 0,
          "next_level": 10,
          "hunger": -2,
          "state": "Starving",
          "hit": [
-            417,
-            436,
+            485,
+            404,
             16,
             16
          ],
@@ -126,23 +126,23 @@
          "feeding_time": 10,
          "exp": 0,
          "next_level": 10,
-         "hunger": 71,
+         "hunger": 35,
          "state": "Walking",
          "hit": [
-            675,
-            560,
+            725,
+            600,
             16,
             16
          ],
          "target": [
-            678,
-            570,
+            730,
+            587,
             20,
             20
          ],
-         "energy": 71,
+         "energy": 35,
          "facing": 1,
-         "counter": 92,
+         "counter": 128,
          "feeding_area": [
             500,
             400,
@@ -167,7 +167,7 @@
          "hunger": -2,
          "state": "Starving",
          "hit": [
-            394,
+            466,
             401,
             16,
             16
@@ -192,5 +192,5 @@
          "coll": 0
       }
    ],
-   "Food": 0
+   "Food": 42
 }
