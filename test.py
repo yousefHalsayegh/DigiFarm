@@ -1,6 +1,5 @@
-from Systems.digest import Digest
+from systems.digest import Digest
 
 
 digest = Digest()
-
-print(digest.prepare(input("add data: ")))
+digest.prepare(input("add data: "))
