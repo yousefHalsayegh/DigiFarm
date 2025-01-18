@@ -4,16 +4,11 @@ from nltk.tokenize import  word_tokenize
 from nltk.corpus import stopwords
 from nltk import download, pos_tag
 from nltk.stem import WordNetLemmatizer
-
+from nltk.probability import FreqDist
 
 class Digest:
 
     def __init__(self):
-        
-        download("stopwords", download_dir="data/") 
-        download("punkt_tab", download_dir="data/")
-        download("averaged_perceptron_tagger", download_dir="data/")
-        download("wordnet", download_dir="data/")
 
         self.stopwords = set(stopwords.words("english"))
         self.lemmatizer = WordNetLemmatizer()
@@ -21,23 +16,38 @@ class Digest:
         
 
     def prepare(self, t):
-        detalied_text = []
         text = []
         text_lemed = []
-        words = word_tokenize(t)
-        ns_words = [word for word in words if word.casefold() not in self.stopwords ]
+        #tokenized
+        w = word_tokenize(t)
+        words = [word.lower() for word in w]
+        #removing stopwords (need to check if it is removing important things)
+        ns_words = [word for word in words if word not in self.stopwords ]
+        #adding a pos 
         pos_ns_word = pos_tag(ns_words)
-        detalied_text.append([(self.lemmatizer.lemmatize(word[0], self.pos(word[1])),word[0], word[1]) for word in pos_ns_word])
+        #lemmatizing by both using pos and not testing which one is better
         text.append([self.lemmatizer.lemmatize(word[0]) for word in pos_ns_word])
-        text_lemed.append([self.lemmatizer.lemmatize(word[0], self.pos(word[1])) for word in pos_ns_word])
-
-        print(text)
-        text = " ".join(text[0])
-        text_lemed = " ".join(text_lemed[0])
         
-        print(f"text is divided as such {detalied_text}")
-        print(f"text lemmatized '{text}'")
-        print(f"text lemmatized keeping in mind the pos '{text_lemed}'")
+        text = " ".join(text[0])
+
+
+        return text
+    
+    def prepare_lemed(self, t):
+        text = []
+        #tokenized
+        w = word_tokenize(t)
+        words = [word.lower() for word in w]
+        #removing stopwords (need to check if it is removing important things)
+        ns_words = [word for word in words if word not in self.stopwords ]
+        #adding a pos 
+        pos_ns_word = pos_tag(ns_words)
+        #lemmatizing by both using pos and not testing which one is better
+        text.append([self.lemmatizer.lemmatize(word[0], self.pos(word[1])) for word in pos_ns_word])
+
+        text = " ".join(text[0])
+        
+        return text
 
     def pos (self, tag):
         if tag.startswith('J'):
@@ -53,3 +63,6 @@ class Digest:
 
     def eat(self):
         pass
+
+
+        
