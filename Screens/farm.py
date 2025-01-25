@@ -147,8 +147,9 @@ data; showcase how much data you have
 show; show the data of a specific digimon using the index of the digimon
 kill; this kills a specific digimon using the index of the digimon""")  
         elif command == "feed":
-            self.cmd_text.set_text(self.cmd_text.html_text + "\nthe following data has been added to the farm: '"+ text +"' giving an extra " +  str(len(t[1:])) + " bytes of data")
-            self.digest()
+            food = self.digest.prepare(text)
+            self.cmd_text.set_text(self.cmd_text.html_text + "\nthe following data has been added to the farm: '"+ text +"' giving an extra " +  str(food[0]) + " bytes of data")
+            self.food.append(food)
         elif command == "list":
             self.cmd_text.set_text(self.cmd_text.html_text + "\ndigimon list:\n")
             for i in range(len(self.digimons)):

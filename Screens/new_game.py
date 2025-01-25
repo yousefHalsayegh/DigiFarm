@@ -90,7 +90,7 @@ class NewGame:
                             digimon.name = eggs[digimon.field][digimon.attribute][0]
 
                         self.save_manager.save_data({"Name" : self.farm_name, "Digimon" : [digimon.upload()]}, self.farm_name)
-                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : 0})
+                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : []})
 
 
                 self.manager.process_events(event)
