@@ -78,5 +78,35 @@
         [
             "Hack_Digitama"            
         ]
+    },
+    "Virus Busters":{
+        "Vaccine":
+        [
+            "Kuda_Digitama"
+        ],
+        "Virus":
+        [
+            "Gam_Digitama"
+        ]
+    },
+    "Dark Area":{
+        "Virus":
+        [
+            "PicoDevi_Digitama"
+        ]
+    },
+    "Jungle Troopers":{
+        "Virus":
+        [
+            "Mush_Digitama"
+        ],
+        "Data":
+        [
+            "Lop_Digitama"   
+        ],
+        "Vaccine":
+        [
+            "Tento_Digitama"
+        ]
     }
 }
