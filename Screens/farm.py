@@ -38,7 +38,12 @@ class Farm:
         self.digest = Digest()
         self.ui_start()
         #getting into it
-        self.run()
+        try:
+            self.run()
+        except Exception as x:
+            print("An error occured", x)
+            self.save()
+
 
     def ui_start(self):
 
@@ -62,12 +67,7 @@ class Farm:
             for event in pg.event.get():
                 
                 if event.type == pg.QUIT:
-                    digi = []
-                    for digimon in self.digimons:
-                        digi.append(digimon.upload())
-                    self.data["Digimon"] = digi
-                    self.data["Food"] = self.food 
-                    self.save_manager.save_data(self.data, self.name)
+                    self.save()
                     pg.quit()
                     sys.exit()
                 
@@ -108,11 +108,11 @@ class Farm:
                     if n > 0 :
                         if self.digimons[n].dead(self.digimons[i].attack, self.screen, self.background):
                             dead.append(n)
-                    else:
-                        if self.food < 0 :
-                            self.food = 0
+                    elif self.food:
+                        if self.food[0][0] < 0 :
+                            self.food.pop()
                         else:
-                            self.food -= 1
+                            self.food[0][0] -= 1
                 self.hitboxes[i] = self.digimons[i].hit
 
             for i in dead:
@@ -129,7 +129,13 @@ class Farm:
             self.digimons.append(digi)
             self.hitboxes.append(digi.hit)
 
-
+    def save(self):
+        digi = []
+        for digimon in self.digimons:
+            digi.append(digimon.upload())
+        self.data["Digimon"] = digi
+        self.data["Food"] = self.food 
+        self.save_manager.save_data(self.data, self.name)
 
 
     def cmd_command (self, text):
@@ -145,7 +151,12 @@ list; gives a list of all the avaliable digimons
 breed; this will allow to hatch a new egg using the data you have
 data; showcase how much data you have
 show; show the data of a specific digimon using the index of the digimon
-kill; this kills a specific digimon using the index of the digimon""")  
+kill; this kills a specific digimon using the index of the digimon
+save; saves the current instance""")  
+        elif command == "save":
+            self.save()
+            self.cmd_text.set_text(self.cmd_text.html_text + "\nthe game has been saved ")
+            self.load()
         elif command == "feed":
             food = self.digest.prepare(text)
             self.cmd_text.set_text(self.cmd_text.html_text + "\nthe following data has been added to the farm: '"+ text +"' giving an extra " +  str(food[0]) + " bytes of data")
@@ -157,13 +168,13 @@ kill; this kills a specific digimon using the index of the digimon""")
         elif command == 'data':
             self.cmd_text.set_text(self.cmd_text.html_text + "\nthe current amount of data we have is: " + str(self.food))
         elif command == "show":
-             self.cmd_text.set_text(self.cmd_text.html_text + "\n" + self.digimons[int(t[1:])-1].debugging())
+             self.cmd_text.set_text(self.cmd_text.html_text + "\n" + self.digimons[int(t[1])-1].debugging())
         elif command == "kill":
-            self.cmd_text.set_text(self.cmd_text.html_text + "\ngoodbye " + self.digimons[int(t[1:])-1].name)
-            self.digimons.pop(int(t[1:])-1)
-            self.hitboxes.pop(int(t[1:])-1)
+            self.cmd_text.set_text(self.cmd_text.html_text + "\ngoodbye " + self.digimons[int(t[1])-1].name)
+            self.digimons.pop(int(t[1])-1)
+            self.hitboxes.pop(int(t[1])-1)
         elif command == "breed":
-            if self.food > 20:
+            if self.food:
                 name = ""
                 f = random.choice(self.fields)
                 att = random.choice(self.att)
@@ -174,7 +185,7 @@ kill; this kills a specific digimon using the index of the digimon""")
                 new_digi.fast_download()
                 self.digimons.append(new_digi)
                 self.hitboxes.append(new_digi.hit)
-                self.food -= 20
+                self.food.pop()
                 self.cmd_text.set_text(self.cmd_text.html_text + f'\nthe following digimon has been added to the farm: {new_digi.name}')
             else:
                 self.cmd_text.set_text(self.cmd_text.html_text + "\nnot enough data")

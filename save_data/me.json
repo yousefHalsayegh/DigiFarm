@@ -1,0 +1,54 @@
+{
+   "Name": "me",
+   "Digimon": [
+      {
+         "name": "Gigimon",
+         "field": "Dragon's Roar",
+         "attribute": "Virus",
+         "level": "baby_II",
+         "speed": 2.5,
+         "sprites": null,
+         "frame": 2,
+         "feeding_time": 7,
+         "exp": 5,
+         "next_level": 10,
+         "hunger": 48,
+         "state": "Starving",
+         "hit": [
+            598,
+            400,
+            16,
+            16
+         ],
+         "target": [
+            500,
+            400,
+            20,
+            20
+         ],
+         "energy": 100,
+         "facing": -1,
+         "counter": 165,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 3,
+         "attack": 1,
+         "coll": 0,
+         "nature": {
+            "Virus": 3,
+            "Data": 3,
+            "Vaccine": 0
+         }
+      }
+   ],
+   "Food": [
+      [
+         0,
+         "Virus"
+      ]
+   ]
+}

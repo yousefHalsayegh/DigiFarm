@@ -5,7 +5,6 @@ import sys
 
 
 from Screens.new_game import NewGame as ng
-from Screens.farm import Farm
 from Systems.save_manager import SaveSystem 
 from Screens.continue_s import Continue 
 
@@ -51,39 +50,39 @@ def main():
 
 
     #The run
-    while True:
-        time_delta = clock.tick(60)/1000
+        while True:
+            time_delta = clock.tick(60)/1000
 
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                pg.quit()
-                sys.exit()
-
-            if event.type == pg_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == start_button:
-                    ng(screen)
-                    
-                elif event.ui_element == load_button:
-                    Continue(screen)
-                elif event.ui_element == setting_button:
-                    print("Settings")
-                elif event.ui_element == exit_button:
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
                     pg.quit()
                     sys.exit()
 
+                if event.type == pg_gui.UI_BUTTON_PRESSED:
+                    if event.ui_element == start_button:
+                        ng(screen)
+                        
+                    elif event.ui_element == load_button:
+                        Continue(screen)
+                    elif event.ui_element == setting_button:
+                        print("Settings")
+                    elif event.ui_element == exit_button:
+                        pg.quit()
+                        sys.exit()
 
-            manager.process_events(event)
-            
-    
-        manager.update(time_delta)
-        clock.tick(60)
 
-        #rendering the screen
-        screen.blit(background, (0,0))
-        manager.draw_ui(screen)
+                manager.process_events(event)
+                
+        
+            manager.update(time_delta)
+            clock.tick(60)
 
-        pg.display.flip()
-    
+            #rendering the screen
+            screen.blit(background, (0,0))
+            manager.draw_ui(screen)
+
+            pg.display.flip()
+
 
 
 if __name__ == '__main__' :

@@ -29,7 +29,7 @@ class Digest:
         text = " ".join(text)
         
         label = self.sentiment(text)
-        return (data, label)
+        return [data, label]
 
     def pos (self, tag):
         if tag.startswith('J'):
@@ -43,19 +43,17 @@ class Digest:
         else:
             return "n"
 
-    def eat(self):
-        pass
 
     def sentiment(self, text):
         t = self.senti.polarity_scores(text)
 
         n = t['compound']
         if n <= 0.05 and n >= -0.05:
-            return "netural"
+            return "Data"
         elif n < -0.05 :
-            return "negative"
+            return "Virus"
         else:
-            return "positive" 
+            return "Vaccine" 
 
     def download_stuff(self):
         download('stopwords')

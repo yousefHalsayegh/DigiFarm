@@ -23,14 +23,21 @@ class Digimon:
         self.energy = 100
         self.facing = 1
         self.counter = 0 
-        self.feeding_area = (500, 400, 100, 100)
+        self.feeding_area =(500, 400, 100, 100)
         self.health = 3
         self.attack = 1
         self.coll = 0
+        self.nature = {"Virus": 0, "Data":0, "Vaccine":0}
 
     
     def update(self, s, b, food, hits):
-        
+        nature = ""
+        if food:   
+            nature = food[0][1]
+            food = food[0][0]
+        else:
+            food = -1
+            
 
         #egg state
         if self.level == "digitama":
@@ -38,16 +45,16 @@ class Digimon:
                 s.blit(self.sprites[2], self.hit)
             else:
                 self.exp +=1
-         #digivolve
+        #digivolve
         if self.exp >= self.next_level:
-           self.digivolve()
+            self.digivolve()
 
         self.coll = self.hit.collidelist(hits)
         if self.coll >= 0 :
-           if not(self.hit == hits[self.coll]):
-              self.state = "Attack"
-              return self.coll
-           
+            if not(self.hit == hits[self.coll]):
+                self.state = "Attack"
+                return self.coll
+        
         #behaviour
         if self.state == "Sleepy":
             if self.energy > 100: 
@@ -72,11 +79,12 @@ class Digimon:
             elif self.reached():
                 if food < 0 :
                     self.new_target(s)
-                if self.feeding_time < 0 :
+                elif self.feeding_time < 0 :
                     self.feeding_time = 10
                     self.hunger += 10
                     self.exp += 1
                     food -= 1
+                    self.nature[nature] += 1
                     return -1
                 else:
                     self.feeding_time -= 1
@@ -211,6 +219,7 @@ class Digimon:
         if type(self.hit) is not tuple:
             self.hit = (self.hit.left, self.hit.top, 16, 16) 
             self.target = (self.target.left, self.target.top, 20, 20) 
+            self.feeding_area = (500, 400, 100, 100)
         return self.__dict__
     
     def download(self, data):
@@ -222,6 +231,7 @@ class Digimon:
     def fast_download(self):
         self.target = pg.Rect(self.target)
         self.hit = pg.Rect(self.hit)
+        self.feeding_area = pg.Rect(self.feeding_area)
         self.render()
         
         

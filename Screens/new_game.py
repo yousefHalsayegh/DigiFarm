@@ -49,7 +49,7 @@ class NewGame:
         self.retun_button = pg_gui.elements.UIButton(pg.Rect(10, 10, 50, 40), text='Back', manager=self.manager)
         self.farm_input = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 220, 300, 50), manager=self.manager)
         self.starting_attribute = pg_gui.elements.UIDropDownMenu(
-            ['Virus', 'Data', 'Vaccine', 'Free'],
+            ['Virus', 'Data', 'Vaccine'],
             'Virus', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
         self.starting_field = pg_gui.elements.UIDropDownMenu(
             ['Nature Spirits', 'Deep Saver', 'Nightmare Soldiers', 'Wind Guardians', 'Metal Empire','Dark Area',
@@ -90,7 +90,7 @@ class NewGame:
                             digimon.name = eggs[digimon.field][digimon.attribute][0]
 
                         self.save_manager.save_data({"Name" : self.farm_name, "Digimon" : [digimon.upload()]}, self.farm_name)
-                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : []})
+                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : [[0, 'Data']]})
 
 
                 self.manager.process_events(event)
