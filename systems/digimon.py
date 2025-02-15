@@ -198,19 +198,26 @@ class Digimon:
         else:
             pg.draw.rect(s, (248, 243, 241), self.target)
             self.target.left = self.hit.left + random.randint(-20, 20)
+            if self.target.left >= 800 or self.target.left <= 0:
+                self.target.left *= -1
             self.target.top = self.hit.top + random.randint(-20, 20)
+            if self.target.top >= 800 or self.target.top <= 0:
+                self.target.top *= -1
 
     def digivolve(self):
+         n = max(self.nature, key=self.nature)
+
          with open('Systems/tree.json', 'r') as file:
                 tree = json.load(file)
-                digi = tree[self.level][self.name][0]
-                for key in digi :
-                    setattr(self, key, digi[key])
-                self.render()
+                digi = tree[self.level][self.name][n] #wrong need fixing
                 self.hunger = 100
                 self.energy = 100
                 self.state = "Walking"
-                self.exp = 0
+                self.exp -= self.next_level
+                for key in digi :
+                    setattr(self, key, digi[key])
+                self.render()
+                
 
 
     def upload(self):

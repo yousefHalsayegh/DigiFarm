@@ -85,6 +85,7 @@ class Farm:
                             self.cmd.hide()
                             self.background.fill((248, 243, 241))
                             self.screen.blit(self.background, (0,0))
+                            self.input.focus()
                             self.cmd_text.set_text("")
                         else:
                             self.cmd.show()
@@ -177,12 +178,13 @@ save; saves the current instance""")
             if self.food:
                 name = ""
                 f = random.choice(self.fields)
-                att = random.choice(self.att)
+                att = self.food[0][1]
                 with open('Systems/starting_eggs.json', 'r') as file:
                     eggs = json.load(file)
                     name = eggs[f][att][0]
                 new_digi = Digimon(name, f, att)
                 new_digi.fast_download()
+                new_digi.exp = self.food[0][0]
                 self.digimons.append(new_digi)
                 self.hitboxes.append(new_digi.hit)
                 self.food.pop()

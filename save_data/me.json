@@ -8,14 +8,14 @@
          "level": "baby_II",
          "speed": 2.5,
          "sprites": null,
-         "frame": 2,
+         "frame": 9,
          "feeding_time": 7,
          "exp": 5,
          "next_level": 10,
          "hunger": 48,
          "state": "Starving",
          "hit": [
-            598,
+            582,
             400,
             16,
             16
