@@ -1,6 +1,7 @@
 {
     "digitama":{
-         "Guil_Digitama":[
+         "Guil_Digitama":
+         [
             {
                 "name": "Jyarimon",
                 "field": "Dragon's Roar",
@@ -10,7 +11,8 @@
                 "next_level" : 10
             }
         ],
-        "Imp_Digitama":[
+        "Imp_Digitama":
+        [
             {
                 "name": "Kiimon",
                 "field": "Nightmare Soldiers",
@@ -19,24 +21,71 @@
                 "speed": 5,
                 "next_level" : 10
             }
+        ],
+        "Terrier_Digitama":
+        [
+            {
+                "name": "Zerimon",
+                "field": "Nature Spirits",
+                "attribute": "Vaccine",
+                "level": "baby_I",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Lop_Digitama":
+        [
+            {
+                "name": "Chocomon",
+                "field": "Nature Spirits",
+                "attribute": "Data",
+                "level": "baby_I",
+                "speed": 5,
+                "next_level" : 10
+            }
         ]
     },
     "baby_I":{
-    "Jyarimon":[{
-            "name": "Gigimon",
-            "field": "Dragon's Roar",
-            "attribute": "Virus",
-            "level": "baby_II",
-            "speed": 5,
-            "next_level" : 10
+    "Jyarimon":
+        [
+            {
+                "name": "Gigimon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "baby_II",
+                "speed": 5,
+                "next_level" : 10
             }
 
         ],
-    "Kiimon":[
+    "Kiimon":
+        [
             {
                 "name": "Yaamon",
                 "field": "Nightmare Soldiers",
                 "attribute": "Virus",
+                "level": "baby_II",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+    "Zerimon":
+        [
+            {
+                "name": "Gummymon",
+                "field": "Nature Spirits",
+                "attribute": "Vaccine",
+                "level": "baby_II",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+    "Chocomon":
+        [
+            {
+                "name": "Cocomon",
+                "field": "Nature Spirits",
+                "attribute": "Data",
                 "level": "baby_II",
                 "speed": 5,
                 "next_level" : 10
@@ -46,28 +95,28 @@
     "baby_II":{
         "Gigimon":[
             {
-            "name": "Guilmon",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "child",
-             "speed": 5,
-             "next_level" : 10
+                "name": "Guilmon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "BlackGuilmon",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "child",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "Guilmon_X",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "child",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
         "Yaamon":[
@@ -87,52 +136,90 @@
                 "speed": 5,
                 "next_level" : 10
             }
+        ],
+        "Gummymon":[
+            {
+                "name": "Terriermon",
+                "field": "Nature Spirits",
+                "attribute": "Vaccine",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Terriermon_X",
+                "field": "Nature Spirits",
+                "attribute": "Vaccine",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Cocomon":[
+            {
+                "name": "Lopmon",
+                "field": "Nature Spirits",
+                "attribute": "Data",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Lopmon_X",
+                "field": "Nature Spirits",
+                "attribute": "Data",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            }
         ]
     },
     "child":
     {
-        "Guilmon":[{
-            "name": "Growmon",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "adult",
-             "speed": 5,
-             "next_level" : 10
+        "Guilmon":[
+            {
+                "name": "Growmon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "BlackGrowmon",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "adult",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "Growmon_Orange",
                 "field": "Dragon's Roar",
-                 "attribute": "Data",
-                 "level": "adult",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Data",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
             }  
         ],
-        "BlackGuilmon":[{
-            "name": "BlackGrowmon",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "adult",
-             "speed": 5,
-             "next_level" : 10
+        "BlackGuilmon":[
+            {
+                "name": "BlackGrowmon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
         "Guilmon_X":[
             {
                 "name": "Growmon_X",
                 "field": "Dragon's Roar",
-                 "attribute": "Data",
-                 "level": "adult",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Data",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
             }  
         ],
         "Impmon":[
@@ -154,87 +241,152 @@
                 "speed": 5,
                 "next_level" : 10
             }
+        ],
+        "Terriermon":[
+            {
+                "name": "Rapidmon_Armor",
+                "field": "Virus Busters",
+                "attribute": "Vaccine",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "BlackGalgomon",
+                "field": "Metal Empire",
+                "attribute": "Vaccine",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Galgomon",
+                "field": "Nature Spirit",
+                "attribute": "Vaccine",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Terriermon_X":[
+            {
+                "name": "Rapidmon_X",
+                "field": "Virus Busters",
+                "attribute": "Vaccine",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Lopmon":[
+            {
+                "name": "Turuiemon",
+                "field": "Nature Spirit",
+                "attribute": "Data",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Lopmon_X":[
+            {
+                "name": "Cherubimon_Vice_X",
+                "field": "Dark Area",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
         ]
     },
     "adult":
     {
-        "Growmon":[{
-            "name": "MegaloGrowmon",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "perfect",
-             "speed": 5,
-             "next_level" : 10
+        "Growmon":
+        [
+            {
+                "name": "MegaloGrowmon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "MegaloGrowmon_X",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "perfect",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "MegaloGrowmon_Orange",
                 "field": "Dragon's Roar",
-                 "attribute": "Data",
-                 "level": "perfect",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Data",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "BlackMegaloGrowmon",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "perfect",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
-        "BlackGrowmon":[{
-            "name": "BlackMegaloGrowmon",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "perfect",
-             "speed": 5,
-             "next_level" : 10
+        "BlackGrowmon":
+        [
+            {
+                "name": "BlackMegaloGrowmon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
-        "Growmon_Orange":[{
-            "name": "MegaloGrowmon",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "perfect",
-             "speed": 5,
-             "next_level" : 10
+        "Growmon_Orange":
+        [
+            {
+                "name": "MegaloGrowmon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "MegaloGrowmon_Orange",
                 "field": "Dragon's Roar",
-                 "attribute": "Data",
-                 "level": "perfect",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Data",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "BlackMegaloGrowmon",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "perfect",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
-        "Growmon_X":[{
-            "name": "MegaloGrowmon_X",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "perfect",
-             "speed": 5,
-             "next_level" : 10
-        }
+        "Growmon_X":
+        [
+            {
+                "name": "MegaloGrowmon_X",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            }
         ],
-        "Wizarmon":[
+        "Wizarmon":
+        [
             {
                 "name": "Baalmon",
                 "field": "Nightmare Soldiers",
@@ -244,10 +396,52 @@
                 "next_level" : 10
             }
         ],
-        "Wizarmon_X":[
+        "Wizarmon_X":
+        [
             {
                 "name": "Beelzebumon_X",
                 "field": "Dark Area",
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Galgomon":
+        [
+            {
+                "name": "Rapidmon",
+                "field": "Wind Guardians",
+                "attribute": "Vaccine",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "BlackGalgomon":
+        [
+            {
+                "name": "BlackRapidmon",
+                "field": "Metal Empire",
+                "attribute": "Vaccine",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Turuiemon":
+        [
+            {
+                "name": "Andiramon_Data",
+                "field": "Virus Busters",
+                "attribute": "Data",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Andiramon_Virus",
+                "field": "Nightmare Soldiers",
                 "attribute": "Virus",
                 "level": "perfect",
                 "speed": 5,
@@ -257,7 +451,8 @@
     },
     "perfect":
     {
-        "MegaloGrowmon":[
+        "MegaloGrowmon":
+        [
             {
                 "name": "Dukemon",
                 "field": "Dragon's Roar",
@@ -289,68 +484,75 @@
                 "level": "ultimate",
                 "speed": 5,
                 "next_level" : 10
-        }
+            }
         ],
-        "BlackMegaloGrowmon":[{
-            "name": "ChaosDukemon",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "ultimate",
-             "speed": 5,
-             "next_level" : 10
+        "BlackMegaloGrowmon":
+        [
+            {
+                "name": "ChaosDukemon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "Megidramon",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "ultimate",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
-        "MegaloGrowmon_X":[{
-            "name": "Dukemon_X",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "ultimate",
-             "speed": 5,
-             "next_level" : 10
+        "MegaloGrowmon_X":
+        [
+            {
+                "name": "Dukemon_X",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "Megidramon_X",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "ultimate",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
-        "MegaloGrowmon_Orange":[{
-            "name": "ChaosDukemon_Core",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "ultimate",
-             "speed": 5,
-             "next_level" : 10
+        "MegaloGrowmon_Orange":
+        [
+            {
+                "name": "ChaosDukemon_Core",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "Megidramon",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "ultimate",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
             },
             {
                 "name": "Dukemon",
                 "field": "Dragon's Roar",
-                 "attribute": "Virus",
-                 "level": "ultimate",
-                 "speed": 5,
-                 "next_level" : 10
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
             }
         ],
-        "Baalmon":[
+        "Baalmon":
+        [
             {
                 "name": "Beelzebumon",
                 "field": "Dark Area",
@@ -367,60 +569,125 @@
                 "speed": 5,
                 "next_level" : 10
             }
+        ],
+        "Rapidmon":
+        [
+            {
+                "name": "SaintGalgomon",
+                "field": "Metal Empire",
+                "attribute": "Vaccine",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "BlackRapidmon":
+        [
+            {
+                "name": "BlackSaintGalgomon",
+                "field": "Metal Empire",
+                "attribute": "Vaccine",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Andiramon_Data":
+        [
+            {
+                "name": "Cherubimon_Virtue",
+                "field": "Virus Busters",
+                "attribute": "Vaccine",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Andiramon_Virus":
+        [
+            {
+                "name": "Cherubimon_Vice_X",
+                "field": "Dark Area",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Cherubimon_Vice",
+                "field": "Dark Area",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
         ]
     },
     "ultimate":
     {
-        "Dukemon":[{
-            "name": "Guil_Digitama",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "digitama",
-             "speed": 0,
-             "next_level" : 10
+        "Dukemon":
+        [
+            {
+                "name": "Guil_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
             }
-        ],"ChaosDukemon":[{
-            "name": "Guil_Digitama",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "digitama",
-             "speed": 0,
-             "next_level" : 10
+        ],"ChaosDukemon":
+        [
+            {
+                "name": "Guil_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
             }
-        ],"ChaosDukemon_Core":[{
-            "name": "Guil_Digitama",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "digitama",
-             "speed": 0,
-             "next_level" : 10
+        ],"ChaosDukemon_Core":
+        [
+            {
+                "name": "Guil_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
             }
-        ],"Dukemon_X":[{
-            "name": "Guil_Digitama",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "digitama",
-             "speed": 0,
-             "next_level" : 10
+        ],"Dukemon_X":
+        [
+            {
+                "name": "Guil_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
             }
-        ],"Megidramon":[{
-            "name": "Guil_Digitama",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "digitama",
-             "speed": 0,
-             "next_level" : 10
+        ],"Megidramon":
+        [
+            {
+                "name": "Guil_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
             }
-        ],"Megidramon_X":[{
-            "name": "Guil_Digitama",
-            "field": "Dragon's Roar",
-             "attribute": "Virus",
-             "level": "digitama",
-             "speed": 0,
-             "next_level" : 10
+        ],"Megidramon_X":
+        [
+            {
+                "name": "Guil_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
             }
         ],
-        "Beelzebumon":[
+        "Beelzebumon":
+        [
             {
                 "name": "Beelzebumon_Blast",
                 "field": "Nightmare Soldiers",
@@ -446,7 +713,8 @@
                 "next_level" : 10
             }
         ],
-        "Beelzebumon_Blast":[
+        "Beelzebumon_Blast":
+        [
             {
                 "name": "Imp_Digitama",
                 "field": "Nightmare Soldiers",
@@ -456,7 +724,8 @@
                 "next_level" : 10
             }
         ],
-        "Beelzebumon_X":[
+        "Beelzebumon_X":
+        [
             {
                 "name": "Imp_Digitama",
                 "field": "Nightmare Soldiers",
@@ -466,7 +735,8 @@
                 "next_level" : 10
             }
         ],
-        "Ogudomon":[
+        "Ogudomon":
+        [
             {
                 "name": "Imp_Digitama",
                 "field": "Nightmare Soldiers",
@@ -476,11 +746,89 @@
                 "next_level" : 10
             }
         ],
-        "Ogudomon_X":[
+        "Ogudomon_X":
+        [
             {
                 "name": "Imp_Digitama",
                 "field": "Nightmare Soldiers",
                 "attribute": "Virus",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Rapidmon_Armor":
+        [
+            {
+                "name": "Terriermon",
+                "field": "Nature Spirit",
+                "attribute": "Vaccine",
+                "level": "child",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Rapidmon_X":
+        [
+            {
+                "name": "Terrier_Digitama",
+                "field": "Nature Spirit",
+                "attribute": "Vaccine",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "BlackSaintGalgomon":
+        [
+            {
+                "name": "Terrier_Digitama",
+                "field": "Nature Spirit",
+                "attribute": "Vaccine",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "SaintGalgomon":
+        [
+            {
+                "name": "Terrier_Digitama",
+                "field": "Nature Spirit",
+                "attribute": "Vaccine",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Cherubimon_Vice_X":
+        [
+            {
+                "name": "Lop_Digitama",
+                "field": "Nature Spirit",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Cherubimon_Vice":
+        [
+            {
+                "name": "Lop_Digitama",
+                "field": "Nature Spirit",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Cherubimon_Virtue":
+        [
+            {
+                "name": "Lop_Digitama",
+                "field": "Nature Spirit",
+                "attribute": "Data",
                 "level": "digitama",
                 "speed": 0,
                 "next_level" : 10

@@ -1,0 +1,112 @@
+{
+    "Dragon's Roar":{
+        "Virus":
+        [
+            "Guil_Digitama"
+        ],
+        "Vaccine":
+        [
+            "V_Digitama"
+        ],
+        "Data":
+        [
+            "Doru_Digitama"
+        ]
+    },
+    "Nightmare Soldiers":{
+        "Virus":
+        [
+            "Imp_Digitama"
+        ],
+        "Data":
+        [
+            "Cand_Digitama"
+        ]
+    },
+    "Nature Spirits":{
+        "Data":
+        [
+            "Lop_Digitama"
+        ],
+        "Vaccine":
+        [
+            "Terrier_Digitama"
+        ],
+        "Virus":
+        [
+            "Floar_Digitama"
+        ]
+    },
+    "Wind Guardians":{
+        "Vaccine":
+        [
+            "Flora_Digitama"
+        ],
+        "Virus":
+        [
+            "Funbee_Digitama"
+        ],
+        "Data":
+        [
+            "Hyoko_Digitama"
+        ]
+    },
+    "Deep Savers":{
+        "Vaccine":
+        [
+            "Swim_Digitama"
+        ],
+        "Data":
+        [
+            "Crab_Digitama"
+        ],
+        "Virus":
+        [
+            "Gazi_Digitama"
+        ]
+    },
+    "Metal Empire":{
+        "Virus":
+        [
+            "PawnChessBlack_Digitama"
+        ],
+        "Vaccine":
+        [
+            "Zuba_Digitama"
+        ],
+        "Data":
+        [
+            "Hack_Digitama"            
+        ]
+    },
+    "Virus Busters":{
+        "Vaccine":
+        [
+            "Kuda_Digitama"
+        ],
+        "Virus":
+        [
+            "Gam_Digitama"
+        ]
+    },
+    "Dark Area":{
+        "Virus":
+        [
+            "PicoDevi_Digitama"
+        ]
+    },
+    "Jungle Troopers":{
+        "Virus":
+        [
+            "Mush_Digitama"
+        ],
+        "Data":
+        [
+            "Lop_Digitama"   
+        ],
+        "Vaccine":
+        [
+            "Tento_Digitama"
+        ]
+    }
+}
