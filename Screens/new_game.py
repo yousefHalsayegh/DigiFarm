@@ -25,7 +25,9 @@ class NewGame:
 
         self.clock = pg.time.Clock()
         self.farm_name = ''
-        
+        self.eggs = ''
+        self.fields = []
+        self.att = []
         
         self.ui_start()
         #getting into it
@@ -33,28 +35,27 @@ class NewGame:
 
     def ui_start(self):
         font = pg.font.Font(size=30)
-
+        self.eggs_start()
         #Restarting the screen
         self.background.fill((248, 243, 241))
         text = font.render("What is your digimon farm name?", True, (10,10,10))
         textpos = text.get_rect(centerx=self.background.get_width()/2, y= 200)
         self.background.blit(text, textpos)
-        text = font.render("Choose a Digimon atrribute", True, (10,10,10))
+        text = font.render("Choose a Digimon field", True, (10,10,10))
         textpos = text.get_rect(centerx=self.background.get_width()/2, y= 280)
         self.background.blit(text, textpos)
-        text = font.render("Choose a Digimon field", True, (10,10,10))
+        text = font.render("Choose a Digimon atrribute", True, (10,10,10))
         textpos = text.get_rect(centerx=self.background.get_width()/2, y= 360)
         self.background.blit(text, textpos)
         
         self.retun_button = pg_gui.elements.UIButton(pg.Rect(10, 10, 50, 40), text='Back', manager=self.manager)
         self.farm_input = pg_gui.elements.UITextEntryLine(pg.Rect((self.background.get_width()/2 - 150), 220, 300, 50), manager=self.manager)
-        self.starting_attribute = pg_gui.elements.UIDropDownMenu(
-            ['Virus', 'Data', 'Vaccine'],
-            'Virus', pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
         self.starting_field = pg_gui.elements.UIDropDownMenu(
-            ['Nature Spirits', 'Deep Saver', 'Nightmare Soldiers', 'Wind Guardians', 'Metal Empire','Dark Area',
-             'Virus Busters', 'Dragon\'s Roar', 'Jungle Troopers']
-            ,'Dragon\'s Roar', pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
+            self.fields
+            ,self.fields[0], pg.Rect((self.background.get_width()/2 - 150), 300, 300, 50),manager=self.manager)
+        self.starting_attribute = pg_gui.elements.UIDropDownMenu(
+            self.att,
+            self.att[0], pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
         self.start = pg_gui.elements.UIButton(pg.Rect((self.background.get_width()/2 - 150), 540, 300, 50), text='Start', manager=self.manager)
 
         
@@ -79,15 +80,17 @@ class NewGame:
                         digimon.attribute = event.text
                     if event.ui_element == self.starting_field:
                         digimon.field = event.text
+                        self.att = list(self.eggs[event.text].keys())
+                        self.starting_attribute.options_list = self.att
+      
 
                 if event.type == pg_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.retun_button: 
                         return
                     if event.ui_element == self.start: 
 
-                        with open('Systems/starting_eggs.json', 'r') as file:
-                            eggs = json.load(file)
-                            digimon.name = eggs[digimon.field][digimon.attribute][0]
+                        
+                        digimon.name = self.eggs[digimon.field][digimon.attribute][0]
 
                         self.save_manager.save_data({"Name" : self.farm_name, "Digimon" : [digimon.upload()]}, self.farm_name)
                         Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : [[0, 'Data']]})
@@ -95,7 +98,7 @@ class NewGame:
 
                 self.manager.process_events(event)
                 
-        
+            
             self.manager.update(time_delta)
 
             #rendering the screen
@@ -103,4 +106,8 @@ class NewGame:
             self.manager.draw_ui(self.screen)
 
             pg.display.flip()
-
+    def eggs_start(self):
+        with open('Systems/starting_eggs.json', 'r') as file:
+                self.eggs = json.load(file)
+                self.fields = list(self.eggs.keys())
+                self.att = list(self.eggs[self.fields[0]].keys())

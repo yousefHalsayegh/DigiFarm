@@ -43,10 +43,32 @@
                 "speed": 5,
                 "next_level" : 10
             }
+        ],
+        "Cand_Digitama":
+        [
+            {
+                "name": "Mokumon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "baby_I",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Doru_Digitama":
+        [
+            {
+                "name": "Dodomon",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "baby_I",
+                "speed": 5,
+                "next_level" : 10
+            }
         ]
     },
     "baby_I":{
-    "Jyarimon":
+        "Jyarimon":
         [
             {
                 "name": "Gigimon",
@@ -58,7 +80,7 @@
             }
 
         ],
-    "Kiimon":
+        "Kiimon":
         [
             {
                 "name": "Yaamon",
@@ -69,7 +91,7 @@
                 "next_level" : 10
             }
         ],
-    "Zerimon":
+        "Zerimon":
         [
             {
                 "name": "Gummymon",
@@ -80,7 +102,7 @@
                 "next_level" : 10
             }
         ],
-    "Chocomon":
+        "Chocomon":
         [
             {
                 "name": "Cocomon",
@@ -90,10 +112,33 @@
                 "speed": 5,
                 "next_level" : 10
             }
+        ],
+        "Mokumon":
+        [
+            {
+                "name": "PetiMeramon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "baby_II",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Dodomon":
+        [
+            {
+                "name": "Dorimon",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            }
         ]
     },
     "baby_II":{
-        "Gigimon":[
+        "Gigimon":
+        [
             {
                 "name": "Guilmon",
                 "field": "Dragon's Roar",
@@ -119,7 +164,8 @@
                 "next_level" : 10
             }
         ],
-        "Yaamon":[
+        "Yaamon":
+        [
             {
                 "name": "Impmon",
                 "field": "Nightmare Soldiers",
@@ -137,7 +183,8 @@
                 "next_level" : 10
             }
         ],
-        "Gummymon":[
+        "Gummymon":
+        [
             {
                 "name": "Terriermon",
                 "field": "Nature Spirits",
@@ -155,7 +202,8 @@
                 "next_level" : 10
             }
         ],
-        "Cocomon":[
+        "Cocomon":
+        [
             {
                 "name": "Lopmon",
                 "field": "Nature Spirits",
@@ -172,7 +220,30 @@
                 "speed": 5,
                 "next_level" : 10
             }
+        ],
+        "PetiMeramon":
+        [
+            {
+                "name": "Candmon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Dorimon":
+        [
+            {
+                "name": "DORUmon",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "child",
+                "speed": 5,
+                "next_level" : 10
+            }
         ]
+        
     },
     "child":
     {
@@ -294,6 +365,50 @@
                 "field": "Dark Area",
                 "attribute": "Virus",
                 "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Candmon":[
+            {
+                "name": "Meramon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Meramon_X",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "DORUmon":[
+            {
+                "name": "DORUgamon",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Death-X-DORUgamon",
+                "field": "Dragon's Roar",
+                "attribute": "Virus",
+                "level": "adult",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Raptordramon",
+                "field": "Dragon's Roar",
+                "attribute": "Vaccine",
+                "level": "adult",
                 "speed": 5,
                 "next_level" : 10
             }
@@ -445,6 +560,69 @@
                 "attribute": "Virus",
                 "level": "perfect",
                 "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Meramon":
+        [
+            {
+                "name": "BlueMeramon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "DeathMeramon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "perfect",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Meramon_X":
+        [
+            {
+                "name": "Gankoomon_X",
+                "field": "Virus Busters",
+                "attribute": "Data",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Death-X-DORUgamon":
+        [
+            {
+                "name": "Doru_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "DORUgamon":
+        [
+            {
+                "name": "DORUguremon",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "perfect",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Raptordramon":
+        [
+            {
+                "name": "Grademon",
+                "field": "Dragon's Roar",
+                "attribute": "Vaccine",
+                "level": "perfect",
+                "speed": 0,
                 "next_level" : 10
             }
         ]
@@ -603,20 +781,69 @@
                 "next_level" : 10
             }
         ],
-        "Andiramon_Virus":
+        "BlueMeramon":
         [
             {
-                "name": "Cherubimon_Vice_X",
-                "field": "Dark Area",
+                "name": "Piemon",
+                "field": "Nightmare Soldiers",
                 "attribute": "Virus",
                 "level": "ultimate",
                 "speed": 5,
                 "next_level" : 10
             },
             {
-                "name": "Cherubimon_Vice",
-                "field": "Dark Area",
-                "attribute": "Virus",
+                "name": "Boltmon",
+                "field": "Metal Empire",
+                "attribute": "Data",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "DeathMeramon":
+        [
+            {
+                "name": "Gankoomon_X",
+                "field": "Virus Busters",
+                "attribute": "Data",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Gankoomon",
+                "field": "Virus Busters",
+                "attribute": "Data",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "Boltmon",
+                "field": "Metal Empire",
+                "attribute": "Data",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "DORUguremon":
+        [
+            {
+                "name": "DORUgoramon",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Grademon":
+        [
+            {
+                "name": "Alphamon",
+                "field": "Virus Busters",
+                "attribute": "Vaccine",
                 "level": "ultimate",
                 "speed": 5,
                 "next_level" : 10
@@ -828,6 +1055,129 @@
             {
                 "name": "Lop_Digitama",
                 "field": "Nature Spirit",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Gankoomon_X":
+        [
+            {
+                "name": "Cand_Digitama",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Gankoomon":
+        [
+            {
+                "name": "Cand_Digitama",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Boltmon":
+        [
+            {
+                "name": "Cand_Digitama",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Piemon":
+        [
+            {
+                "name": "Cand_Digitama",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            },
+            {
+                "name": "Apocalymon",
+                "field": "Dark Area",
+                "attribute": "Uknown",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            },
+            {
+                "name": "VoltoBautamon",
+                "field": "Nightmare Soldiers",
+                "attribute": "Virus",
+                "level": "ultimate",
+                "speed": 5,
+                "next_level" : 10
+            }
+        ],
+        "Apocalymon":
+        [
+            {
+                "name": "Cand_Digitama",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "VoltoBautamon":
+        [
+            {
+                "name": "Cand_Digitama",
+                "field": "Nightmare Soldiers",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Alphamon":
+        [
+            {
+                "name": "Doru_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            },
+            {
+                "name": "Alphamon_Ouryuken",
+                "field": "Virus Busters",
+                "attribute": "Vaccine",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "DORUgoramon":
+        [
+            {
+                "name": "Doru_Digitama",
+                "field": "Dragon's Roar",
+                "attribute": "Data",
+                "level": "digitama",
+                "speed": 0,
+                "next_level" : 10
+            }
+        ],
+        "Alphamon_Ouryuken":
+        [
+            {
+                "name": "Doru_Digitama",
+                "field": "Dragon's Roar",
                 "attribute": "Data",
                 "level": "digitama",
                 "speed": 0,

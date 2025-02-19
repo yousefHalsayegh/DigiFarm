@@ -3,12 +3,20 @@
         "Virus":
         [
             "Guil_Digitama"
+        ],
+        "Data":
+        [
+            "Doru_Digitama"
         ]
     },
     "Nightmare Soldiers":{
         "Virus":
         [
             "Imp_Digitama"
+        ],
+        "Data":
+        [
+            "Cand_Digitama"
         ]
     },
     "Nature Spirits":{

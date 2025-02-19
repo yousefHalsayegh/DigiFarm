@@ -1,6 +1,7 @@
 
-nature = {"Virus": 0, "Data":3, "Vaccine":0}
+import json
 
-n = max(nature, key=nature.get)
+with open('Systems/starting_eggs.json', 'r') as file:
+    eggs = json.load(file)
 
-print(n)
+    print(list(eggs[0].keys()))
