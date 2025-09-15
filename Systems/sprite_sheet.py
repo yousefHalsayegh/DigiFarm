@@ -3,8 +3,14 @@ import pygame as pg
 
 class SpriteSheet:
     def __init__(self, filename):
-        
+        """
+        This class is used to read the different sprite sheets in the digi folder which allows to render their animations 
+        # Parameter:
+        **filename** : _str_ \n
+        The digimon file name which contains the spirtie sheet
+        """
         try:
+            #this loads the full sprite sheet
             self.sheet = pg.image.load(filename).convert()
 
         except pg.error as e:
@@ -13,6 +19,13 @@ class SpriteSheet:
 
         
     def sprites(self):
+        """
+        This method breaks down the spirite sheet into "slides" which makes it easier to render
+
+        # Return
+        **images** : _list_
+        This contain the different sprities that has been extracted from the spritie sheet
+        """
         images = []
         for i in range(4):
             for j in range(3):

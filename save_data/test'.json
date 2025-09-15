@@ -1,34 +1,34 @@
 {
-   "Name": "me",
+   "Name": "test'",
    "Digimon": [
       {
-         "name": "Gigimon",
+         "name": "Guil_Digitama",
          "field": "Dragon's Roar",
          "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 2.5,
+         "level": "digitama",
+         "speed": 0,
          "sprites": null,
-         "frame": 10,
+         "frame": 1,
          "feeding_time": 10,
-         "exp": 6,
+         "exp": 5,
          "next_level": 10,
-         "hunger": 58,
-         "state": "Starving",
+         "hunger": 95,
+         "state": "Walking",
          "hit": [
-            528,
-            392,
+            712,
+            218,
             16,
             16
          ],
          "target": [
-            543,
-            381,
+            182,
+            209,
             20,
             20
          ],
-         "energy": 100,
+         "energy": 95,
          "facing": 1,
-         "counter": 165,
+         "counter": 5,
          "feeding_area": [
             500,
             400,
@@ -39,15 +39,19 @@
          "attack": 1,
          "coll": 0,
          "nature": {
-            "Virus": 4,
-            "Data": 3,
+            "Virus": 0,
+            "Data": 0,
             "Vaccine": 0
          }
       }
    ],
    "Food": [
       [
-         -1,
+         0,
+         "Data"
+      ],
+      [
+         1,
          "Virus"
       ]
    ]

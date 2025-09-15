@@ -5,14 +5,13 @@ import sys
 
 
 from Screens.new_game import NewGame as ng
-from Systems.save_manager import SaveSystem 
 from Screens.continue_s import Continue 
 
 def main():
-
-    save_manager = SaveSystem()
-
-    #Getting the screen read
+    """
+    The starting code
+    """
+    #Getting the screen ready
     WIDTH = 1000
     HEIGHT = 800
     screen = pg.display.set_mode((WIDTH,HEIGHT), pg.SCALED)
@@ -32,7 +31,6 @@ def main():
     if pg.font:
         #font initalize
         title_font = pg.font.Font(None, 72)
-        text_font = pg.font.Font(None, 64)
 
         #Main Title
         text = title_font.render("DigiFarm", True, (10,10,10))
@@ -49,15 +47,18 @@ def main():
         
 
 
-    #The run
+    #The run for the application to work
         while True:
+            #this is for the frames
             time_delta = clock.tick(60)/1000
 
+            #check for any event
             for event in pg.event.get():
+                #if the X is pressed to close the program 
                 if event.type == pg.QUIT:
                     pg.quit()
                     sys.exit()
-
+                #this check if any of the UI buttons are pressed
                 if event.type == pg_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == start_button:
                         ng(screen)
@@ -70,10 +71,10 @@ def main():
                         pg.quit()
                         sys.exit()
 
-
+                #manager is required to listen to the events
                 manager.process_events(event)
                 
-        
+            #this is to update and move stuff forward 
             manager.update(time_delta)
             clock.tick(60)
 
@@ -84,7 +85,7 @@ def main():
             pg.display.flip()
 
 
-
+#The start code
 if __name__ == '__main__' :
     pg.init()
     main()
