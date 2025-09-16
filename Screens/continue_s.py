@@ -9,7 +9,7 @@ class Continue:
         """
         A class used to create the screen which allows the players to continue
         # Paramters 
-        **s** : _pg.dispaly_
+        **s** : _pg.dispaly_ \n
         the surface which everything is drawn in, so that we don't have to open a new window
         """
         #starting variables

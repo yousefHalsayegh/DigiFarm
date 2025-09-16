@@ -10,33 +10,60 @@ import random
 
 class Farm:
     
-  
-
     def __init__(self,s, data):
-
+        """
+        A class used to create the screen that contain the actual farm
+        # Paramters 
+        **s** : _pg.dispaly_ \n
+        the surface which everything is drawn in, so that we don't have to open a new window \n
+        **data** : _Dict_ \n
+        Contain the information of the digimons in the farm 
+        """
+        #These are the fields used to breed new digimon
         self.fields = ['Dragon\'s Roar', 'Nightmare Soldiers']
         self.att = ['Virus']
-
+        
+        #contain the information fo each digimon
         self.data = data
+        
+        #the surface we draw on
         self.screen = s
+
+        #The name of the Farm
         self.name = data["Name"]
+
+        #The different hitboxes in the farm
         self.hitboxes = []
+
+        #Used to save the game
         self.save_manager = SaveSystem()
 
+        #To draw a background
         self.background = pg.Surface(s.get_size())
         self.background = self.background.convert()
         self.background.fill((248, 243, 241))
 
+        #To manage the UI elemetns
         self.manager = pg_gui.UIManager((1000, 800), theme_path='assests/style/theme.json')
 
+        #For the refresh rate
         self.clock = pg.time.Clock()
        
-        
+        #The list of digimons in the farm
         self.digimons = []
+
+        #A trigger to allow me debug the game
         self.debug = False
+
+        #The amount of food in the farm
         self.food = data['Food']
+        
+        #Used to process the text given
         self.digest = Digest()
+
+        #clean up the screen and add the inital UI 
         self.ui_start()
+
         #getting into it
         try:
             self.run()
@@ -46,21 +73,29 @@ class Farm:
 
 
     def ui_start(self):
+        """
+        This method just cleans up the screen from previous information, and draws the UI elemtents for the Farm page
+        """
 
         #Restarting the screen
         self.background.fill((248, 243, 241))
         self.screen.blit(self.background, (0,0))
 
+        #This is a contianer used to allow the player to interact with the farm, mimicking a CMD and hiding it behind a button
         self.cmd = pg_gui.elements.UIScrollingContainer(pg. Rect(0,0, 1000, 800), manager=self.manager)
         self.cmd_text = pg_gui.elements.UITextBox("write 'help' in case you want to know all the comands", pg.Rect(10,10, 950, 740), manager=self.manager, container=self.cmd)
         self.input = pg_gui.elements.UITextEntryLine(pg.Rect(10,750,950,30), manager=self.manager, container=self.cmd)
         self.cmd.hide()
     
-
+        #render all the present digimon
         self.load()
 
 
     def run(self):
+        """
+        The code which runs for the screen to function
+        """
+
         while True:
             time_delta = self.clock.tick(6)
 
@@ -138,7 +173,7 @@ class Farm:
         self.data["Food"] = self.food 
         self.save_manager.save_data(self.data, self.name)
 
-
+    #TODO: see if there is a better way to do this
     def cmd_command (self, text):
         t = text.split(" ")
         text = " ".join(t[1:])
