@@ -1,34 +1,34 @@
 {
-   "Name": "me",
+   "Name": "test",
    "Digimon": [
       {
-         "name": "Gigimon",
+         "name": "Jyarimon",
          "field": "Dragon's Roar",
          "attribute": "Virus",
-         "level": "baby_II",
-         "speed": 2.5,
+         "level": "baby_I",
+         "speed": 5,
          "sprites": null,
-         "frame": 10,
+         "frame": 1,
          "feeding_time": 10,
-         "exp": 6,
+         "exp": 0,
          "next_level": 10,
-         "hunger": 58,
-         "state": "Starving",
+         "hunger": 17,
+         "state": "Walking",
          "hit": [
-            528,
-            392,
+            80,
+            402,
             16,
             16
          ],
          "target": [
-            543,
-            381,
+            71,
+            404,
             20,
             20
          ],
-         "energy": 100,
-         "facing": 1,
-         "counter": 165,
+         "energy": 17,
+         "facing": -1,
+         "counter": 52,
          "feeding_area": [
             500,
             400,
@@ -39,16 +39,11 @@
          "attack": 1,
          "coll": 0,
          "nature": {
-            "Virus": 4,
-            "Data": 3,
+            "Virus": 10,
+            "Data": 0,
             "Vaccine": 0
          }
       }
    ],
-   "Food": [
-      [
-         -1,
-         "Virus"
-      ]
-   ]
+   "Food": []
 }

@@ -29,7 +29,7 @@ class Digimon:
         self.coll = 0
         self.nature = {"Virus": 0, "Data":0, "Vaccine":0}
 
-    
+    #TODO: refract this man     
     def update(self, s, b, food, hits):
         nature = ""
         if food:   
@@ -37,13 +37,14 @@ class Digimon:
             food = food[0][0]
         else:
             food = -1
-            
 
         #egg state
         if self.level == "digitama":
             if self.exp >= self.next_level :
                 s.blit(self.sprites[2], self.hit)
-            else:
+            elif food > 0:
+                food -= 1
+                self.nature[nature] += 1
                 self.exp +=1
         #digivolve
         if self.exp >= self.next_level:
@@ -139,7 +140,7 @@ class Digimon:
             self.counter += 1
             self.move(s,b, hits)
 
-
+        return 0
        
            
     def dead (self, a, s, b):
@@ -205,19 +206,23 @@ class Digimon:
                 self.target.top *= -1
 
     def digivolve(self):
-         n = max(self.nature, key=self.nature)
+        n = max(self.nature, key=self.nature.get)
 
-         with open('Systems/tree.json', 'r') as file:
-                tree = json.load(file)
-                digi = tree[self.level][self.name][n] #wrong need fixing
-                self.hunger = 100
-                self.energy = 100
-                self.state = "Walking"
-                self.exp -= self.next_level
-                for key in digi :
-                    setattr(self, key, digi[key])
-                self.render()
-                
+        with open('Systems/tree.json', 'r') as file:
+            tree = json.load(file)
+            digi = tree[self.level][self.name] #wrong need fixing
+            for i in digi:
+                if i['attribute'] == n:
+                    digi = i 
+                    break
+            self.hunger = 100
+            self.energy = 100
+            self.state = "Walking"
+            self.exp -= self.next_level
+            for key in digi :
+                setattr(self, key, digi[key])
+            self.render()
+            
 
 
     def upload(self):

@@ -138,8 +138,10 @@ class Farm:
             
             
             dead = []
+            print(self.digimons)
             for i in range(len(self.digimons)):
-                n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes)
+                print(self.food)
+                n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes)    
                 if n is not None:
                     if n > 0 :
                         if self.digimons[n].dead(self.digimons[i].attack, self.screen, self.background):
