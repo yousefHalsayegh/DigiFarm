@@ -42,10 +42,12 @@ class Digimon:
         if self.level == "digitama":
             if self.exp >= self.next_level :
                 s.blit(self.sprites[2], self.hit)
+                self.digivolve()
             elif food > 0:
                 food -= 1
                 self.nature[nature] += 1
                 self.exp +=1
+                return -1
         #digivolve
         if self.exp >= self.next_level:
             self.digivolve()
@@ -210,11 +212,14 @@ class Digimon:
 
         with open('Systems/tree.json', 'r') as file:
             tree = json.load(file)
-            digi = tree[self.level][self.name] #wrong need fixing
-            for i in digi:
+            pick = tree[self.level][self.name] 
+            digi = None
+            for i in pick:
                 if i['attribute'] == n:
                     digi = i 
                     break
+            if digi is None:
+                digi = random.choice(pick)
             self.hunger = 100
             self.energy = 100
             self.state = "Walking"

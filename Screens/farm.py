@@ -86,7 +86,6 @@ class Farm:
         self.cmd_text = pg_gui.elements.UITextBox("write 'help' in case you want to know all the comands", pg.Rect(10,10, 950, 740), manager=self.manager, container=self.cmd)
         self.input = pg_gui.elements.UITextEntryLine(pg.Rect(10,750,950,30), manager=self.manager, container=self.cmd)
         self.cmd.hide()
-    
         #render all the present digimon
         self.load()
 
@@ -138,15 +137,13 @@ class Farm:
             
             
             dead = []
-            print(self.digimons)
             for i in range(len(self.digimons)):
-                print(self.food)
                 n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes)    
                 if n is not None:
                     if n > 0 :
                         if self.digimons[n].dead(self.digimons[i].attack, self.screen, self.background):
                             dead.append(n)
-                    elif self.food:
+                    elif self.food and n == -1:
                         if self.food[0][0] < 0 :
                             self.food.pop()
                         else:
@@ -160,6 +157,8 @@ class Farm:
             pg.display.update()
             
     def load(self):
+        self.digimons = []
+        self.hitboxes = []
         for digimon in self.data["Digimon"]:
             digi = Digimon()
             digi.download(digimon)

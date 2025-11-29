@@ -2,33 +2,33 @@
    "Name": "test",
    "Digimon": [
       {
-         "name": "Jyarimon",
+         "name": "MegaloGrowmon_Orange",
          "field": "Dragon's Roar",
-         "attribute": "Virus",
-         "level": "baby_I",
+         "attribute": "Data",
+         "level": "perfect",
          "speed": 5,
          "sprites": null,
-         "frame": 1,
+         "frame": 5,
          "feeding_time": 10,
          "exp": 0,
          "next_level": 10,
-         "hunger": 17,
-         "state": "Walking",
+         "hunger": -1,
+         "state": "Sleepy",
          "hit": [
-            80,
-            402,
+            683,
+            629,
             16,
             16
          ],
          "target": [
-            71,
-            404,
+            672,
+            625,
             20,
             20
          ],
-         "energy": 17,
+         "energy": 94,
          "facing": -1,
-         "counter": 52,
+         "counter": 106,
          "feeding_area": [
             500,
             400,
@@ -41,9 +41,57 @@
          "nature": {
             "Virus": 10,
             "Data": 0,
-            "Vaccine": 0
+            "Vaccine": 40
+         }
+      },
+      {
+         "name": "MegaloGrowmon_Orange",
+         "field": "Dragon's Roar",
+         "attribute": "Data",
+         "level": "perfect",
+         "speed": 5,
+         "sprites": null,
+         "frame": 0,
+         "feeding_time": 10,
+         "exp": 0,
+         "next_level": 10,
+         "hunger": 0,
+         "state": "Attack",
+         "hit": [
+            688,
+            634,
+            16,
+            16
+         ],
+         "target": [
+            688,
+            641,
+            20,
+            20
+         ],
+         "energy": 0,
+         "facing": -1,
+         "counter": 105,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 3,
+         "attack": 1,
+         "coll": 0,
+         "nature": {
+            "Virus": 10,
+            "Data": 0,
+            "Vaccine": 40
          }
       }
    ],
-   "Food": []
+   "Food": [
+      [
+         52,
+         "Vaccine"
+      ]
+   ]
 }
