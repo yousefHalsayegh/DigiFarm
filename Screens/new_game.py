@@ -40,6 +40,7 @@ class NewGame:
         self.eggs = ''
         self.fields = []
         self.att = []
+        self.eggs_start()
         
         #clean up the screen and add the inital UI 
         self.ui_start()
@@ -53,8 +54,6 @@ class NewGame:
          
         #The font which is used in the text
         font = pg.font.Font(size=30)
-
-        self.eggs_start()
 
         #Restarting the screen
         self.background.fill((248, 243, 241))
@@ -96,17 +95,11 @@ class NewGame:
             #The refresh rate
             time_delta = self.clock.tick(60)/1000
 
-            #Work on any event
             for event in pg.event.get():
                 #in case the X is pressed to close the game
                 if event.type == pg.QUIT:
                     pg.quit()
                     sys.exit()
-
-                #Here when we finsih writing by pressing enter to save the farm name
-                if event.type == pg_gui.UI_TEXT_ENTRY_FINISHED:
-                    if event.ui_element == self.farm_input:
-                        self.farm_name = event.text
                         
                 #Used to pick the attribute and field of the digimon
                 if event.type == pg_gui.UI_DROP_DOWN_MENU_CHANGED:
@@ -116,13 +109,20 @@ class NewGame:
                         digimon.field = event.text
                         self.att = list(self.eggs[event.text].keys())
                         self.starting_attribute.options_list = self.att
-
-
+                        self.starting_attribute.kill()
+                        self.starting_attribute = pg_gui.elements.UIDropDownMenu(
+                            self.att,
+                            self.att[0], pg.Rect((self.background.get_width()/2 - 150), 380, 300, 50),manager=self.manager)
+                        
                 if event.type == pg_gui.UI_BUTTON_PRESSED:
                     if event.ui_element == self.retun_button: 
                         return
                     if event.ui_element == self.start: 
-
+                        if self.farm_input.get_text() == "":
+                            #TODO add a error message better
+                            self.farm_name == "na"
+                        else:
+                            self.farm_name = self.farm_input.get_text()
                         #takes a random egg from eggs present in the eggs json
                         #TODO: make the picking random on the egg 
                         digimon.name = self.eggs[digimon.field][digimon.attribute][0]
