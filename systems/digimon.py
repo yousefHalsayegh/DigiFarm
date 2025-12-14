@@ -43,7 +43,7 @@ class Digimon:
             if self.exp >= self.next_level :
                 s.blit(self.sprites[2], self.hit)
                 self.digivolve()
-            elif food > 0:
+            elif food >= 0:
                 food -= 1
                 self.nature[nature] += 1
                 self.exp +=1
@@ -73,7 +73,7 @@ class Digimon:
                 return
             
         elif self.state == "Starving":
-            if food > 0 and not (self.target == self.feeding_area):
+            if food >= 0 and not (self.target == self.feeding_area):
                 self.new_target(s, 'h')
             if self.hunger > 100:
                 self.state = "Walking"
@@ -155,7 +155,8 @@ class Digimon:
     def move(self,s,b, hits):
         x = 0 
         y = 0
-        s.blit(b,self.hit, area=self.hit)
+        #not sure what is this
+        #s.blit(b,self.hit, area=self.hit)
         if self.target.left > self.hit.left and self.target.right > self.hit.right:
             x = 1 * self.speed 
         elif self.target.left < self.hit.left and self.target.right < self.hit.right: 

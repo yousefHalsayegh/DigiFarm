@@ -2,33 +2,33 @@
    "Name": "test",
    "Digimon": [
       {
-         "name": "MegaloGrowmon_Orange",
+         "name": "Guil_Digitama",
          "field": "Dragon's Roar",
-         "attribute": "Data",
-         "level": "perfect",
-         "speed": 5,
+         "attribute": "Virus",
+         "level": "digitama",
+         "speed": 0,
          "sprites": null,
-         "frame": 5,
+         "frame": 4,
          "feeding_time": 10,
-         "exp": 0,
+         "exp": 1,
          "next_level": 10,
          "hunger": -1,
          "state": "Sleepy",
          "hit": [
-            683,
-            629,
+            538,
+            191,
             16,
             16
          ],
          "target": [
-            672,
-            625,
+            876,
+            364,
             20,
             20
          ],
-         "energy": 94,
-         "facing": -1,
-         "counter": 106,
+         "energy": 85,
+         "facing": 1,
+         "counter": 5,
          "feeding_area": [
             500,
             400,
@@ -39,59 +39,11 @@
          "attack": 1,
          "coll": 0,
          "nature": {
-            "Virus": 10,
-            "Data": 0,
-            "Vaccine": 40
-         }
-      },
-      {
-         "name": "MegaloGrowmon_Orange",
-         "field": "Dragon's Roar",
-         "attribute": "Data",
-         "level": "perfect",
-         "speed": 5,
-         "sprites": null,
-         "frame": 0,
-         "feeding_time": 10,
-         "exp": 0,
-         "next_level": 10,
-         "hunger": 0,
-         "state": "Attack",
-         "hit": [
-            688,
-            634,
-            16,
-            16
-         ],
-         "target": [
-            688,
-            641,
-            20,
-            20
-         ],
-         "energy": 0,
-         "facing": -1,
-         "counter": 105,
-         "feeding_area": [
-            500,
-            400,
-            100,
-            100
-         ],
-         "health": 3,
-         "attack": 1,
-         "coll": 0,
-         "nature": {
-            "Virus": 10,
-            "Data": 0,
-            "Vaccine": 40
+            "Virus": 0,
+            "Data": 1,
+            "Vaccine": 0
          }
       }
    ],
-   "Food": [
-      [
-         52,
-         "Vaccine"
-      ]
-   ]
+   "Food": []
 }

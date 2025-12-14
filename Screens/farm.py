@@ -41,8 +41,8 @@ class Farm:
         #To draw a background
         self.background = pg.Surface(s.get_size())
         self.background = self.background.convert()
-        self.background.fill((248, 243, 241))
-
+        self.bg = pg.image.load('assests/background/back.png').convert()
+        
         #To manage the UI elemetns
         self.manager = pg_gui.UIManager((1000, 800), theme_path='assests/style/theme.json')
 
@@ -60,6 +60,7 @@ class Farm:
         
         #Used to process the text given
         self.digest = Digest()
+        
 
         #clean up the screen and add the inital UI 
         self.ui_start()
@@ -80,6 +81,7 @@ class Farm:
         #Restarting the screen
         self.background.fill((248, 243, 241))
         self.screen.blit(self.background, (0,0))
+        self.screen.blit(self.bg, (0,0))
 
         #This is a contianer used to allow the player to interact with the farm, mimicking a CMD and hiding it behind a button
         self.cmd = pg_gui.elements.UIScrollingContainer(pg. Rect(0,0, 1000, 800), manager=self.manager)
@@ -119,6 +121,7 @@ class Farm:
                             self.cmd.hide()
                             self.background.fill((248, 243, 241))
                             self.screen.blit(self.background, (0,0))
+                            self.screen.blit(self.bg, (0,0))
                             self.input.focus()
                             self.cmd_text.set_text("")
                         else:
@@ -137,13 +140,15 @@ class Farm:
             
             
             dead = []
+            self.screen.blit(self.bg, (0,0))
             for i in range(len(self.digimons)):
                 n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes)    
                 if n is not None:
                     if n > 0 :
                         if self.digimons[n].dead(self.digimons[i].attack, self.screen, self.background):
                             dead.append(n)
-                    elif self.food and n == -1:
+                    elif self.food and (n == -1 or self.food[0][0] < 0) :
+                        print("hello")
                         if self.food[0][0] < 0 :
                             self.food.pop()
                         else:

@@ -11,8 +11,7 @@ class SpriteSheet:
         """
         try:
             #this loads the full sprite sheet
-            self.sheet = pg.image.load(filename).convert()
-
+            self.sheet = pg.image.load(filename)
         except pg.error as e:
             print(f'Unable to find the following file {filename}')
             raise SystemError(e)
@@ -30,9 +29,8 @@ class SpriteSheet:
         for i in range(4):
             for j in range(3):
                 #get the idle image
-                image = pg.Surface((16,16)).convert()
+                image = pg.Surface((16,16),  pg.SRCALPHA)
                 image.blit(self.sheet, (0,0), ((j * 16),(i * 16), 16, 16))
-
                 #REMOVE LATER
                 #image = pg.transform.scale(image, (48, 48))
 
