@@ -194,7 +194,8 @@ breed; this will allow to hatch a new egg using the data you have
 data; showcase how much data you have
 show; show the data of a specific digimon using the index of the digimon
 kill; this kills a specific digimon using the index of the digimon
-save; saves the current instance""")  
+save; saves the current instance,
+exit; close the game""")  
         elif command == "save":
             self.save()
             self.cmd_text.set_text(self.cmd_text.html_text + "\nthe game has been saved ")
@@ -232,5 +233,9 @@ save; saves the current instance""")
                 self.cmd_text.set_text(self.cmd_text.html_text + f'\nthe following digimon has been added to the farm: {new_digi.name}')
             else:
                 self.cmd_text.set_text(self.cmd_text.html_text + "\nnot enough data")
+        elif command == "exit":
+            self.save()
+            pg.quit()
+            sys.exit()
         else:
             self.cmd_text.set_text(self.cmd_text.html_text + "\n"+ command +" is not a known command has been added, please try again")

@@ -6,14 +6,14 @@
          "field": "Dragon's Roar",
          "attribute": "Virus",
          "level": "digitama",
-         "speed": 0,
+         "speed": 0.0,
          "sprites": null,
-         "frame": 4,
+         "frame": 10,
          "feeding_time": 10,
-         "exp": 1,
+         "exp": 8,
          "next_level": 10,
-         "hunger": -1,
-         "state": "Sleepy",
+         "hunger": -2,
+         "state": "Starving",
          "hit": [
             538,
             191,
@@ -21,14 +21,14 @@
             16
          ],
          "target": [
-            876,
-            364,
+            544,
+            207,
             20,
             20
          ],
-         "energy": 85,
+         "energy": 100,
          "facing": 1,
-         "counter": 5,
+         "counter": 6,
          "feeding_area": [
             500,
             400,
@@ -40,7 +40,7 @@
          "coll": 0,
          "nature": {
             "Virus": 0,
-            "Data": 1,
+            "Data": 8,
             "Vaccine": 0
          }
       }

@@ -36,7 +36,9 @@ class Digest:
         pos_ns_word = pos_tag(ns_words)
         #lemmatizing by both using pos and not testing which one is better
         text = [self.lemmatizer.lemmatize(word[0], self.pos(word[1])) for word in pos_ns_word]
-        data = len(text)
+        data = 0
+        for i in text:
+            data += len(i)
         text = " ".join(text)
         
         label = self.sentiment(text)
