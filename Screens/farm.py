@@ -7,6 +7,7 @@ import pygame as pg
 import sys
 import json
 import random
+import numpy as np
 
 class Farm:
     
@@ -61,10 +62,13 @@ class Farm:
         #Used to process the text given
         self.digest = Digest()
         
+        #level editing
+        self.edit = False
 
         #clean up the screen and add the inital UI 
         self.ui_start()
-
+        
+        self.map = np.zeros(s.get_size()) 
         #getting into it
         try:
             self.run()
@@ -126,6 +130,31 @@ class Farm:
                             self.cmd_text.set_text("")
                         else:
                             self.cmd.show()
+                    if self.edit:
+                        if event.key == pg.K_1:
+                           self.edit_type = 'yes'
+                        elif event.key == pg.K_2:
+                            self.edit_type = 'no'
+                        elif event.key == pg.K_3:
+                           self.edit_type = 'food'
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    pos = pg.mouse.get_pos()
+                    if self.edit_type == "yes":
+                        if event.type == 1:
+                            pass
+                        elif event.type == 3:
+                            pass
+                    elif self.edit_type == "no":
+                        if event.type == 1:
+                            pass
+                        elif event.type == 3:
+                            pass
+                    elif self.edit_type == "food":
+                        if event.type == 1:
+                            pass
+                        elif event.type == 3:
+                            pass
+                    
 
                 self.manager.process_events(event)
 
@@ -138,6 +167,9 @@ class Farm:
                 pg.display.update()
                 continue
             
+            if self.edit:
+                pg.display.update()
+                continue
             
             dead = []
             self.screen.blit(self.bg, (0,0))
@@ -148,7 +180,6 @@ class Farm:
                         if self.digimons[n].dead(self.digimons[i].attack, self.screen, self.background):
                             dead.append(n)
                     elif self.food and (n == -1 or self.food[0][0] < 0) :
-                        print("hello")
                         if self.food[0][0] < 0 :
                             self.food.pop()
                         else:
@@ -194,7 +225,8 @@ breed; this will allow to hatch a new egg using the data you have
 data; showcase how much data you have
 show; show the data of a specific digimon using the index of the digimon
 kill; this kills a specific digimon using the index of the digimon
-save; saves the current instance,
+save; saves the current instance
+edit; allows you to edit the level structure
 exit; close the game""")  
         elif command == "save":
             self.save()
@@ -233,6 +265,22 @@ exit; close the game""")
                 self.cmd_text.set_text(self.cmd_text.html_text + f'\nthe following digimon has been added to the farm: {new_digi.name}')
             else:
                 self.cmd_text.set_text(self.cmd_text.html_text + "\nnot enough data")
+        elif command == "edit":
+            if self.edit:
+                self.edit = False
+            else:
+                self.edit = True
+                self.cmd.hide()
+                self.background.fill((248, 243, 241))
+                self.screen.blit(self.background, (0,0))
+                self.screen.blit(self.bg, (0,0))
+                self.input.focus()
+                self.cmd_text.set_text("")
+                self.banner = pg_gui.elements.UILabel(pg.Rect((self.background.get_width()/2 - 150), -10, 300, 50), "EDITING MODE", self.manager)
+                self.lower = pg_gui.elements.UILabel(pg.Rect((self.background.get_width()/2 - 200), -20, 450, 100), "1 for walkable tiles, 2 for unwalkable tiles, 3 for the food source", self.manager)
+                self.edit_type = 'yes'
+            
+
         elif command == "exit":
             self.save()
             pg.quit()

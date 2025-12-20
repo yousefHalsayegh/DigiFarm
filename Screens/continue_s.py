@@ -82,7 +82,14 @@ class Continue:
                     if "end_" in event.ui_object_id:
                         self.container.kill()
                         self.save_manager.delete(f'{event.ui_object_id[14:]}.json')
-                        self.ui_start()
+                        files = self.save_manager.files()
+                        for i in range(len(files)):
+                            #The element which contains the file name 
+                            pg_gui.elements.UITextBox(f'file name: {files[i]}', pg.Rect(20, (10+ (i * 60)), 800, 50),manager=self.manager,container=self.container).disable()
+                            #A button to start the game using this data
+                            pg_gui.elements.UIButton(pg.Rect(-100, (10+ (i * 60)), 50, 50), text='Start', manager=self.manager, object_id=f'start_{files[i][:-5]}',container=self.container, anchors={'right': 'right','top': 'top'})
+                            #A button to delete the file
+                            pg_gui.elements.UIButton(pg.Rect(-50, (10+ (i * 60)), 50, 50), text='Delete', manager=self.manager, object_id=f'end_{files[i][:-5]}',container=self.container,  anchors={'right': 'right','top': 'top'})
                     #"start" containers are the ones which load the data and start the game
                     if "start_" in event.ui_object_id:
                         Farm(self.screen, self.save_manager.load_data(f'{event.ui_object_id[16:]}.json'))

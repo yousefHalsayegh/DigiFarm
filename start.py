@@ -12,7 +12,7 @@ def main():
     The starting code
     """
     #Getting the screen ready
-    WIDTH = 1070
+    WIDTH = 1056
     HEIGHT = 800
     screen = pg.display.set_mode((WIDTH,HEIGHT), pg.SCALED)
     pg.display.set_caption("Digifarm")
