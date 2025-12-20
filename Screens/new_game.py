@@ -5,6 +5,7 @@ sys.path.insert(0,"..\\systems")
 
 import pygame_gui as pg_gui
 import json
+import numpy as np
 from Screens.farm import Farm
 from Systems.save_manager import SaveSystem 
 from Systems.digimon import Digimon
@@ -129,7 +130,7 @@ class NewGame:
 
                         #do the initial save and start the game
                         self.save_manager.save_data({"Name" : self.farm_name, "Digimon" : [digimon.upload()]}, self.farm_name)
-                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : [[0, 'Data']]})
+                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : [[0, 'Data']], "Map":np.zeros(self.screen.get_size()).tolist() })
 
                 #process the events
                 self.manager.process_events(event)

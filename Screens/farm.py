@@ -68,7 +68,12 @@ class Farm:
         #clean up the screen and add the inital UI 
         self.ui_start()
         
-        self.map = np.zeros(s.get_size()) 
+        #the map
+        self.map = data['Map']
+        self.breeding_area = self.map_edit(1)
+        self.feeding_area = self.map_edit(3)
+        self.moving_area = self.map_edit(0)
+        self.not_allowed_area = self.map_edit(2)
         #getting into it
         try:
             self.run()
@@ -100,7 +105,7 @@ class Farm:
         """
         The code which runs for the screen to function
         """
-
+        held = -1
         while True:
             time_delta = self.clock.tick(6)
 
@@ -137,24 +142,37 @@ class Farm:
                             self.edit_type = 'no'
                         elif event.key == pg.K_3:
                            self.edit_type = 'food'
-                if event.type == pg.MOUSEBUTTONDOWN:
-                    pos = pg.mouse.get_pos()
+                if event.type == pg.MOUSEBUTTONDOWN and self.edit:
+                    held = event.button
+                elif event.type == pg.MOUSEBUTTONUP and self.edit:
+                    held = -1
+                if held != -1:
+                    pos_x, pos_y = pg.mouse.get_pos()[0]//16,  pg.mouse.get_pos()[1]//16
+                    color = (150,150,150)
                     if self.edit_type == "yes":
-                        if event.type == 1:
-                            pass
-                        elif event.type == 3:
-                            pass
+                        if held == 1:
+                            self.map[pos_x][pos_y] = 1
+                            color = (4, 40, 184)
+                        elif held == 3:
+                            self.map[pos_x][pos_y] = 0
+                            color = (150,150,150)
                     elif self.edit_type == "no":
-                        if event.type == 1:
-                            pass
-                        elif event.type == 3:
-                            pass
+                        if held == 1:
+                            self.map[pos_x][pos_y] = 2
+                            color = (184, 4, 73)
+                        elif held == 3:
+                            self.map[pos_x][pos_y] = 0
+                            color = (150,150,150)
                     elif self.edit_type == "food":
-                        if event.type == 1:
-                            pass
-                        elif event.type == 3:
-                            pass
+                        if held == 1:
+                            self.map[pos_x][pos_y] = 3
+                            color = (5, 161, 109)
+                        elif held == 3:
+                            self.map[pos_x][pos_y] = 0
+                            color = (150,150,150)
                     
+                    pg.draw.rect(self.screen,color, ((16*pos_x),(16*pos_y),16,16),1)
+                
 
                 self.manager.process_events(event)
 
@@ -208,6 +226,7 @@ class Farm:
             digi.append(digimon.upload())
         self.data["Digimon"] = digi
         self.data["Food"] = self.food 
+        self.data["Map"] = self.map
         self.save_manager.save_data(self.data, self.name)
 
     #TODO: see if there is a better way to do this
@@ -268,6 +287,11 @@ exit; close the game""")
         elif command == "edit":
             if self.edit:
                 self.edit = False
+                self.ui_start()
+                self.breeding_area = self.map_edit(1)
+                self.feeding_area = self.map_edit(3)
+                self.moving_area = self.map_edit(0)
+                self.not_allowed_area = self.map_edit(2)
             else:
                 self.edit = True
                 self.cmd.hide()
@@ -279,11 +303,31 @@ exit; close the game""")
                 self.banner = pg_gui.elements.UILabel(pg.Rect((self.background.get_width()/2 - 150), -10, 300, 50), "EDITING MODE", self.manager)
                 self.lower = pg_gui.elements.UILabel(pg.Rect((self.background.get_width()/2 - 200), -20, 450, 100), "1 for walkable tiles, 2 for unwalkable tiles, 3 for the food source", self.manager)
                 self.edit_type = 'yes'
-            
-
+                for i in range(len(self.map)):
+                    for j in range(len(self.map[0])):
+                        color = (255,255,255)
+                        if self.map[i][j] == 0:
+                            color = (150, 150, 150)
+                        elif self.map[i][j] == 1:
+                            color = (4, 40, 184)
+                        elif self.map[i][j] == 2:
+                            color = (184, 4, 73)
+                        elif self.map[i][j] == 3:
+                            color = (5, 161, 109)
+                        pg.draw.rect(self.screen,color, ((16*i),(16*j),16,16),1)
         elif command == "exit":
             self.save()
             pg.quit()
             sys.exit()
         else:
             self.cmd_text.set_text(self.cmd_text.html_text + "\n"+ command +" is not a known command has been added, please try again")
+
+
+
+    def map_edit(self, n):
+        find = []
+        for i in range(len(self.map)):
+            for j in range(len(self.map[0])):
+                if self.map[i][j] == n:
+                    find.append((i,j))
+        return find
