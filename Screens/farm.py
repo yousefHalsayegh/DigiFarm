@@ -70,6 +70,7 @@ class Farm:
         
         #the map
         self.map = data['Map']
+        print(self.map[0])
         self.breeding_area = self.map_edit(1)
         self.feeding_area = self.map_edit(3)
         self.moving_area = self.map_edit(0)

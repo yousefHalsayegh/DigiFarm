@@ -1,0 +1,48 @@
+{
+   "Name": "A",
+   "Digimon": [
+      {
+         "name": "Guil_Digitama",
+         "field": "Dragon's Roar",
+         "attribute": "Virus",
+         "level": "digitama",
+         "speed": 0,
+         "sprites": null,
+         "frame": 0,
+         "feeding_time": 10,
+         "exp": 0,
+         "next_level": 10,
+         "hunger": 100,
+         "state": "Walking",
+         "hit": [
+            852,
+            290,
+            16,
+            16
+         ],
+         "target": [
+            74,
+            189,
+            20,
+            20
+         ],
+         "energy": 100,
+         "facing": 1,
+         "counter": 0,
+         "feeding_area": [
+            500,
+            400,
+            100,
+            100
+         ],
+         "health": 3,
+         "attack": 1,
+         "coll": 0,
+         "nature": {
+            "Virus": 0,
+            "Data": 0,
+            "Vaccine": 0
+         }
+      }
+   ]
+}

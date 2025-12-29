@@ -130,7 +130,7 @@ class NewGame:
 
                         #do the initial save and start the game
                         self.save_manager.save_data({"Name" : self.farm_name, "Digimon" : [digimon.upload()]}, self.farm_name)
-                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : [[0, 'Data']], "Map":np.zeros(self.screen.get_size()).tolist() })
+                        Farm(self.screen, {"Name" : self.farm_name,"Digimon" : [digimon.upload()], "Food" : [[0, 'Data']], "Map": json.load(open("./Assests/background/matrices.json", "rb"))['back'] })
 
                 #process the events
                 self.manager.process_events(event)
