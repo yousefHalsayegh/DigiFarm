@@ -64,17 +64,17 @@ class Farm:
         
         #level editing
         self.edit = False
-
-        #clean up the screen and add the inital UI 
-        self.ui_start()
-        
         #the map
         self.map = data['Map']
-        print(self.map[0])
         self.breeding_area = self.map_edit(1)
         self.feeding_area = self.map_edit(3)
         self.moving_area = self.map_edit(0)
         self.not_allowed_area = self.map_edit(2)
+
+        #clean up the screen and add the inital UI 
+        self.ui_start()
+        
+        
         #getting into it
         try:
             self.run()
@@ -193,7 +193,7 @@ class Farm:
             dead = []
             self.screen.blit(self.bg, (0,0))
             for i in range(len(self.digimons)):
-                n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes)    
+                n = self.digimons[i].update(self.screen,self.background, self.food, self.hitboxes, self.feeding_area, self.moving_area)    
                 if n is not None:
                     if n > 0 :
                         if self.digimons[n].dead(self.digimons[i].attack, self.screen, self.background):
@@ -215,7 +215,7 @@ class Farm:
         self.digimons = []
         self.hitboxes = []
         for digimon in self.data["Digimon"]:
-            digi = Digimon()
+            digi = Digimon(feed = self.feeding_area, mov = self.moving_area)
             digi.download(digimon)
             self.screen.blit(digi.sprites[0], digi.hit)
             self.digimons.append(digi)

@@ -4,7 +4,7 @@ from Systems.sprite_sheet import SpriteSheet
 import json
 
 class Digimon:
-    def __init__(self, name = "Guil_Digitama", field = "", attribute = "", level = "digitama"):
+    def __init__(self, name = "Guil_Digitama", field = "", attribute = "", level = "digitama", feed= None, mov = None):
 
         self.name = name
         self.field = field
@@ -23,14 +23,18 @@ class Digimon:
         self.energy = 100
         self.facing = 1
         self.counter = 0 
-        self.feeding_area =(500, 400, 100, 100)
+        self.feeding_area = feed 
         self.health = 3
         self.attack = 1
         self.coll = 0
         self.nature = {"Virus": 0, "Data":0, "Vaccine":0}
+        self.move_area = mov
 
     #TODO: refract this man     
-    def update(self, s, b, food, hits):
+    def update(self, s, b, food, hits, feeding, moving):
+        self.feeding_area = feeding
+        self.move_area = moving
+
         nature = ""
         if food:   
             nature = food[0][1]
@@ -198,16 +202,10 @@ class Digimon:
     
     def new_target(self, s, flag='r'):
         if flag == 'h':
-            self.target = pg.Rect(self.feeding_area)
+            self.target = random.choice(self.feeding_area)
         else:
-            pg.draw.rect(s, (248, 243, 241), self.target)
-            self.target.left = self.hit.left + random.randint(-20, 20)
-            if self.target.left >= 800 or self.target.left <= 0:
-                self.target.left *= -1
-            self.target.top = self.hit.top + random.randint(-20, 20)
-            if self.target.top >= 800 or self.target.top <= 0:
-                self.target.top *= -1
-
+            self.target.left = random.choice(self.move_area)
+            
     def digivolve(self):
         n = max(self.nature, key=self.nature.get)
 
@@ -237,7 +235,6 @@ class Digimon:
         if type(self.hit) is not tuple:
             self.hit = (self.hit.left, self.hit.top, 16, 16) 
             self.target = (self.target.left, self.target.top, 20, 20) 
-            self.feeding_area = (500, 400, 100, 100)
         return self.__dict__
     
     def download(self, data):
@@ -249,7 +246,6 @@ class Digimon:
     def fast_download(self):
         self.target = pg.Rect(self.target)
         self.hit = pg.Rect(self.hit)
-        self.feeding_area = pg.Rect(self.feeding_area)
         self.render()
         
         
