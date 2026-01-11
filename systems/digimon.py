@@ -77,7 +77,7 @@ class Digimon:
                 return
             
         elif self.state == "Starving":
-            if food >= 0 and not (self.target == self.feeding_area):
+            if food >= 0 and not (self.target in self.feeding_area):
                 self.new_target(s, 'h')
             if self.hunger > 100:
                 self.state = "Walking"
@@ -201,10 +201,14 @@ class Digimon:
         return self.hit.colliderect(self.target)
     
     def new_target(self, s, flag='r'):
+        t = None
         if flag == 'h':
-            self.target = random.choice(self.feeding_area)
+            t = random.choice(self.feeding_area)
+            
         else:
-            self.target.left = random.choice(self.move_area)
+            t = random.choice(self.move_area)
+
+        self.target = pg.Rect((t[0]+1) * 16, (t[1]+1) * 16, 20, 20) 
             
     def digivolve(self):
         n = max(self.nature, key=self.nature.get)
