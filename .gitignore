@@ -1,0 +1,54 @@
+**/Assets/digimons/
+**/Assets/background/
+**.json
+**.png 
+**/Python/data/
+**/Python/digi/
+# Unity generated folders
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# IDE caches and generated project files
+.vs/
+.idea/
+ExportedObj/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.DotSettings.user
+
+# Generated debug metadata
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Logs and crash reports
+*.log
+sysinfo.txt
+mono_crash.*
+
+# Blender backups
+*.blend1
+*.blend1.meta
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
